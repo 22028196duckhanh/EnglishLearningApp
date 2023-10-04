@@ -12,7 +12,7 @@ public abstract class Dictionary {
 
     public abstract ArrayList<String> getAllWordTargets();
 
-    public abstract ArrayList<String> searchWord();
+    public abstract ArrayList<String> searchWord(String prefix);
 
     public abstract String lookUpWord(String wordTarget);
 
