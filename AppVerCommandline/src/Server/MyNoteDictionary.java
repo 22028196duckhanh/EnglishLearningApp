@@ -1,11 +1,27 @@
 package Server;
 
+import java.io.*;
 import java.util.ArrayList;
 
 public class MyNoteDictionary extends Dictionary{
 
     private static final ArrayList<Word> words = new ArrayList<>();
     private static final Trie trie = new Trie();
+    private static final String path = "src/Resource/note.txt";
+
+    @Override
+    public void init() {
+        System.out.println("Initializing...");
+        insertFromFile();
+        System.out.println("Init successfully!");
+    }
+
+    @Override
+    public void close() {
+        System.out.println("Saving...");
+        exportToFile();
+        System.out.println("See you again.");
+    }
 
     @Override
     public ArrayList<Word> getAllWords() {
@@ -76,5 +92,38 @@ public class MyNoteDictionary extends Dictionary{
             System.out.println("Null Exception.");
         }
         return -1;
+    }
+
+    private void insertFromFile() {
+        try {
+            FileReader fileReader = new FileReader(path);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line; //= bufferedReader.readLine();
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] tmp = line.split("\\|");
+                Word word = new Word(tmp[0].trim(),tmp[1].trim());
+                words.add(word);
+                trie.addWord(word.getWordTarget());
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            System.out.println("An error occur with file: " + e);
+        } catch (Exception e) {
+            System.out.println("Something went wrong: " + e);
+        }
+    }
+
+    public void exportToFile() {
+        try {
+            FileWriter fileWriter = new FileWriter(path);
+            BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+            for (Word word : words) {
+                bufferedWriter.write(word.getWordTarget() + "|" + word.getWordExplain());
+                bufferedWriter.newLine();
+            }
+            bufferedWriter.close();
+        } catch (Exception e) {
+            System.out.println("Something went wrong: " + e);
+        }
     }
 }

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public abstract class Dictionary {
 
-    public void init() {}
+    public abstract void init();
 
-    public void close() {}
+    public abstract void close();
 
     public abstract ArrayList<Word> getAllWords();
 

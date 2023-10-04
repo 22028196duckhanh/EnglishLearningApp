@@ -1,0 +1,10 @@
+apple|quả táo
+avocado|quả bơ
+banana|quả chuối
+cocunut|quả dừa
+cucumber|quả dưa chuột
+durian|quả sầu riêng
+mango|quả xoài
+orange|quả cam
+pineapple|quả dứa
+shoes|đôi giày
