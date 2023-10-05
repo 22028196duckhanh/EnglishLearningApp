@@ -4,6 +4,7 @@ banana|quả chuối
 cocunut|quả dừa
 cucumber|quả dưa chuột
 durian|quả sầu riêng
+english|tiếng Anh, người Anh
 mango|quả xoài
 orange|quả cam
 pineapple|quả dứa
