@@ -37,4 +37,6 @@ public abstract class Dictionary {
         ArrayList<Word> list = getAllWords();
         return printAsTable(list, 0, list.size());
     }
+
+    public void exportToFile() {}
 }

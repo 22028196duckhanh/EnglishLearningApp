@@ -96,15 +96,17 @@ public class MyNoteDictionary extends Dictionary{
 
     private void insertFromFile() {
         try {
+            System.out.println("Loading data...");
             FileReader fileReader = new FileReader(path);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
-            String line; //= bufferedReader.readLine();
+            String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] tmp = line.split("\\|");
                 Word word = new Word(tmp[0].trim(),tmp[1].trim());
                 words.add(word);
                 trie.addWord(word.getWordTarget());
             }
+            System.out.println("Successful.");
             bufferedReader.close();
         } catch (IOException e) {
             System.out.println("An error occur with file: " + e);
@@ -113,14 +115,17 @@ public class MyNoteDictionary extends Dictionary{
         }
     }
 
+    @Override
     public void exportToFile() {
         try {
+            System.out.println("Exporting...");
             FileWriter fileWriter = new FileWriter(path);
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
             for (Word word : words) {
                 bufferedWriter.write(word.getWordTarget() + "|" + word.getWordExplain());
                 bufferedWriter.newLine();
             }
+            System.out.println("Successful.");
             bufferedWriter.close();
         } catch (Exception e) {
             System.out.println("Something went wrong: " + e);
