@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="junit-3.8.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/Resource/project_lib/junit-3.8.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/Resource/project_lib/jlayer-1.0.1.4.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -79,6 +79,12 @@ public class DictionaryManagement {
         System.out.println(TranslatorAPI.translate("en", "vi", target));
     }
 
+    public static void speech() throws IOException {
+        System.out.print("Enter the text you need to play: ");
+        String target = new Scanner(System.in).nextLine();
+        System.out.println("Speaking...");
+        TextToSpeech.playSoundGoogleTranslate(target);
+    }
     public static void exit() throws SQLException {
         dictionary.close();
         System.exit(0);
