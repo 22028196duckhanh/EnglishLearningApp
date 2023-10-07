@@ -1,12 +1,13 @@
 package Server;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DictionaryManagement {
     public static Dictionary dictionary;
 
-    public static void add() {
+    public static void add() throws SQLException {
         System.out.print("Enter the word you need to add: ");
         String target = new Scanner(System.in).nextLine();
         System.out.print("Enter the meaning of the word: ");
@@ -16,7 +17,7 @@ public class DictionaryManagement {
         else System.out.println("Word existed");
     }
 
-    public static void remove() {
+    public static void remove() throws SQLException {
         System.out.print("Enter the word you need to remove: ");
         String target = new Scanner(System.in).nextLine();
         boolean success = dictionary.deleteWord(target);
@@ -24,7 +25,7 @@ public class DictionaryManagement {
         else System.out.println("Not existed");
     }
 
-    public static void update() {
+    public static void update() throws SQLException {
         System.out.print("Enter the word you need to update: ");
         String target = new Scanner(System.in).nextLine();
         System.out.print("Enter the meaning of the word: ");
@@ -34,17 +35,17 @@ public class DictionaryManagement {
         else System.out.println("Not existed");
     }
 
-    public static void display() {
+    public static void display() throws SQLException {
         System.out.println(dictionary.displayAllWords());
     }
 
-    public static void lookUp() {
+    public static void lookUp() throws SQLException {
         System.out.print("Enter the word you need to look up: ");
         String target = new Scanner(System.in).nextLine();
         System.out.println(dictionary.lookUpWord(target));
     }
 
-    public static void search() {
+    public static void search() throws SQLException {
         System.out.print("Enter the prefix you need to search: ");
         String prefix = new Scanner(System.in).nextLine();
         ArrayList<String> res = new ArrayList<>();
@@ -58,7 +59,7 @@ public class DictionaryManagement {
         dictionary.exportToFile();
     }
 
-    public void insertFromCommandline(Dictionary dictionary) {
+    public void insertFromCommandline(Dictionary dictionary) throws SQLException {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter number of words: ");
         int numOfWord = sc.nextInt();
@@ -71,7 +72,7 @@ public class DictionaryManagement {
         }
     }
 
-    public static void exit() {
+    public static void exit() throws SQLException {
         dictionary.close();
         System.exit(0);
     }

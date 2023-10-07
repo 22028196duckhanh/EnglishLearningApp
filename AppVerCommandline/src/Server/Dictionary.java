@@ -1,26 +1,27 @@
 package Server;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public abstract class Dictionary {
 
-    public abstract void init();
+    public abstract void init() throws SQLException;
 
-    public abstract void close();
+    public abstract void close() throws SQLException;
 
-    public abstract ArrayList<Word> getAllWords();
+    public abstract ArrayList<Word> getAllWords() throws SQLException;
 
-    public abstract ArrayList<String> getAllWordTargets();
+    public abstract ArrayList<String> getAllWordTargets() throws SQLException;
 
-    public abstract ArrayList<String> searchWord(String prefix);
+    public abstract ArrayList<String> searchWord(String prefix) throws SQLException;
 
-    public abstract String lookUpWord(String wordTarget);
+    public abstract String lookUpWord(String wordTarget) throws SQLException;
 
-    public abstract boolean insertWord(String wordTarget, String wordExplain);
+    public abstract boolean insertWord(String wordTarget, String wordExplain) throws SQLException;
 
-    public abstract boolean deleteWord(String wordTarget);
+    public abstract boolean deleteWord(String wordTarget) throws SQLException;
 
-    public abstract boolean modifyWord(String wordTarget, String newExplain);
+    public abstract boolean modifyWord(String wordTarget, String newExplain) throws SQLException;
 
     public String printAsTable(ArrayList<Word> wordList, int st, int en) {
         int idx = 1;
@@ -33,7 +34,7 @@ public abstract class Dictionary {
         return res.toString();
     }
 
-    public String displayAllWords() {
+    public String displayAllWords() throws SQLException {
         ArrayList<Word> list = getAllWords();
         return printAsTable(list, 0, list.size()-1);
     }

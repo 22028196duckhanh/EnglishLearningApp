@@ -1,8 +1,10 @@
+import Server.DatabaseDictionary;
 import Server.Dictionary;
 import Server.DictionaryManagement;
 import Server.MyNoteDictionary;
 
 import javax.swing.tree.DefaultTreeCellEditor;
+import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -35,7 +37,7 @@ public class App {
         }
     }
 
-    public static void executeSelection(int option) {
+    public static void executeSelection(int option) throws SQLException {
         switch (option) {
             case 0 -> DictionaryManagement.exit();
             case 1 -> DictionaryManagement.add();
@@ -50,8 +52,8 @@ public class App {
         }
     }
 
-    public static void main(String[] args) {
-        DictionaryManagement.dictionary = new MyNoteDictionary();
+    public static void main(String[] args) throws SQLException {
+        DictionaryManagement.dictionary = new DatabaseDictionary();
         DictionaryManagement.dictionary.init();
         int option;
         do {
