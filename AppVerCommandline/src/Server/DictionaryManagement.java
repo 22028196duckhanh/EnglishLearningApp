@@ -1,5 +1,6 @@
 package Server;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -70,6 +71,12 @@ public class DictionaryManagement {
             String wordExplain = sc.nextLine();
             dictionary.insertWord(wordTarget, wordExplain);
         }
+    }
+
+    public static void translator() throws IOException {
+        System.out.print("Enter the text: ");
+        String target = new Scanner(System.in).nextLine();
+        System.out.println(TranslatorAPI.translate("en", "vi", target));
     }
 
     public static void exit() throws SQLException {

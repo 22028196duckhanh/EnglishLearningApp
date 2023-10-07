@@ -4,6 +4,7 @@ import Server.DictionaryManagement;
 import Server.MyNoteDictionary;
 
 import javax.swing.tree.DefaultTreeCellEditor;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -22,22 +23,23 @@ public class App {
                 [5] Lookup
                 [6] Search
                 [7] Game
-                [8] Export to file""");
-            System.out.print("==> Enter an option (0-8): ");
+                [8] Export to file
+                [9] Google Translator""");
+            System.out.print("==> Enter an option (0-9): ");
             try {
                 int option = new Scanner(System.in).nextInt();
-                if (0 <= option && option <= 8) {
+                if (0 <= option && option <= 9) {
                     return option;
                 } else {
                     System.out.println("Invalid option!");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Enter number in (0-8) please!");
+                System.out.println("Enter number in (0-99) please!");
             }
         }
     }
 
-    public static void executeSelection(int option) throws SQLException {
+    public static void executeSelection(int option) throws SQLException, IOException {
         switch (option) {
             case 0 -> DictionaryManagement.exit();
             case 1 -> DictionaryManagement.add();
@@ -48,11 +50,12 @@ public class App {
             case 6 -> DictionaryManagement.search();
             case 7 -> DictionaryManagement.exit();
             case 8 -> DictionaryManagement.exportToFile();
+            case 9 -> DictionaryManagement.translator();
             default -> System.out.println("Invalid option!");
         }
     }
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         DictionaryManagement.dictionary = new DatabaseDictionary();
         DictionaryManagement.dictionary.init();
         int option;
