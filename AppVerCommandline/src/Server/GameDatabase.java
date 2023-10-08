@@ -12,28 +12,27 @@ public class GameDatabase {
     private static Connection connection = null;
     private static final int SUBJECT = 84;
 
-    public void init() throws SQLException {
+    public static void init() throws SQLException {
         System.out.println("Loading...");
         connection = DriverManager.getConnection(jdbcURL);
-        System.out.println("Database connected!");
+        System.out.println("Let's go.");
     }
 
-    public void close() throws SQLException {
+    public static void close() throws SQLException {
         connection.close();
-        System.out.println("Database disconnected!");
     }
 
-    private int getSubject() {
+    private static int getSubject() {
         Random rd = new Random();
         return rd.nextInt(SUBJECT) + 1;
     }
 
-   private int getLevel() throws SQLException {
+   private static int getLevel() throws SQLException {
         ArrayList<Integer> listLevel = new ArrayList<>();
-        String sj = String.valueOf(getSubject());
+        int sj = getSubject();
         String sql_query = "SELECT * FROM level WHERE id_sj = ?";
         PreparedStatement statement = connection.prepareStatement(sql_query);
-        statement.setString(1, sj);
+        statement.setInt(1, sj);
         ResultSet result = statement.executeQuery();
         while (result.next()) {
             int lv = result.getInt("id_lv");
@@ -41,16 +40,17 @@ public class GameDatabase {
         }
         result.close();
         statement.close();
+        if (listLevel.isEmpty()) return 100;
         Random rd = new Random();
         return listLevel.get(rd.nextInt(listLevel.size()));
     }
 
-    public int getIdQuestion() throws SQLException {
+    public static int getIdQuestion() throws SQLException {
         ArrayList<Integer> listQuestion = new ArrayList<>();
-        String lv = String.valueOf(getLevel());
+        int lv = getLevel();
         String sql_query = "SELECT * FROM question WHERE id_lv = ?";
         PreparedStatement statement = connection.prepareStatement(sql_query);
-        statement.setString(1, lv);
+        statement.setInt(1, lv);
         ResultSet result = statement.executeQuery();
         while (result.next()) {
             int id = result.getInt("id_qt");
@@ -58,29 +58,35 @@ public class GameDatabase {
         }
         result.close();
         statement.close();
+        if (listQuestion.isEmpty()) return 100;
         Random rd = new Random();
         return listQuestion.get(rd.nextInt(listQuestion.size()));
     }
 
-    public String getQuestion(int id) throws SQLException {
-        String ques = "";
+    public static String getQuestion(int id) throws SQLException {
+        String tmp = "";
         String sql_query = "SELECT * FROM question WHERE id_qt = ?";
         PreparedStatement statement = connection.prepareStatement(sql_query);
-        statement.setString(1, String.valueOf(id));
+        statement.setInt(1, id);
         ResultSet result = statement.executeQuery();
         while (result.next()) {
-            ques = result.getString("content");
+            tmp = result.getString("content");
+        }
+        String[] treat = tmp.split("<br/>");
+        StringBuilder ques = new StringBuilder();
+        for (int i=0; i<treat.length;i++) {
+            ques.append(treat[i]).append("\t");
         }
         result.close();
         statement.close();
-        return ques;
+        return ques.toString();
     }
 
-    public Map<String, Boolean> getAnswer(int id) throws SQLException {
+    public static Map<String, Boolean> getAnswer(int id) throws SQLException {
         Map<String, Boolean> ans = new HashMap<>();
         String sql_query = "SELECT * FROM answer WHERE id_qt = ?";
         PreparedStatement statement = connection.prepareStatement(sql_query);
-        statement.setString(1, String.valueOf(id));
+        statement.setInt(1, id);
         ResultSet result = statement.executeQuery();
         while (result.next()) {
             String tmp1 = result.getString("as_content");

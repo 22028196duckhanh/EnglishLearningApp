@@ -1,7 +1,4 @@
-import Server.DatabaseDictionary;
-import Server.Dictionary;
-import Server.DictionaryManagement;
-import Server.MyNoteDictionary;
+import Server.*;
 
 import javax.swing.tree.DefaultTreeCellEditor;
 import java.io.IOException;
@@ -50,7 +47,7 @@ public class App {
             case 4 -> DictionaryManagement.display();
             case 5 -> DictionaryManagement.lookUp();
             case 6 -> DictionaryManagement.search();
-            case 7 -> DictionaryManagement.exit();
+            case 7 -> GameManagement.launch();
             case 8 -> DictionaryManagement.exportToFile();
             case 9 -> DictionaryManagement.translator();
             case 10 -> DictionaryManagement.speech();
