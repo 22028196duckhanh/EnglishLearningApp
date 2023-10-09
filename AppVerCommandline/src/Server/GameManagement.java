@@ -19,6 +19,8 @@ public class GameManagement {
     }
 
     private static void close() throws SQLException {
+        score = 0;
+        gameCards.clear();
         System.out.printf("Your score: %d / %d\n", score, SCOREPERQUESTION*NUMSOFQUESTION);
         GameDatabase.close();
     }

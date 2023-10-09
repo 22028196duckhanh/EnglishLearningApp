@@ -1,6 +1,5 @@
 package Server;
 
-import java.security.KeyPair;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -64,22 +63,18 @@ public class GameDatabase {
     }
 
     public static String getQuestion(int id) throws SQLException {
-        String tmp = "";
+        String ques = "";
         String sql_query = "SELECT * FROM question WHERE id_qt = ?";
         PreparedStatement statement = connection.prepareStatement(sql_query);
         statement.setInt(1, id);
         ResultSet result = statement.executeQuery();
         while (result.next()) {
-            tmp = result.getString("content");
+            ques = result.getString("content");
         }
-        String[] treat = tmp.split("<br/>");
-        StringBuilder ques = new StringBuilder();
-        for (int i=0; i<treat.length;i++) {
-            ques.append(treat[i]).append("\t");
-        }
+        ques = ques.replaceAll("<br/>","\n");
         result.close();
         statement.close();
-        return ques.toString();
+        return ques;
     }
 
     public static Map<String, Boolean> getAnswer(int id) throws SQLException {
