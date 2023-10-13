@@ -19,7 +19,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Views/sample.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Views/menu-view.fxml")));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
 
         //grab your root here
@@ -46,10 +46,10 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) throws SQLException, IOException {
-        DictionaryManagement.dictionary = new DatabaseDictionary();
-        DictionaryManagement.dictionary.init();
-        DictionaryManagement.display();
-        GameManagement.launch();
+        //DictionaryManagement.dictionary = new DatabaseDictionary();
+        //DictionaryManagement.dictionary.init();
+        //DictionaryManagement.display();
+        //GameManagement.launch();
         launch();
     }
 }

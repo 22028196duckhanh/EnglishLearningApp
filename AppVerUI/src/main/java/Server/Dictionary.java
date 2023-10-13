@@ -40,4 +40,6 @@ public abstract class Dictionary {
     }
 
     public void exportToFile() {}
+
+    public abstract String getFullExplain(String selectedWord) throws SQLException;
 }

@@ -2,6 +2,12 @@ package Server;
 
 import java.sql.*;
 import java.util.ArrayList;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.nodes.TextNode;
+import org.jsoup.safety.Whitelist;
 
 public class DatabaseDictionary extends Dictionary{
     private static final String jdbcURL = "jdbc:sqlite:src/main/resources/Utils/data/dictionary.db";
@@ -85,7 +91,6 @@ public class DatabaseDictionary extends Dictionary{
     @Override
     public boolean insertWord(String wordTarget, String wordExplain) throws SQLException {
         boolean success = true;
-        ResultSet result = null;
         PreparedStatement statement = null;
         try {
             String sql_query = "INSERT INTO av (word, description) VALUES (?, ?)";
@@ -105,7 +110,6 @@ public class DatabaseDictionary extends Dictionary{
     @Override
     public boolean deleteWord(String wordTarget) throws SQLException {
         boolean success = true;
-        ResultSet result = null;
         PreparedStatement statement = null;
         try {
             String sql_query = "DELETE FROM av WHERE word = ?";
@@ -124,7 +128,6 @@ public class DatabaseDictionary extends Dictionary{
     @Override
     public boolean modifyWord(String wordTarget, String newExplain) throws SQLException {
         boolean success = true;
-        ResultSet result = null;
         PreparedStatement statement = null;
         try {
             String sql_query = "UPDATE av SET description = ? WHERE word = ?";
@@ -139,5 +142,21 @@ public class DatabaseDictionary extends Dictionary{
             statement.close();
         }
         return success;
+    }
+    private String htmlToText(String html) {
+        String outputText = Jsoup.clean(html, new Whitelist());
+        return outputText;
+    }
+
+    public String getFullExplain(String word) throws SQLException {
+        String sql_query = "SELECT * FROM av WHERE word = ?";
+        PreparedStatement statement = connection.prepareStatement(sql_query);
+        statement.setString(1, word);
+        ResultSet result = statement.executeQuery();
+        String html = result.getString("html");
+        result.close();
+        statement.close();
+        if (html.isEmpty()) return "";
+        return html;
     }
 }

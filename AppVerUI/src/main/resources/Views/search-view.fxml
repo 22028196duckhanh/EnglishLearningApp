@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.web.WebView?>
+
+<AnchorPane prefHeight="600.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchController">
+   <children>
+      <Pane layoutY="73.0" prefHeight="75.0" prefWidth="300.0">
+         <children>
+            <TextField fx:id="searchArea" layoutX="41.0" layoutY="14.0" prefHeight="34.0" prefWidth="218.0" />
+         </children>
+      </Pane>
+      <AnchorPane layoutY="149.0" prefHeight="450.0" prefWidth="300.0">
+         <children>
+            <ListView fx:id="listResults" layoutX="25.0" onMouseClicked="#handleMouseSelectWord" prefHeight="450.0" prefWidth="250.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="299.0" layoutY="149.0" prefHeight="450.0" prefWidth="550.0">
+         <children>
+            <WebView fx:id="explanation" prefHeight="450.0" prefWidth="550.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
