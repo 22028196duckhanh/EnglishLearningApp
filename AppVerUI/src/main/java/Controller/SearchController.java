@@ -29,13 +29,12 @@ public class SearchController implements Initializable {
         }
 
         History.insertFromFile();
+        defaultHistory();
         searchArea.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (searchArea.getText().isEmpty()) {
-                    result.clear();
-                    result.addAll(History.getHistory());
-                    listResults.setItems(result);
+                    defaultHistory();
                 } else {
                     try {
                         handleOnKeyTyped();
@@ -72,6 +71,12 @@ public class SearchController implements Initializable {
             speaker.setVisible(true);
             explanation.setVisible(true);
         }
+    }
+
+    private void defaultHistory() {
+        result.clear();
+        result.addAll(History.getHistory());
+        listResults.setItems(result);
     }
 
     @FXML
