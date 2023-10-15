@@ -7,7 +7,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
-import org.jsoup.safety.Whitelist;
 
 public class DatabaseDictionary extends Dictionary{
     private static final String jdbcURL = "jdbc:sqlite:src/main/resources/Utils/data/dictionary.db";
@@ -142,10 +141,6 @@ public class DatabaseDictionary extends Dictionary{
             statement.close();
         }
         return success;
-    }
-    private String htmlToText(String html) {
-        String outputText = Jsoup.clean(html, new Whitelist());
-        return outputText;
     }
 
     public String getFullExplain(String word) throws SQLException {

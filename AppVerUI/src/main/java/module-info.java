@@ -3,7 +3,7 @@ module Server {
     requires javafx.fxml;
     requires java.sql;
     requires jlayer;
-    requires jsoup;
+    requires org.jsoup;
     requires javafx.web;
 
 
