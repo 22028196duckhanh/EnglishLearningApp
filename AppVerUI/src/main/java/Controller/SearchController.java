@@ -1,7 +1,6 @@
 package Controller;
 
-import Server.DatabaseDictionary;
-import Server.Dictionary;
+import Server.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -14,6 +13,8 @@ import javafx.scene.web.WebView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.PriorityQueue;
+import java.util.Queue;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
@@ -26,11 +27,15 @@ public class SearchController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+
+        History.insertFromFile();
         searchArea.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if (searchArea.getText().isEmpty()) {
-
+                    result.clear();
+                    result.addAll(History.getHistory());
+                    listResults.setItems(result);
                 } else {
                     try {
                         handleOnKeyTyped();
@@ -39,8 +44,14 @@ public class SearchController implements Initializable {
                     }
                 }
                 explanation.setVisible(false);
+                speaker.setVisible(false);
             }
         });
+        speaker.setOnAction(actionEvent ->  {
+            TextToSpeech.playSoundGoogleTranslate(speaker.getText());
+        });
+        explanation.setVisible(false);
+        speaker.setVisible(false);
     }
 
     @FXML
@@ -56,6 +67,9 @@ public class SearchController implements Initializable {
         String selectedWord = listResults.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
             explanation.getEngine().loadContent(dictionary.getFullExplain(selectedWord),"text/html");
+            speaker.setText(selectedWord);
+            History.updateHistory(selectedWord);
+            speaker.setVisible(true);
             explanation.setVisible(true);
         }
     }
@@ -65,6 +79,9 @@ public class SearchController implements Initializable {
 
     @FXML
     private WebView explanation;
+
+    @FXML
+    private Button speaker;
 
     @FXML
     private ListView<String> listResults;

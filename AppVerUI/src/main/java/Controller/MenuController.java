@@ -1,5 +1,6 @@
 package Controller;
 
+import Server.History;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -29,6 +30,7 @@ public class MenuController implements Initializable {
             }
         });
         exitBtn.setOnMouseClicked(e -> {
+            History.exportToFile();
             System.exit(0);
         });
     }
