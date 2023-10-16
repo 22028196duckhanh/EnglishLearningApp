@@ -9,7 +9,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
-
+import javafx.stage.Stage;
+// import org.w3c.dom.events.MouseEvent;
+import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -44,6 +46,24 @@ public class MenuController implements Initializable {
     public void showView(String path) throws IOException {
         AnchorPane newScreen = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
         setView(newScreen);
+    }
+
+    @FXML
+    private void min(MouseEvent event) {
+        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        s.setIconified(true);
+    }
+
+    @FXML
+    private void max(MouseEvent event) {
+        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        s.setFullScreen(true);
+    }
+
+    @FXML
+    private void close(MouseEvent event) {
+        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        s.close();
     }
 
     @FXML

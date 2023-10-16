@@ -28,16 +28,19 @@ public class HelloApplication extends Application {
             yOffset = event.getSceneY();
         });
 
-        //move around here
+
         root.setOnMouseDragged(event -> {
             primaryStage.setX(event.getScreenX() - xOffset);
             primaryStage.setY(event.getScreenY() - yOffset);
         });
+
         Scene scene = new Scene(root);
-        //set transparent
+
+
         scene.setFill(Color.TRANSPARENT);
 
         primaryStage.setTitle("Dictionary Application");
+
         //Image icon = new Image("icon.png");
         //primaryStage.getIcons().add(icon);
 
