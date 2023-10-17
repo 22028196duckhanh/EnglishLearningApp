@@ -29,7 +29,7 @@ public class SearchController implements Initializable {
         }
 
         History.insertFromFile();
-        defaultHistory();
+        defaultHistory(); 
         searchArea.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
