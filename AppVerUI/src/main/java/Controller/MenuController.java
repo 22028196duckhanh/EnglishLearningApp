@@ -31,6 +31,16 @@ public class MenuController implements Initializable {
                 }
             }
         });
+        gameSortBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    showView("/Views/game-sort-view.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
         exitBtn.setOnMouseClicked(e -> {
             History.exportToFile();
             System.exit(0);
@@ -67,9 +77,9 @@ public class MenuController implements Initializable {
     }
 
     @FXML
-    private AnchorPane boxScreen;
+    public AnchorPane boxScreen;
 
     @FXML
-    private Button searchBtn, translateBtn, gameBtn, exitBtn;
+    private Button searchBtn, translateBtn, gameSortBtn, exitBtn;
 
 }
