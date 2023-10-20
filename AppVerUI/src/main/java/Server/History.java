@@ -25,12 +25,7 @@ public class History {
     }
 
     public static void updateHistory(String newWord) {
-        for (int i = 0; i < words.size(); i++) {
-            if (words.get(i).equals(newWord)) {
-                words.remove(i);
-                break;
-            }
-        }
+        words.remove(newWord);
         words.add(newWord);
         if (words.size() > MAX_HISTORY_WORDS) {
             words.remove(0);

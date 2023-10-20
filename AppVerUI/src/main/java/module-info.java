@@ -6,7 +6,6 @@ module Server {
     requires org.jsoup;
     requires javafx.web;
 
-
     opens Server to javafx.fxml;
     exports Server;
     exports Controller;
