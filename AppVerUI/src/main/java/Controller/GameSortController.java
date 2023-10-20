@@ -1,7 +1,7 @@
 package Controller;
 
 import Server.Sentence;
-import Server.SortData;
+import Server.SortDatabase;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,16 +23,16 @@ public class GameSortController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        SortData sortGame = new SortData();
-        sortGame.getData();
+
         message.setVisible(false);
     }
 
     public void letGo(ActionEvent event) {
+        SortDatabase.getData();
         index = 0;
         score = 0;
         for (int i = 0; i < 10; i++) {
-            listSentence.add(SortData.getRdSentence());
+            listSentence.add(SortDatabase.getRdSentence());
         }
         createCards(listSentence.get(index));
         startBtn.setVisible(false);
@@ -43,7 +43,7 @@ public class GameSortController implements Initializable {
         List<Button> buttonList = new ArrayList<>();
         for (int i = 0; i < sentence.getSize(); i++) {
             Button button = new Button();
-            button.setText(sentence.getCmp()[i]);
+            button.setText(sentence.getCmp().get(i));
             button.setMaxHeight(hBox.getMaxHeight());
             buttonList.add(button);
             hBox.getChildren().add(button);

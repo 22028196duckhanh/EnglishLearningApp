@@ -1,7 +1,11 @@
 package Server;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 public class Sentence {
-    private String[] cmp;
+    private List<String> cmp = new ArrayList<>();
     private int size;
     private String answer;
 
@@ -9,13 +13,14 @@ public class Sentence {
 
     }
 
-    public String[] getCmp() {
-        return cmp;
+    public List<String> getCmp() {
+        return this.cmp;
     }
 
-    public void setCmp(String[] cmp) {
-        this.cmp = cmp;
-        this.size = cmp.length;
+    public void setCmp(List<String> cmp) {
+        Collections.shuffle(cmp);
+        this.cmp.addAll(cmp);
+        this.size = cmp.size();
     }
 
     public int getSize() {
