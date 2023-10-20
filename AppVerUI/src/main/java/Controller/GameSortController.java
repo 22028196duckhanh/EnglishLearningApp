@@ -126,4 +126,6 @@ public class GameSortController implements Initializable {
     private Button checkAns;
     @FXML
     private Label message;
+    @FXML
+    private Label time;
 }
