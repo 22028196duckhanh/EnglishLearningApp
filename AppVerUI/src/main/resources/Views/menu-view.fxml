@@ -60,7 +60,7 @@
                   <Insets left="40.0" />
                </padding>
             </Button>
-            <Button fx:id="gameSortBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="48.0" prefWidth="158.0" text="  Game" textFill="WHITE">
+            <Button fx:id="gameBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="48.0" prefWidth="158.0" text="  Game" textFill="WHITE">
                <graphic>
                   <FontAwesomeIcon fill="WHITE" glyphName="STAR" size="15" />
                </graphic>

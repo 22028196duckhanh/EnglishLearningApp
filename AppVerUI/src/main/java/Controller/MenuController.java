@@ -12,6 +12,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 // import org.w3c.dom.events.MouseEvent;
 import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -31,6 +32,21 @@ public class MenuController implements Initializable {
                 }
             }
         });
+
+        gameBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                boxScreen.getChildren().clear();
+                boxScreen.getChildren().add(gameSortBtn);
+                gameSortBtn.resizeRelocate(100, 100, 100, 100);
+            }
+        });
+
+        exitBtn.setOnMouseClicked(e -> {
+            History.exportToFile();
+            System.exit(0);
+        });
+
         gameSortBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -39,11 +55,18 @@ public class MenuController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                backBtn.resizeRelocate(100, 500, 100, 100);
+                boxScreen.getChildren().add(backBtn);
             }
         });
-        exitBtn.setOnMouseClicked(e -> {
-            History.exportToFile();
-            System.exit(0);
+
+        backBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                boxScreen.getChildren().clear();
+                boxScreen.getChildren().add(gameSortBtn);
+                gameSortBtn.resizeRelocate(100, 100, 100, 100);
+            }
         });
     }
 
@@ -80,6 +103,9 @@ public class MenuController implements Initializable {
     public AnchorPane boxScreen;
 
     @FXML
-    private Button searchBtn, translateBtn, gameSortBtn, exitBtn;
+    private Button searchBtn, translateBtn, gameBtn, exitBtn;
 
+    private Button gameSortBtn = new Button("Game Sort");
+
+    private Button backBtn = new Button("Back");
 }
