@@ -37,8 +37,11 @@ public class MenuController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 boxScreen.getChildren().clear();
-                boxScreen.getChildren().add(gameSortBtn);
+
                 gameSortBtn.resizeRelocate(100, 100, 100, 100);
+                gameFillBtn.resizeRelocate(200, 100, 100, 100);
+                boxScreen.getChildren().add(gameSortBtn);
+                boxScreen.getChildren().add(gameFillBtn);
             }
         });
 
@@ -59,13 +62,27 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(backBtn);
             }
         });
+        gameFillBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    showView("/Views/game-fill-view.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                backBtn.resizeRelocate(100, 500, 100, 100);
+                boxScreen.getChildren().add(backBtn);
+            }
+        });
 
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 boxScreen.getChildren().clear();
                 boxScreen.getChildren().add(gameSortBtn);
-                gameSortBtn.resizeRelocate(100, 100, 100, 100);
+                boxScreen.getChildren().add(gameFillBtn);
+
+                //gameSortBtn.resizeRelocate(100, 100, 100, 100);
             }
         });
     }
@@ -108,4 +125,7 @@ public class MenuController implements Initializable {
     private Button gameSortBtn = new Button("Game Sort");
 
     private Button backBtn = new Button("Back");
+
+    private Button gameFillBtn = new Button("Game Fill");
+
 }

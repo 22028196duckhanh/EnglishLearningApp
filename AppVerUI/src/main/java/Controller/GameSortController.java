@@ -2,6 +2,7 @@ package Controller;
 
 import Server.Sentence;
 import Server.SortDatabase;
+import Server.SoundEffect;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -102,9 +103,11 @@ public class GameSortController implements Initializable {
     private  void CheckAnswer(Sentence sentence) {
         if (myCheck(sentence)) {
             System.out.println("Correct");
+            SoundEffect.trueSound();
             score += 10;
         } else {
             System.out.println("Incorrect");
+            SoundEffect.falseSound();
         }
     }
 

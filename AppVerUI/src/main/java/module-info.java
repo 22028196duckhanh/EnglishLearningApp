@@ -5,6 +5,7 @@ module Server {
     requires jlayer;
     requires org.jsoup;
     requires javafx.web;
+    requires javafx.media;
 
     opens Server to javafx.fxml;
     exports Server;
