@@ -18,9 +18,9 @@ public class SoundEffect {
     }
 
     public static void trueSound(){
-        playAudio("C:/Users/Admin/OneDrive/Documents/GitHub/EnglishLearningApp/AppVerUI/src/main/resources/Utils/sound/true_sound.mp3");
+        playAudio("src/main/resources/Utils/sound/true_sound.mp3");
     }
     public static void falseSound(){
-        playAudio("C:/Users/Admin/OneDrive/Documents/GitHub/EnglishLearningApp/AppVerUI/src/main/resources/Utils/sound/false_sound.mp3");
+        playAudio("src/main/resources/Utils/sound/false_sound.mp3");
     }
 }
