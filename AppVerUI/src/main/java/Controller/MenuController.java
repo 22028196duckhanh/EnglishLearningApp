@@ -22,6 +22,9 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        gameSortBtn.resizeRelocate(100, 100, 100, 100);
+        gameFillBtn.resizeRelocate(500, 100, 100, 100);
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -37,9 +40,6 @@ public class MenuController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 boxScreen.getChildren().clear();
-
-                gameSortBtn.resizeRelocate(100, 100, 100, 100);
-                gameFillBtn.resizeRelocate(200, 100, 100, 100);
                 boxScreen.getChildren().add(gameSortBtn);
                 boxScreen.getChildren().add(gameFillBtn);
             }
@@ -75,7 +75,7 @@ public class MenuController implements Initializable {
             }
         });
 
-            translateBtn.setOnAction(new EventHandler<ActionEvent>() {
+        translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
@@ -83,8 +83,6 @@ public class MenuController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                backBtn.resizeRelocate(100, 500, 100, 100);
-                boxScreen.getChildren().add(backBtn);
             }
         });
 

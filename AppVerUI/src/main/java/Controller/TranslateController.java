@@ -65,16 +65,6 @@ public class TranslateController {
                 recognitionService.restart();
             }
         });
-        /*text.setOnKeyTyped(ActionEvent ->{
-            try {
-                translated.setText(TranslatorAPI.translate("en","vi",text.getText()));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            };
-
-        });*/
     }
 }
 
