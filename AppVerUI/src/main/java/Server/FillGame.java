@@ -5,7 +5,7 @@ import javafx.util.Pair;
 import java.sql.*;
 
 public class FillGame {
-    public static Pair<String, String> getques() throws ClassNotFoundException, SQLException {
+    public static Pair<String, String> getQues() throws ClassNotFoundException, SQLException {
         Connection connection = null;
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:fillinblank.sqlite");

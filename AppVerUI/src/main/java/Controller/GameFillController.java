@@ -1,5 +1,6 @@
 
 package Controller;
+
 import Server.CountdownTimer;
 import Server.FillGame;
 import Server.SoundEffect;
@@ -27,7 +28,7 @@ public class GameFillController implements Initializable {
     @FXML
     private Label time;
     private int Score = 0;
-    Set<Pair<String,String>> set = new HashSet<>();
+    Set<Pair<String, String>> set = new HashSet<>();
     private String correctAnswer = "";
 
     public GameFillController() throws SQLException, ClassNotFoundException {
@@ -47,17 +48,17 @@ public class GameFillController implements Initializable {
     public void start() throws SQLException, ClassNotFoundException {
 
         score.setVisible(false);
-        while (set.size() < 10){
-            set.add(FillGame.getques());
+        while (set.size() < 10) {
+            set.add(FillGame.getQues());
         }
-        Iterator<Pair<String,String>> iterator = set.iterator();
+        Iterator<Pair<String, String>> iterator = set.iterator();
         showQuestion(iterator);
     }
 
-    private void showQuestion(Iterator<Pair<String,String>> iterator) {
+    private void showQuestion(Iterator<Pair<String, String>> iterator) {
         CountdownTimer.gettime(time);
         if (iterator.hasNext()) {
-            Pair<String,String> a = iterator.next();
+            Pair<String, String> a = iterator.next();
             correctAnswer = a.getValue();
             questionLabel.setText(a.getKey());
             answerField.setText("");
@@ -70,11 +71,10 @@ public class GameFillController implements Initializable {
                 }
             });
         } else {
-            endgame();
+            endGame();
         }
     }
-
-    private void endgame(){
+    private void endGame() {
         questionLabel.setVisible(false);
         checkButton.setVisible(false);
         answerField.setVisible(false);
@@ -87,7 +87,7 @@ public class GameFillController implements Initializable {
     private void checkAnswer() throws SQLException, ClassNotFoundException {
         String userAnswer = answerField.getText().trim();
         if (userAnswer.equalsIgnoreCase(correctAnswer)) {
-            Score +=10;
+            Score += 10;
             SoundEffect.trueSound();
         } else {
             SoundEffect.falseSound();
