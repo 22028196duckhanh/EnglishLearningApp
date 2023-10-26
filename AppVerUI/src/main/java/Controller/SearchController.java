@@ -7,12 +7,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.ResourceBundle;
@@ -46,11 +49,15 @@ public class SearchController implements Initializable {
                 speaker.setVisible(false);
             }
         });
+
         speaker.setOnAction(actionEvent ->  {
             TextToSpeech.playSoundGoogleTranslate(speaker.getText());
         });
         explanation.setVisible(false);
         speaker.setVisible(false);
+
+        String css = "body { background-color: #393351; }";
+        explanation.getEngine().setUserStyleSheetLocation("data:text/css;charset=utf-8," + css);
     }
 
     @FXML
@@ -65,11 +72,20 @@ public class SearchController implements Initializable {
     private void handleMouseSelectWord(MouseEvent arg0) throws SQLException {
         String selectedWord = listResults.getSelectionModel().getSelectedItem();
         if (selectedWord != null) {
-            explanation.getEngine().loadContent(dictionary.getFullExplain(selectedWord),"text/html");
+            String htmlContent = dictionary.getFullExplain(selectedWord);
+            htmlContent = "<style>body { color: white; }</style>" + htmlContent;
+            explanation.getEngine().loadContent(htmlContent, "text/html");
+
             speaker.setText(selectedWord);
             History.updateHistory(selectedWord);
             speaker.setVisible(true);
             explanation.setVisible(true);
+
+            Image speakerImage = new Image("file:src/main/resources/Utils/images/audio.png");
+
+            ImageView speakerIcon = new ImageView(speakerImage);
+
+            speaker.setGraphic(speakerIcon);
         }
     }
 

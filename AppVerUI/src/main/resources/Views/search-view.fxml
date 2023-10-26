@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.web.WebView?>
 
 <AnchorPane prefHeight="453.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchController">
    <children>
-      <Pane layoutY="73.0" prefHeight="75.0" prefWidth="300.0">
-         <children>
-            <TextField fx:id="searchArea" layoutX="14.0" layoutY="14.0" prefHeight="34.0" prefWidth="250.0" />
-         </children>
-      </Pane>
       <AnchorPane layoutY="149.0" prefHeight="450.0" prefWidth="300.0">
          <children>
-            <ListView fx:id="listResults" layoutX="14.0" layoutY="-29.0" onMouseClicked="#handleMouseSelectWord" prefHeight="437.0" prefWidth="250.0" />
+            <ListView fx:id="listResults" layoutX="14.0" layoutY="-61.0" onMouseClicked="#handleMouseSelectWord" prefHeight="482.0" prefWidth="214.0" stylesheets="@../Utils/css/fullpackstyling.css" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="299.0" layoutY="149.0" prefHeight="450.0" prefWidth="550.0">
+      <AnchorPane layoutX="264.0" layoutY="80.0" prefHeight="480.0" prefWidth="544.0" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
-            <WebView fx:id="explanation" layoutX="-33.0" layoutY="-61.0" prefHeight="469.0" prefWidth="498.0" />
-            <Button fx:id="speaker" layoutX="401.0" layoutY="-61.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="63.0" text="speak" />
+            <WebView fx:id="explanation" layoutX="-18.0" layoutY="-40.0" prefHeight="522.0" prefWidth="557.0" stylesheets="@../Utils/css/fullpackstyling.css" />
+            <Button fx:id="speaker" layoutX="447.0" layoutY="-40.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="40.0" styleClass="speaker" stylesheets="@../Utils/css/fullpackstyling.css" text="speak" textFill="WHITE" wrapText="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </AnchorPane>
+      <TextField fx:id="searchArea" layoutX="14.0" layoutY="51.0" prefHeight="32.0" prefWidth="214.0" stylesheets="@../Utils/css/fullpackstyling.css" />
    </children>
 </AnchorPane>
