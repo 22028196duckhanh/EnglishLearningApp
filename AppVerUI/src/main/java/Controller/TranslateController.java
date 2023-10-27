@@ -3,6 +3,8 @@ package Controller;
 import Server.SpeechToText;
 import Server.TextToSpeech;
 import Server.TranslatorAPI;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -11,6 +13,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class TranslateController {
 
@@ -22,7 +26,7 @@ public class TranslateController {
     private TextArea translated;
     @FXML
     private Button translateBtn;
-
+    private TranslatorAPI translatorAPI = new TranslatorAPI();
     private boolean isListening = false;
     private SpeechRecognitionService recognitionService;
 
@@ -42,19 +46,10 @@ public class TranslateController {
                 recognitionService.cancel();
             }
         });
-        translateBtn.setOnAction(ActionEvent ->{
-            try {
-                translated.setText(TranslatorAPI.translate("en","vi",text.getText()));
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        });
+
         recognitionService.setOnSucceeded(event -> {
             String recognizedText = recognitionService.getValue();
             if (recognizedText != null) {
-                /*if (recognizedText.equals(".....")) {
-                    return;
-                }*/
                 if (text.getText().isEmpty()) {
                     text.setText(recognizedText);
                 } else {
@@ -63,6 +58,22 @@ public class TranslateController {
             }
             if (isListening) {
                 recognitionService.restart();
+            }
+        });
+
+        text.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                Thread thread = new Thread(translatorAPI);
+                thread.start();
+                TranslatorAPI.setText(t1);
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    @Override
+                    public void run() {
+                        translated.setText(TranslatorAPI.getTranslated());
+                    }
+                }, 1500);
             }
         });
     }

@@ -8,9 +8,12 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-public class TranslatorAPI {
+public class TranslatorAPI implements Runnable{
+
+    private static String translated = "";
+    private static String text = "";
     private static final String apiURL = "https://script.google.com/macros/s/AKfycbwuoarMpriRLadcHsMXF7W5EPE5TqzW9d5FaU6CHTZdQNPSXCdEhv_Unk_S9pWzPgT-jA/exec";
-    public static String translate(String langFrom, String langTo, String text) throws IOException {
+    public static void translate(String langFrom, String langTo) throws IOException {
         // INSERT YOU URL HERE
         String s = "?q=" + URLEncoder.encode(text, StandardCharsets.UTF_8) +
                 "&target=" + langTo +
@@ -26,6 +29,23 @@ public class TranslatorAPI {
             response.append(inputLine);
         }
         in.close();
-        return response.toString();
+        translated = response.toString();
+    }
+
+    public static void setText(String text) {
+        TranslatorAPI.text = text;
+    }
+
+    public static String getTranslated() {
+        return translated;
+    }
+
+    @Override
+    public void run() {
+        try {
+            TranslatorAPI.translate("en", "vi");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
