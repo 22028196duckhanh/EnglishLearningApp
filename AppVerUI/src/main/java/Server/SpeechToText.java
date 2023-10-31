@@ -9,7 +9,7 @@ public class SpeechToText {
         try {
             // Specify the Python script and its arguments (if any)
             String pythonScript = "python";
-            String scriptPath = "C:/Users/Admin/DALLE-pytorch/BigGAN-PyTorch/speech.py";
+            String scriptPath = "src/main/resources/Utils/sound/speech.py";
 
             ProcessBuilder processBuilder = new ProcessBuilder(pythonScript, scriptPath);
 
