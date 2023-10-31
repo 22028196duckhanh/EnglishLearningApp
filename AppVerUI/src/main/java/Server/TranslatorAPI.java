@@ -1,5 +1,8 @@
 package Server;
 
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -9,8 +12,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class TranslatorAPI implements Runnable{
-
-    private static String translated = "";
+    private static TextArea translated;
     private static String text = "";
     private static final String apiURL = "https://script.google.com/macros/s/AKfycbwuoarMpriRLadcHsMXF7W5EPE5TqzW9d5FaU6CHTZdQNPSXCdEhv_Unk_S9pWzPgT-jA/exec";
     public static void translate(String langFrom, String langTo) throws IOException {
@@ -28,8 +30,12 @@ public class TranslatorAPI implements Runnable{
         while ((inputLine = in.readLine()) != null) {
             response.append(inputLine);
         }
+        translated.setText(response.toString());
         in.close();
-        translated = response.toString();
+    }
+
+    public static void setTextArea(TextArea translated){
+        TranslatorAPI.translated = translated;
     }
 
     public static void setText(String text) {
@@ -37,11 +43,12 @@ public class TranslatorAPI implements Runnable{
     }
 
     public static String getTranslated() {
-        return translated;
+        return TranslatorAPI.translated.getText();
     }
 
     @Override
     public void run() {
+        
         try {
             TranslatorAPI.translate("en", "vi");
         } catch (IOException e) {

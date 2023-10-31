@@ -15,6 +15,9 @@ import javafx.scene.control.TextArea;
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class TranslateController {
 
@@ -31,6 +34,7 @@ public class TranslateController {
     private SpeechRecognitionService recognitionService;
 
     public void initialize() {
+        TranslatorAPI.setTextArea(translated);
         translated.setEditable(false);
         text.setWrapText(true);
         translated.setWrapText(true);
@@ -62,19 +66,22 @@ public class TranslateController {
         });
 
         text.textProperty().addListener(new ChangeListener<String>() {
-            @Override
+            ExecutorService threadPool = Executors.newFixedThreadPool(1);
+            Future<?> taskFuture = null; // Keep track of the task's future
+
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                Thread thread = new Thread(translatorAPI);
-                thread.start();
                 TranslatorAPI.setText(t1);
-                Timer timer = new Timer();
-                timer.schedule(new TimerTask() {
-                    @Override
-                    public void run() {
-                        translated.setText(TranslatorAPI.getTranslated());
-                    }
-                }, 1500);
+
+                // If there's an existing task running, check its status and cancel it if necessary
+                if (taskFuture != null && !taskFuture.isDone()) {
+                    taskFuture.cancel(true);
+                    System.out.println(taskFuture.state().toString());
+                }
+
+                // Submit a new translation task
+                taskFuture = threadPool.submit(translatorAPI);
             }
+
         });
     }
 }

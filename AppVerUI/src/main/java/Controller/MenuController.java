@@ -25,6 +25,7 @@ public class MenuController implements Initializable {
 
         gameSortBtn.resizeRelocate(100, 100, 100, 100);
         gameFillBtn.resizeRelocate(500, 100, 100, 100);
+        gameFlipBtn.resizeRelocate(100, 500, 100, 100);
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -42,6 +43,7 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().clear();
                 boxScreen.getChildren().add(gameSortBtn);
                 boxScreen.getChildren().add(gameFillBtn);
+                boxScreen.getChildren().add(gameFlipBtn);
             }
         });
 
@@ -75,6 +77,18 @@ public class MenuController implements Initializable {
             }
         });
 
+        gameFlipBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    showView("/Views/game-flip-view.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                backBtn.resizeRelocate(100, 500, 100, 100);
+                boxScreen.getChildren().add(backBtn);
+            }
+        });
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -93,7 +107,7 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().clear();
                 boxScreen.getChildren().add(gameSortBtn);
                 boxScreen.getChildren().add(gameFillBtn);
-
+                boxScreen.getChildren().add(gameFlipBtn);
                 //gameSortBtn.resizeRelocate(100, 100, 100, 100);
             }
         });
@@ -141,4 +155,5 @@ public class MenuController implements Initializable {
 
     private Button gameFillBtn = new Button("Game Fill");
 
+    private Button gameFlipBtn = new Button("Game Fill");
 }

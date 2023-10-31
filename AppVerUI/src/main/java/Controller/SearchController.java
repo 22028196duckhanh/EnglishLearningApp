@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebView;
 
 import java.net.URL;
+import java.security.PrivateKey;
 import java.sql.SQLException;
 import java.util.Objects;
 import java.util.PriorityQueue;
@@ -23,6 +24,7 @@ import java.util.ResourceBundle;
 public class SearchController implements Initializable {
     private Dictionary dictionary = new DatabaseDictionary();
     ObservableList<String> result = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {

@@ -5,7 +5,11 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
-public class SoundEffect {
+public class SoundEffect extends Thread {
+
+    /*Enum Sound {
+        String a = "true";
+    };*/
     public static void playAudio(String filePath) {
         Media media = new Media(new File(filePath).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -22,5 +26,10 @@ public class SoundEffect {
     }
     public static void falseSound(){
         playAudio("src/main/resources/Utils/sound/false_sound.mp3");
+    }
+
+    @Override
+    public void run() {
+
     }
 }

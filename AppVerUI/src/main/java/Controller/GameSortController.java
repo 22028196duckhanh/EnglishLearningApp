@@ -49,6 +49,7 @@ public class GameSortController implements Initializable {
             buttonList.add(button);
             hBox.getChildren().add(button);
         }
+
         hBox.setAlignment(Pos.CENTER);
 
         for (int i = 0; i < sentence.getSize(); i++) {

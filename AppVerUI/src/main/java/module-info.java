@@ -6,6 +6,7 @@ module Server {
     requires org.jsoup;
     requires javafx.web;
     requires javafx.media;
+    requires org.xerial.sqlitejdbc;
 
     opens Server to javafx.fxml;
     exports Server;
