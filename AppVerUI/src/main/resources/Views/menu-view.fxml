@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -11,40 +10,50 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
    <children>
       <AnchorPane fx:id="boxScreen" layoutX="202.0" layoutY="38.0" prefHeight="582.0" prefWidth="816.0" stylesheets="@../Utils/css/hand.css" />
-      <HBox fx:id="HBoxBorder" alignment="CENTER_RIGHT" prefHeight="38.0" prefWidth="1017.0" stylesheets="@../Utils/css/hand.css">
+      <HBox alignment="CENTER_RIGHT" layoutX="202.0" prefHeight="38.0" prefWidth="816.0" stylesheets="@../Utils/css/hand.css">
          <children>
-            <FontAwesomeIcon fill="#30ff41" glyphName="CIRCLE" onMouseClicked="#min" size="1.2em" text="">
+            <Circle fill="#30ff41" onMouseClicked="#min" radius="6.0" stroke="#30ff41" strokeType="INSIDE">
                <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
-            </FontAwesomeIcon>
-            <FontAwesomeIcon fill="#ffa100" glyphName="CIRCLE" onMouseClicked="#max" size="1.2em">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fill="#ffa100" onMouseClicked="#max" radius="6.0" stroke="#ffa100" strokeType="INSIDE">
                <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
-            </FontAwesomeIcon>
-            <FontAwesomeIcon fill="RED" glyphName="CIRCLE" onMouseClicked="#close" size="1.2em" text="">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
+            <Circle fill="RED" onMouseClicked="#close" radius="6.0" stroke="RED" strokeType="INSIDE">
                <HBox.margin>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                  <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
-            </FontAwesomeIcon>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Circle>
          </children>
       </HBox>
-      <VBox layoutY="38.0" prefHeight="581.0" prefWidth="202.0" stylesheets="@../Utils/css/fullpackstyling.css">
+      <VBox layoutY="-5.0" prefHeight="625.0" prefWidth="202.0" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
-            <Pane prefHeight="75.0" prefWidth="202.0">
+            <Pane prefHeight="118.0" prefWidth="202.0">
                <children>
-                  <Label layoutX="70.0" layoutY="15.0" prefHeight="46.0" prefWidth="126.0" text="English Dictionary" textFill="WHITE">
+                  <Label layoutX="70.0" layoutY="50.0" prefHeight="46.0" prefWidth="126.0" text="English Dictionary" textFill="WHITE">
                      <font>
                         <Font size="15.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="8.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="6.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/images/icon.png" />
                      </image>
