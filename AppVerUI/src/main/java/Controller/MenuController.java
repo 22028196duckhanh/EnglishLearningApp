@@ -24,8 +24,29 @@ public class MenuController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         gameSortBtn.resizeRelocate(100, 100, 100, 100);
+        gameSortBtn.setStyle(
+                "-fx-background-color: #4CAF50; " +
+                        "-fx-text-fill: white; " +
+                        "-fx-border-radius: 15; " +
+                        "-fx-background-radius: 15; " +
+                        "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+        );
         gameFillBtn.resizeRelocate(500, 100, 100, 100);
+        gameFillBtn.setStyle(
+                "-fx-background-color: #4CAF50; " +
+                        "-fx-text-fill: white; " +
+                        "-fx-border-radius: 15; " +
+                        "-fx-background-radius: 15; " +
+                        "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+        );
         gameFlipBtn.resizeRelocate(100, 500, 100, 100);
+        gameFlipBtn.setStyle(
+                "-fx-background-color: #4CAF50; " +
+                        "-fx-text-fill: white; " +
+                        "-fx-border-radius: 15; " +
+                        "-fx-background-radius: 15; " +
+                        "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+        );
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -61,6 +82,14 @@ public class MenuController implements Initializable {
                     throw new RuntimeException(e);
                 }
                 backBtn.resizeRelocate(100, 500, 100, 100);
+                backBtn.setStyle(
+                        "-fx-background-color: #4CAF50; " +
+                                "-fx-cursor: hand;" +
+                                "-fx-text-fill: white; " +
+                                "-fx-border-radius: 15; " +
+                                "-fx-background-radius: 15; " +
+                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+                );
                 boxScreen.getChildren().add(backBtn);
             }
         });
@@ -73,6 +102,13 @@ public class MenuController implements Initializable {
                     throw new RuntimeException(e);
                 }
                 backBtn.resizeRelocate(100, 500, 100, 100);
+                backBtn.setStyle(
+                        "-fx-background-color: #4CAF50; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-border-radius: 15; " +
+                                "-fx-background-radius: 15; " +
+                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+                );
                 boxScreen.getChildren().add(backBtn);
             }
         });
@@ -86,6 +122,13 @@ public class MenuController implements Initializable {
                     throw new RuntimeException(e);
                 }
                 backBtn.resizeRelocate(100, 500, 100, 100);
+                backBtn.setStyle(
+                        "-fx-background-color: #4CAF50; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-border-radius: 15; " +
+                                "-fx-background-radius: 15; " +
+                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+                );
                 boxScreen.getChildren().add(backBtn);
             }
         });
@@ -156,5 +199,5 @@ public class MenuController implements Initializable {
 
     private Button gameFillBtn = new Button("Game Fill");
 
-    private Button gameFlipBtn = new Button("Game Fill");
+    private Button gameFlipBtn = new Button("Game Flip");
 }

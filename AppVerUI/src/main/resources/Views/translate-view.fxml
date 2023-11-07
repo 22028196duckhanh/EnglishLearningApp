@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="599.0" prefWidth="808.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
+<AnchorPane prefHeight="599.0" prefWidth="808.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.TranslateController">
    <children>
       <TextArea fx:id="translated" layoutX="414.0" layoutY="122.0" prefHeight="158.0" prefWidth="380.0" styleClass="text-area" stylesheets="@../Utils/css/fullpackstyling.css" />
       <Button fx:id="sound" layoutX="9.0" layoutY="285.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="40.0" styleClass="speaker" stylesheets="@../Utils/css/fullpackstyling.css" text="sound">
