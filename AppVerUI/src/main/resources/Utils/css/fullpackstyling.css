@@ -1,32 +1,41 @@
+VBox {
+    -fx-background-color : linear-gradient(to top right, #A868A0, #2d46e8);
+}
+
 .button
 {
     -fx-background-color : #393351;
 }
-.speaker {
-    -fx-text-fill: transparent;
-}
+
 .text-field {
     -fx-control-inner-background: #393351;
-    -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));;
+    -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
+    -fx-border-radius: 15 15 0 0;
+    -fx-background-radius: 15 15 0 0;
 }
+
 .list-view {
-    -fx-control-inner-background: #393351; /* Change 'lightgray' to your desired background color */
-    -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));;
+    -fx-control-inner-background: #393351;
+    -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
 }
+
 .list-view .list-cell:filled:selected {
-    -fx-background-color: lightblue; /* Change 'lightblue' to your desired background color */
-    -fx-text-fill: black; /* Change the text color if needed */
+    -fx-background-color: lightblue;
+    -fx-text-fill: black;
 }
 
 .list-view .list-cell:filled:focused:selected {
-    -fx-background-color: lightblue; /* Change 'lightblue' to your desired background color */
-    -fx-text-fill: black; /* Change the text color if needed */
+    -fx-background-color: lightblue;
+    -fx-text-fill: black;
 }
 
 .list-view .list-cell:filled:hover {
-    -fx-background-color: lightblue; /* Change 'lightblue' to your desired background color */
-    -fx-text-fill: black; /* Change the text color if needed */
+    -fx-background-color: lightblue;
+    -fx-text-fill: black;
 }
+
 .list-view .scroll-bar:vertical {
     -fx-background-color: linear-gradient(to bottom, #7686ee, rgba(65, 225, 212, 0.87));
     -fx-padding: 0;
@@ -35,79 +44,38 @@
 
 .list-view .scroll-bar:vertical .increment-button,
 .list-view .scroll-bar:vertical .decrement-button {
-    -fx-padding: 0.05em; /* Reduce padding to make buttons smaller */
+    -fx-padding: 0.05em;
 }
 
 .list-view .scroll-bar:vertical .thumb {
     -fx-background-color: linear-gradient(to bottom, #7686ee, rgba(65, 225, 212, 0.87)); /* Change to your desired thumb color */
     -fx-background-insets: 0;
-    -fx-padding: 0.05em; /* Reduce padding to make thumb smaller */
+    -fx-padding: 0.05em;
 }
 
-.myListView {
-    -fx-control-inner-background: #393351;
-}
-VBox {
-    -fx-background-color : linear-gradient(to top right, #A868A0, #2d46e8);
-}
-.button1:hover
-{
-    -fx-background-color : #524A7B ;
-    -fx-background-radius :  30 0 0 30;
-}
-.button1:pressed
-{
-    -fx-background-color : #2F2B43 ;
-    -fx-background-radius :  30 0 0 30;
-}
-
-.button2
-{
-    -fx-background-color : #393351;
-    -fx-background-radius :  20;
-}
-.button2:hover
-{
-    -fx-background-color : #524A7B ;
-    -fx-background-radius :  20;
-}
-.button2:pressed
-{
-    -fx-background-color : #2F2B43 ;
-    -fx-background-radius :  20;
-}
-
-.button3
-{
-    -fx-background-color : #141124;
-    -fx-background-radius :  0 0 0 0;
-}
-.button3:hover
-{
-    -fx-background-color : #524A7B ;
-}
-.button3:pressed
-{
-    -fx-background-color : #2F2B43 ;
-}
-
-.button4
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:hover
-{
-    -fx-background-color :linear-gradient(to top left, #D4CEE3, #41951C);
-    -fx-background-radius :  30 30 30 30;
-}
-.button4:pressed
-{
-    -fx-background-color :linear-gradient(to top left, #41951C, #D4CEE3);
-    -fx-background-radius :  30 30 30 30;
-}
 .speaker
 {
     -fx-background-color: transparent;
     -fx-text-fill: transparent;
+}
+
+.text-area
+{
+    -fx-background-color: #393351;
+    -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
 }
