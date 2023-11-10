@@ -14,6 +14,8 @@ import java.nio.charset.StandardCharsets;
 public class TranslatorAPI implements Runnable{
     private static TextArea translated;
     private static String text = "";
+    private static String from = "en";
+    private static String to = "vi";
     private static final String apiURL = "https://script.google.com/macros/s/AKfycbwuoarMpriRLadcHsMXF7W5EPE5TqzW9d5FaU6CHTZdQNPSXCdEhv_Unk_S9pWzPgT-jA/exec";
     public static void translate(String langFrom, String langTo) throws IOException {
         // INSERT YOU URL HERE
@@ -34,6 +36,11 @@ public class TranslatorAPI implements Runnable{
         in.close();
     }
 
+    public static void changeLanguage() {
+        String tmp = from;
+        from = to;
+        to = tmp;
+    }
     public static void setTextArea(TextArea translated){
         TranslatorAPI.translated = translated;
     }
@@ -50,7 +57,7 @@ public class TranslatorAPI implements Runnable{
     public void run() {
         
         try {
-            TranslatorAPI.translate("en", "vi");
+            TranslatorAPI.translate(from, to);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

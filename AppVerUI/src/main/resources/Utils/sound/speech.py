@@ -19,7 +19,6 @@ def SpeakText(command):
 
 def listen_and_recognize():
     recognized_text = ""  # Initialize recognized_text with a default value
-
     try:
         # Use the microphone as the source for input
         with sr.Microphone() as source:
@@ -28,7 +27,7 @@ def listen_and_recognize():
 
             # Keep listening until 'u' is pressed
             # Listen for the user's input with a shorter timeout
-            audio = r.listen(source, timeout=3,phrase_time_limit=2)  # Adjust the timeout as needed
+            audio = r.listen(source, timeout=3,phrase_time_limit=5)  # Adjust the timeout as needed
 
             # Using Google to recognize audio
             recognized_text = r.recognize_google(audio)
@@ -38,6 +37,6 @@ def listen_and_recognize():
     except sr.RequestError as e:
         print("Could not request results; {0}".format(e))
     except sr.UnknownValueError:
-        print("")
+        print("...")
 
 listen_and_recognize()

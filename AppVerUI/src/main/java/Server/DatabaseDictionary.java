@@ -149,9 +149,45 @@ public class DatabaseDictionary extends Dictionary{
         statement.setString(1, word);
         ResultSet result = statement.executeQuery();
         String html = result.getString("html");
+        String htmlChange = result.getString("change_html");
         result.close();
         statement.close();
-        if (html.isEmpty()) return "";
-        return html;
+        if (htmlChange==null) return html;
+        return htmlChange;
+    }
+
+    public boolean setDefault(String word) throws SQLException {
+        boolean success = true;
+        PreparedStatement statement = null;
+        try {
+            String sql_query = "UPDATE av SET change_html = NULL WHERE word = ?";
+            statement = connection.prepareStatement(sql_query);
+            statement.setString(1, word);
+            statement.execute();
+        } catch (SQLException e) {
+            success = false;
+        } finally {
+            assert statement != null;
+            statement.close();
+        }
+        return success;
+    }
+
+    public boolean editHtml(String word,String change) throws SQLException {
+        boolean success = true;
+        PreparedStatement statement = null;
+        try {
+            String sql_query = "UPDATE av SET change_html = ? WHERE word = ?";
+            statement = connection.prepareStatement(sql_query);
+            statement.setString(2, word);
+            statement.setString(1, change);
+            statement.execute();
+        } catch (SQLException e) {
+            success = false;
+        } finally {
+            assert statement != null;
+            statement.close();
+        }
+        return success;
     }
 }

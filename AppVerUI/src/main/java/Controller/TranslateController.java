@@ -10,6 +10,7 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -30,7 +31,11 @@ public class TranslateController {
     @FXML
     private TextArea translated;
     @FXML
-    private Button translateBtn;
+    private Button changeLanguage;
+    @FXML
+    private Label fromLanguage;
+    @FXML
+    private Label toLanguage;
     private TranslatorAPI translatorAPI = new TranslatorAPI();
     private boolean isListening = false;
     private SpeechRecognitionService recognitionService;
@@ -47,11 +52,12 @@ public class TranslateController {
         TranslatorAPI.setTextArea(translated);
         translated.setEditable(false);
         text.setWrapText(true);
+        text.setPromptText("Type here...");
         translated.setWrapText(true);
         recognitionService = new SpeechRecognitionService();
 
         sound.setGraphic(speakerIcon);
-        translateBtn.setGraphic(convertIcon);
+        changeLanguage.setGraphic(convertIcon);
 
         sound.setOnAction((ActionEvent actionEvent) -> {
             isListening = !isListening;
@@ -62,6 +68,20 @@ public class TranslateController {
             } else {
                 recognitionService.cancel();
             }
+        });
+
+        changeLanguage.setOnAction((ActionEvent actionEvent) -> {
+            if (fromLanguage.getText().equals("English")) {
+                fromLanguage.setText("Vietnamese");
+                toLanguage.setText("English");
+                text.setPromptText("Nhập ở đây...");
+
+            } else {
+                fromLanguage.setText("English");
+                toLanguage.setText("Vietnamese");
+                text.setPromptText("Type here...");
+            }
+            TranslatorAPI.changeLanguage();
         });
 
         recognitionService.setOnSucceeded(event -> {
