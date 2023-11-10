@@ -48,10 +48,6 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) throws SQLException, IOException {
-        //DictionaryManagement.dictionary = new DatabaseDictionary();
-        //DictionaryManagement.dictionary.init();
-        //DictionaryManagement.display();
-        //GameManagement.launch();
         launch();
     }
 }

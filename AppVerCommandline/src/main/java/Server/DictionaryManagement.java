@@ -76,7 +76,7 @@ public class DictionaryManagement {
     public static void translator() throws IOException {
         System.out.print("Enter the text: ");
         String target = new Scanner(System.in).nextLine();
-        System.out.println(TranslatorAPI.translate("en", "vi", target));
+        System.out.println(TranslatorAPI.translate("vi", "en", target));
     }
 
     public static void speech() throws IOException {
