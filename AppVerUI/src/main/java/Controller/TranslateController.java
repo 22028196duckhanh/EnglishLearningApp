@@ -11,6 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.util.Timer;
@@ -32,6 +34,14 @@ public class TranslateController {
     private TranslatorAPI translatorAPI = new TranslatorAPI();
     private boolean isListening = false;
     private SpeechRecognitionService recognitionService;
+    @FXML
+    private Image speakerImage = new Image("file:src/main/resources/Utils/images/micro.png");
+    @FXML
+    private Image convertImage = new Image("file:src/main/resources/Utils/images/convert.png");
+    @FXML
+    private ImageView speakerIcon = new ImageView(speakerImage);
+    @FXML
+    private ImageView convertIcon = new ImageView(convertImage);
 
     public void initialize() {
         TranslatorAPI.setTextArea(translated);
@@ -39,6 +49,9 @@ public class TranslateController {
         text.setWrapText(true);
         translated.setWrapText(true);
         recognitionService = new SpeechRecognitionService();
+
+        sound.setGraphic(speakerIcon);
+        translateBtn.setGraphic(convertIcon);
 
         sound.setOnAction((ActionEvent actionEvent) -> {
             isListening = !isListening;
@@ -74,7 +87,7 @@ public class TranslateController {
 
                 // If there's an existing task running, check its status and cancel it if necessary
                 if (taskFuture != null && !taskFuture.isDone()) {
-                    taskFuture.cancel(true);
+                    taskFuture.cancel(true );
                     System.out.println(taskFuture.state().toString());
                 }
 

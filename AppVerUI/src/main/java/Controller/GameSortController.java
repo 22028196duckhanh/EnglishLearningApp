@@ -24,7 +24,6 @@ public class GameSortController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         message.setVisible(false);
     }
 
@@ -61,6 +60,13 @@ public class GameSortController implements Initializable {
                     if (answerIsFull(sentence)) {
                         checkAns = new Button();
                         checkAns.setText("Check");
+                        checkAns.setStyle(
+                                "-fx-background-color: #4CAF50; "
+                                        + "-fx-text-fill: white; "
+                                        + "-fx-border-radius: 15; "
+                                        + "-fx-background-radius: 15; "
+                                        + "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+                        );
                         checkBox.getChildren().add(checkAns);
                         checkAns.setOnAction(event -> {
                             CheckAnswer(sentence);

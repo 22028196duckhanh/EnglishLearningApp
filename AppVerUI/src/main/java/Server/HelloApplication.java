@@ -22,7 +22,6 @@ public class HelloApplication extends Application {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/Views/menu-view.fxml")));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
 
-        //grab your root here
         root.setOnMousePressed(event -> {
             xOffset = event.getSceneX();
             yOffset = event.getSceneY();
