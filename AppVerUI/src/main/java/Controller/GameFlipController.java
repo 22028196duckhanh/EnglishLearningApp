@@ -84,7 +84,6 @@ public class GameFlipController implements Initializable {
                 PauseTransition Pause = new PauseTransition(Duration.millis(200));
                 Pause.setOnFinished(e -> {
                     Platform.runLater(() -> {
-                        System.out.println(10);
                         button.setGraphic(imageView[buttonIndex]);
                         buttonToReset.setGraphic(imageView[Arrays.asList(buttons).indexOf(buttonToReset)]);
                         fliped[Arrays.asList(buttons).indexOf(buttonToReset)] = false;
