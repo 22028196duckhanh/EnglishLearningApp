@@ -1,6 +1,6 @@
-
 package Controller;
 
+import Server.CountdownTimer;
 import Server.FlipGame;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PauseTransition;
@@ -12,6 +12,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -37,7 +38,8 @@ public class GameFlipController implements Initializable {
     private boolean[] fliped = new boolean[16];
     @FXML
     GridPane grid;
-
+    @FXML
+    Label time;
     private void buttonClicked(Button button) {
         int buttonIndex = Arrays.asList(buttons).indexOf(button);
         if (!fliped[buttonIndex])
@@ -139,6 +141,8 @@ public class GameFlipController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        CountdownTimer.resetTime();
+        CountdownTimer.gettime(time);
         Set<String> set = new HashSet<>();
         while (set.size() < 8) {
             try {
@@ -149,16 +153,16 @@ public class GameFlipController implements Initializable {
         }
         List<String> list = new ArrayList<>(set);
         for (int i = 0; i < 16; i++) {
-            imageView[i] = new ImageView("file:src/main/resources/Utils/images/audio.png");
-            imageView[i].setFitWidth(150);
-            imageView[i].setFitHeight(150);
+            imageView[i] = new ImageView("file:src/main/resources/Utils/images/card.png");
+            imageView[i].setFitWidth(105);
+            imageView[i].setFitHeight(105);
         }
 
         for (int i = 0; i < 16; i++) {
             symbols.add(new Pair<>(list.get(i / 2), i % 2 == 0 ? new ImageView(link + list.get(i / 2)) : null));
             if (i % 2 == 0) {
-                symbols.get(i).getValue().setFitHeight(150);
-                symbols.get(i).getValue().setFitWidth(150);
+                symbols.get(i).getValue().setFitHeight(105);
+                symbols.get(i).getValue().setFitWidth(105);
             }
         }
         Collections.shuffle(symbols);
@@ -175,7 +179,6 @@ public class GameFlipController implements Initializable {
             buttons[i].setStyle("-fx-background-color: transparent;-fx-background-radius: 10px; -fx-padding: 10;-fx-opacity: 1;");
             int finalI = i;
             buttons[i].setOnAction(e -> buttonClicked(buttons[finalI]));
-
             grid.add(buttons[i], i % 4, i / 4);
         }
     }

@@ -97,7 +97,7 @@ public class MenuController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 try {
-                    showView("/Views/game-fill-view.fxml");
+                    showView("/Views/multiple-choice-view.fxml");
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

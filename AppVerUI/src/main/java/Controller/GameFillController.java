@@ -31,6 +31,7 @@ public class GameFillController implements Initializable {
     Set<Pair<String, String>> set = new HashSet<>();
     private String correctAnswer = "";
 
+
     public GameFillController() throws SQLException, ClassNotFoundException {
     }
 
