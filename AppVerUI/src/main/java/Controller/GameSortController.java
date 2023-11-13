@@ -7,10 +7,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.animation.TranslateTransition;
+import javafx.util.Duration;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,6 +29,7 @@ public class GameSortController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         message.setVisible(false);
+        scoreText.setText("0");
     }
 
     public void letGo(ActionEvent event) {
@@ -44,7 +49,7 @@ public class GameSortController implements Initializable {
         for (int i = 0; i < sentence.getSize(); i++) {
             Button button = new Button();
             button.setText(sentence.getCmp().get(i));
-            button.setMaxHeight(hBox.getMaxHeight());
+            button.setPrefSize(100,100);
             buttonList.add(button);
             hBox.getChildren().add(button);
         }
@@ -70,16 +75,26 @@ public class GameSortController implements Initializable {
                         checkBox.getChildren().add(checkAns);
                         checkAns.setOnAction(event -> {
                             CheckAnswer(sentence);
-                            answerBox.getChildren().clear();
-                            index++;
-                            checkBox.getChildren().clear();
-                            if (index>=10) {
-                                EndGame();
-                                return;
-                            }
-                            createCards(listSentence.get(index));
-
+                            Button next = new Button();
+                            next.setText("Next");
+                            checkBox.getChildren().add(next);
+                            answerBox.setDisable(true);
+                            checkAns.setDisable(true);
+                            next.setOnAction(e->{
+                                answerBox.setDisable(false);
+                                checkAns.setDisable(false);
+                                answerBox.getChildren().clear();
+                                index++;
+                                checkBox.getChildren().clear();
+                                if (index>=10) {
+                                    EndGame();
+                                    return;
+                                }
+                                createCards(listSentence.get(index));
+                            });
+                            scoreText.setText(Integer.toString(score));
                         });
+
                     }
                 } else {
                     hBox.getChildren().add(buttonList.get(finalI));
@@ -107,14 +122,17 @@ public class GameSortController implements Initializable {
         return sentence.check(ans);
     }
 
-    private  void CheckAnswer(Sentence sentence) {
+    private void CheckAnswer(Sentence sentence) {
         if (myCheck(sentence)) {
             System.out.println("Correct");
             SoundEffect.trueSound();
             score += 10;
+            shakeEffectTrue();
+
         } else {
             System.out.println("Incorrect");
             SoundEffect.falseSound();
+            shakeEffectFalse();
         }
     }
 
@@ -124,6 +142,24 @@ public class GameSortController implements Initializable {
         System.out.println("Your score:" + score);
     }
 
+    public void shakeEffectFalse() {
+        TranslateTransition shakeTransition = new TranslateTransition(Duration.millis(200), answerBox);
+        shakeTransition.setCycleCount(2);
+        shakeTransition.setByX(10);
+        shakeTransition.setAutoReverse(true);
+        shakeTransition.play();
+    }
+
+    public void shakeEffectTrue() {
+        TranslateTransition shakeTransition = new TranslateTransition(Duration.millis(200), answerBox);
+        shakeTransition.setCycleCount(2);
+        shakeTransition.setByY(-15);
+        shakeTransition.setAutoReverse(true);
+        shakeTransition.play();
+    }
+
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private HBox hBox;
     @FXML
@@ -136,6 +172,8 @@ public class GameSortController implements Initializable {
     private Button checkAns;
     @FXML
     private Label message;
+    @FXML
+    private Label scoreText;
     @FXML
     private Label time;
 }

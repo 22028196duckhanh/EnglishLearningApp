@@ -14,9 +14,9 @@ public class DatabaseDictionary extends Dictionary{
 
     @Override
     public void init() throws SQLException {
-        System.out.println("Connecting to database...");
+        //System.out.println("Connecting to database...");
         connection = DriverManager.getConnection(jdbcURL);
-        System.out.println("Database connected!");
+        //System.out.println("Database connected!");
     }
 
     @Override

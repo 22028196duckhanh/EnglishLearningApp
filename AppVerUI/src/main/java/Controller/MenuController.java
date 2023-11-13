@@ -183,8 +183,8 @@ public class MenuController implements Initializable {
     private void close(MouseEvent event) {
         Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
         s.close();
-        System.exit(0);
         History.exportToFile();
+        System.exit(0);
     }
 
     @FXML

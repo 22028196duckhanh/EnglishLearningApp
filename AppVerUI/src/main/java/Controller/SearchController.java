@@ -24,7 +24,7 @@ import java.util.Queue;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
-    private Dictionary dictionary = new DatabaseDictionary();
+    private Dictionary dictionary = new DatabaseDictionary();;
     ObservableList<String> result = FXCollections.observableArrayList();
     private String selectedWord;
 
@@ -35,7 +35,6 @@ public class SearchController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
         History.insertFromFile();
         defaultHistory(); 
         searchArea.setOnKeyTyped(new EventHandler<KeyEvent>() {
@@ -135,14 +134,12 @@ public class SearchController implements Initializable {
     private void defaultHistory() {
         result.clear();
         result.addAll(History.getHistory());
+        listResults.refresh();
         listResults.setItems(result);
     }
 
     @FXML
     private TextField searchArea;
-
-    //@FXML
-    //private WebView explanation;
 
     @FXML
     private HTMLEditor explaination;
