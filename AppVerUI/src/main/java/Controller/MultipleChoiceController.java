@@ -1,13 +1,12 @@
 package Controller;
 
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
 import java.net.URL;
@@ -17,7 +16,7 @@ import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class MultipleChoiceGame implements Initializable {
+public class MultipleChoiceController implements Initializable {
 
     @FXML
     Label ques;
@@ -106,12 +105,10 @@ public class MultipleChoiceGame implements Initializable {
             clickedButton.setStyle("-fx-background-color: #FF5555;-fx-opacity: 1;");
         }
         anchorPane.requestFocus();
-        anchorPane.setOnKeyReleased(event -> {
-            if(event.getCode() == KeyCode.ENTER){
-                showQues(iterator,clickedButton);
+        anchorPane.setOnMouseClicked(event -> {
+                showQues(iterator, clickedButton);
                 explain.setVisible(false);
                 anchorPane.setOnKeyReleased(null);
-            }
         });
     }
 

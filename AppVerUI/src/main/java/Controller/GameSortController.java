@@ -51,6 +51,7 @@ public class GameSortController implements Initializable {
             button.setText(sentence.getCmp().get(i));
             button.setPrefSize(100,100);
             buttonList.add(button);
+            button.setStyle("-fx-opacity: 1;");
             hBox.getChildren().add(button);
         }
 
@@ -65,7 +66,7 @@ public class GameSortController implements Initializable {
                     if (answerIsFull(sentence)) {
                         checkAns = new Button();
                         checkAns.setText("Check");
-                        checkAns.setStyle(
+                        checkAns.setStyle("-fx-opacity: 1;"+
                                 "-fx-background-color: #4CAF50; "
                                         + "-fx-text-fill: white; "
                                         + "-fx-border-radius: 15; "
