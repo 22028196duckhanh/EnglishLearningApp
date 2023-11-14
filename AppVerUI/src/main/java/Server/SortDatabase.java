@@ -16,17 +16,13 @@ public class SortDatabase {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                String[] tmp = line.split(" ");
+                String[] tmp = line.split("/");
                 Sentence sentence = new Sentence();
                 List<String> cmp = new ArrayList<>(List.of(tmp));
                 sentence.setCmp(cmp);
                 sentence.setAnswer(line);
                 data.add(sentence);
             }
-
-//            while ((line = bufferedReader.readLine()) != null) {
-//
-//            }
             bufferedReader.close();
         } catch (IOException e) {
             System.out.println("An error occur with file: " + e);

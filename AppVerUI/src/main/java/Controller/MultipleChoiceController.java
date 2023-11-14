@@ -61,7 +61,6 @@ public class MultipleChoiceController implements Initializable {
     }
 
     public void start() {
-        System.out.println(1);
         while (idSet.size() < 10) {
             idSet.add((int) (Math.random() * 80 + 1));
         }

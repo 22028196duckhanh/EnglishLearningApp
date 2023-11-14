@@ -49,7 +49,7 @@ public class GameSortController implements Initializable {
         for (int i = 0; i < sentence.getSize(); i++) {
             Button button = new Button();
             button.setText(sentence.getCmp().get(i));
-            button.setPrefSize(100,100);
+            button.setPrefSize(150,100);
             buttonList.add(button);
             button.setStyle("-fx-opacity: 1;");
             hBox.getChildren().add(button);
@@ -115,7 +115,10 @@ public class GameSortController implements Initializable {
         for (int i = 0; i < answerBox.getChildren().size(); i++) {
             if (answerBox.getChildren().get(i) instanceof Button) {
                 Button tmp = (Button) (answerBox.getChildren().get(i));
-                s.append(tmp.getText()).append(" ");
+                s.append(tmp.getText());
+                if (i < answerBox.getChildren().size()-1) {
+                    s.append("/");
+                }
             }
         }
         String ans = s.toString().trim();

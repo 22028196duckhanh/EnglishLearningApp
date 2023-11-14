@@ -104,6 +104,7 @@ public class SearchController implements Initializable {
         result.clear();
         String searchKey = searchArea.getText().trim();
         result.addAll(dictionary.searchWord(searchKey));
+        listResults.refresh();
         listResults.setItems(result);
     }
 

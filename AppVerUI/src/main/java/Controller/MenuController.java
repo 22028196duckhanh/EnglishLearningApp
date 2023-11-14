@@ -194,15 +194,16 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameFillBtn);
                 boxScreen.getChildren().add(gameFlipBtn);
                 boxScreen.getChildren().add(gameChoiceBtn);
+                handFinger.setRotate(0);
                 boxScreen.getChildren().add(handFinger);
                 handFinger.setVisible(true);
             }
         });
-
         handFinger.setOnMouseClicked(e-> {
             spin(handFinger);
         });
-
+        choice = 1;
+        storage = 0;
         handFinger.setVisible(false);
     }
 
@@ -217,13 +218,35 @@ public class MenuController implements Initializable {
         setView(newScreen);
     }
 
-    private void spin(ImageView imgView) {
-        Random random = new Random();
-
-        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(2), imgView);
-        rotateTransition.setByAngle(360 * 3 + random.nextDouble() * 360); // Xoay từ 3 đến 6 vòng
-
+    public void spin(ImageView imgView) {
+        randomGame();
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(3), imgView);
+        int angle = 360 * 3 + (choice-2) * 90;
+        rotateTransition.setByAngle(angle);
         rotateTransition.play();
+        rotateTransition.setOnFinished(e -> {
+            try {
+                if (choice == 1) {
+                    showView("/Views/game-sort-view.fxml");
+                } else if (choice == 2) {
+                    showView("/Views/game-fill-view.fxml");
+                } else if (choice == 4) {
+                    showView("/Views/game-flip-view.fxml");
+                } else if (choice == 3){
+                    showView("/Views/multiple-choice-view.fxml");
+                }
+                backBtn.resizeRelocate(100, 500, 100, 100);
+                backBtn.setStyle(
+                        "-fx-background-color: #4CAF50; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-border-radius: 15; " +
+                                "-fx-background-radius: 15; " +
+                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87))");                boxScreen.getChildren().add(backBtn);
+
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
     }
 
     @FXML
@@ -246,6 +269,12 @@ public class MenuController implements Initializable {
         System.exit(0);
     }
 
+    public void randomGame() {
+        Random random = new Random();
+        choice = Math.abs(random.nextInt()) % 4 + 1;
+    }
+    private int choice;
+    private int storage;
     @FXML
     public AnchorPane boxScreen;
 
