@@ -39,6 +39,16 @@ public class MenuController implements Initializable {
                         "-fx-background-radius: 15; " +
                         "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
         );
+
+        gameChoiceBtn.resizeRelocate(500, 500, 100, 100);
+        gameChoiceBtn.setStyle(
+                "-fx-background-color: #4CAF50; " +
+                        "-fx-text-fill: white; " +
+                        "-fx-border-radius: 15; " +
+                        "-fx-background-radius: 15; " +
+                        "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+        );
+
         gameFlipBtn.resizeRelocate(100, 500, 100, 100);
         gameFlipBtn.setStyle(
                 "-fx-background-color: #4CAF50; " +
@@ -65,6 +75,7 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameSortBtn);
                 boxScreen.getChildren().add(gameFillBtn);
                 boxScreen.getChildren().add(gameFlipBtn);
+                boxScreen.getChildren().add(gameChoiceBtn);
             }
         });
 
@@ -93,7 +104,28 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(backBtn);
             }
         });
+
         gameFillBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    showView("/Views/game-fill-view.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+                backBtn.resizeRelocate(100, 500, 100, 100);
+                backBtn.setStyle(
+                        "-fx-background-color: #4CAF50; " +
+                                "-fx-text-fill: white; " +
+                                "-fx-border-radius: 15; " +
+                                "-fx-background-radius: 15; " +
+                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+                );
+                boxScreen.getChildren().add(backBtn);
+            }
+        });
+
+        gameChoiceBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
@@ -151,6 +183,7 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameSortBtn);
                 boxScreen.getChildren().add(gameFillBtn);
                 boxScreen.getChildren().add(gameFlipBtn);
+                boxScreen.getChildren().add(gameChoiceBtn);
                 //gameSortBtn.resizeRelocate(100, 100, 100, 100);
             }
         });
@@ -200,4 +233,6 @@ public class MenuController implements Initializable {
     private Button gameFillBtn = new Button("Game Fill");
 
     private Button gameFlipBtn = new Button("Game Flip");
+
+    private Button gameChoiceBtn = new Button("Game Multiple choice");
 }
