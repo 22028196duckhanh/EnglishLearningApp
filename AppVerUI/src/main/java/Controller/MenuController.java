@@ -1,6 +1,7 @@
 package Controller;
 
 import Server.History;
+import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,14 +9,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 // import org.w3c.dom.events.MouseEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
@@ -65,6 +69,7 @@ public class MenuController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                handFinger.setVisible(false);
             }
         });
 
@@ -76,6 +81,8 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameFillBtn);
                 boxScreen.getChildren().add(gameFlipBtn);
                 boxScreen.getChildren().add(gameChoiceBtn);
+                boxScreen.getChildren().add(handFinger);
+                handFinger.setVisible(true);
             }
         });
 
@@ -102,6 +109,7 @@ public class MenuController implements Initializable {
                                 "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
                 );
                 boxScreen.getChildren().add(backBtn);
+                handFinger.setVisible(false);
             }
         });
 
@@ -122,6 +130,7 @@ public class MenuController implements Initializable {
                                 "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
                 );
                 boxScreen.getChildren().add(backBtn);
+                handFinger.setVisible(false);
             }
         });
 
@@ -142,6 +151,7 @@ public class MenuController implements Initializable {
                                 "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
                 );
                 boxScreen.getChildren().add(backBtn);
+                handFinger.setVisible(false);
             }
         });
 
@@ -184,9 +194,16 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameFillBtn);
                 boxScreen.getChildren().add(gameFlipBtn);
                 boxScreen.getChildren().add(gameChoiceBtn);
-                //gameSortBtn.resizeRelocate(100, 100, 100, 100);
+                boxScreen.getChildren().add(handFinger);
+                handFinger.setVisible(true);
             }
         });
+
+        handFinger.setOnMouseClicked(e-> {
+            spin(handFinger);
+        });
+
+        handFinger.setVisible(false);
     }
 
     public void setView(Node view) {
@@ -198,6 +215,15 @@ public class MenuController implements Initializable {
     public void showView(String path) throws IOException {
         AnchorPane newScreen = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
         setView(newScreen);
+    }
+
+    private void spin(ImageView imgView) {
+        Random random = new Random();
+
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(2), imgView);
+        rotateTransition.setByAngle(360 * 3 + random.nextDouble() * 360); // Xoay từ 3 đến 6 vòng
+
+        rotateTransition.play();
     }
 
     @FXML
@@ -225,6 +251,9 @@ public class MenuController implements Initializable {
 
     @FXML
     private Button searchBtn, translateBtn, gameBtn, exitBtn;
+
+    @FXML
+    private ImageView handFinger;
 
     private Button gameSortBtn = new Button("Game Sort");
 
