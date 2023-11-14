@@ -13,9 +13,16 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
    <children>
-      <AnchorPane fx:id="boxScreen" layoutX="202.0" layoutY="38.0" prefHeight="582.0" prefWidth="816.0" stylesheets="@../Utils/css/hand.css" />
+      <AnchorPane fx:id="boxScreen" layoutX="202.0" layoutY="38.0" prefHeight="582.0" prefWidth="816.0" stylesheets="@../Utils/css/hand.css">
+         <children>
+            <ImageView fx:id="handFinger" fitHeight="223.0" fitWidth="230.0" layoutX="297.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/images/hand_finger.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
       <HBox alignment="CENTER_RIGHT" layoutX="202.0" prefHeight="38.0" prefWidth="816.0" stylesheets="@../Utils/css/hand.css">
          <children>
             <Circle fill="#30ff41" onMouseClicked="#min" radius="6.0" stroke="#30ff41" strokeType="INSIDE">
