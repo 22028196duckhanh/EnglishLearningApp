@@ -1,6 +1,7 @@
 package Controller;
 
 import Server.History;
+import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,14 +9,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 // import org.w3c.dom.events.MouseEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MenuController implements Initializable {
@@ -55,6 +59,7 @@ public class MenuController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
+                handFinger.setVisible(false);
             }
         });
 
@@ -65,6 +70,8 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameSortBtn);
                 boxScreen.getChildren().add(gameFillBtn);
                 boxScreen.getChildren().add(gameFlipBtn);
+                boxScreen.getChildren().add(handFinger);
+                handFinger.setVisible(true);
             }
         });
 
@@ -91,6 +98,7 @@ public class MenuController implements Initializable {
                                 "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
                 );
                 boxScreen.getChildren().add(backBtn);
+                handFinger.setVisible(false);
             }
         });
         gameFillBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -110,6 +118,7 @@ public class MenuController implements Initializable {
                                 "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
                 );
                 boxScreen.getChildren().add(backBtn);
+                handFinger.setVisible(false);
             }
         });
 
@@ -130,11 +139,13 @@ public class MenuController implements Initializable {
                                 "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
                 );
                 boxScreen.getChildren().add(backBtn);
+                handFinger.setVisible(false);
             }
         });
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                handFinger.setVisible(false);
                 try {
                     showView("/Views/translate-view.fxml");
                 } catch (IOException e) {
@@ -143,7 +154,6 @@ public class MenuController implements Initializable {
             }
         });
 
-
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -151,9 +161,16 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameSortBtn);
                 boxScreen.getChildren().add(gameFillBtn);
                 boxScreen.getChildren().add(gameFlipBtn);
-                //gameSortBtn.resizeRelocate(100, 100, 100, 100);
+                boxScreen.getChildren().add(handFinger);
+                handFinger.setVisible(true);
             }
         });
+
+        handFinger.setOnMouseClicked(e-> {
+            spin(handFinger);
+        });
+
+        handFinger.setVisible(false);
     }
 
     public void setView(Node view) {
@@ -187,11 +204,23 @@ public class MenuController implements Initializable {
         System.exit(0);
     }
 
+    private void spin(ImageView imgView) {
+        Random random = new Random();
+
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(2), imgView);
+        rotateTransition.setByAngle(360 * 3 + random.nextDouble() * 360); // Xoay từ 3 đến 6 vòng
+
+        rotateTransition.play();
+    }
+
     @FXML
     public AnchorPane boxScreen;
 
     @FXML
     private Button searchBtn, translateBtn, gameBtn, exitBtn;
+
+    @FXML
+    private ImageView handFinger;
 
     private Button gameSortBtn = new Button("Game Sort");
 
