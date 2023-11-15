@@ -25,7 +25,7 @@ import java.util.Queue;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
-    private Dictionary dictionary = new DatabaseDictionary();;
+    private DatabaseDictionary dictionary = new DatabaseDictionary();
     ObservableList<String> result = FXCollections.observableArrayList();
     private String selectedWord;
 
@@ -39,7 +39,7 @@ public class SearchController implements Initializable {
         if (History.words.isEmpty()) {
             History.insertFromFile();
         }
-        defaultHistory(); 
+        defaultHistory();
         searchArea.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -56,7 +56,7 @@ public class SearchController implements Initializable {
             }
         });
 
-        searchArea.setOnKeyPressed(e->{
+        searchArea.setOnKeyPressed(e -> {
             if (e.getCode() == KeyCode.ENTER) {
                 selectedWord = searchArea.getText();
                 try {
@@ -67,11 +67,22 @@ public class SearchController implements Initializable {
             }
         });
 
-        speaker.setOnAction(actionEvent ->  {
+        highlight.setOnMouseClicked(e -> {
+            try {
+                dictionary.setHighlight(selectedWord);
+                if (dictionary.getHighlight(selectedWord) == 1) {
+                    highlight.setStyle("-fx-background-color: #000000");
+                } else highlight.setStyle("-fx-background-color: #FFFFFF");
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
+        speaker.setOnAction(actionEvent -> {
             TextToSpeech.playSoundGoogleTranslate(speaker.getText());
         });
 
-        editWord.setOnAction(actionEvent ->  {
+        editWord.setOnAction(actionEvent -> {
             if (explaination.isDisable()) {
                 editWord.setText("confirm");
                 explaination.setDisable(false);
@@ -80,14 +91,14 @@ public class SearchController implements Initializable {
                 editWord.setText("edit");
                 explaination.setDisable(true);
                 try {
-                    dictionary.editHtml(selectedWord,explaination.getHtmlText());
+                    dictionary.editHtml(selectedWord, explaination.getHtmlText());
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
 
-        setDefault.setOnAction(actionEvent ->  {
+        setDefault.setOnAction(actionEvent -> {
             try {
                 dictionary.setDefault(selectedWord);
                 String htmlContent = dictionary.getFullExplain(selectedWord);
@@ -105,11 +116,13 @@ public class SearchController implements Initializable {
             node.setVisible(false);
             node.setManaged(false);
         }
+
         setDefault.setVisible(false);
         editWord.setVisible(false);
         speaker.setVisible(false);
         explaination.setDisable(true);
         explaination.setVisible(false);
+        highlight.setVisible(false);
     }
 
     @FXML
@@ -141,10 +154,14 @@ public class SearchController implements Initializable {
             if (!dictionary.getFullExplain(selectedWord).isEmpty()) {
                 History.updateHistory(selectedWord);
             }
+            if (dictionary.getHighlight(selectedWord) == 1) {
+                highlight.setStyle("-fx-background-color: #000000");
+            } else highlight.setStyle("-fx-background-color: #FFFFFF");
             speaker.setVisible(true);
             explaination.setVisible(true);
             editWord.setVisible(true);
             setDefault.setVisible(true);
+            highlight.setVisible(true);
 
             Image speakerImage = new Image("file:src/main/resources/Utils/images/audio.png");
 
@@ -169,6 +186,10 @@ public class SearchController implements Initializable {
 
     @FXML
     private Button editWord;
+
+    @FXML
+    private Button highlight;
+
 
     @FXML
     private Button setDefault;

@@ -25,6 +25,8 @@ public class MultipleChoiceController implements Initializable {
     @FXML
     Button A, B, C, D;
     @FXML
+    Label score;
+    @FXML
     AnchorPane anchorPane;
     private int id = 0;
     private Set<Integer> idSet = new HashSet<>();

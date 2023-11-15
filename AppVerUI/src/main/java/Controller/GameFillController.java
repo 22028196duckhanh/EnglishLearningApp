@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.util.Pair;
 
 import java.net.URL;
@@ -54,6 +55,16 @@ public class GameFillController implements Initializable {
         }
         Iterator<Pair<String, String>> iterator = set.iterator();
         showQuestion(iterator);
+        answerField.setOnKeyReleased(e ->{
+            if(e.getCode() == KeyCode.ENTER){
+                try {
+                    checkAnswer();
+                    showQuestion(iterator);
+                } catch (SQLException | ClassNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+        });
     }
 
     private void showQuestion(Iterator<Pair<String, String>> iterator) {

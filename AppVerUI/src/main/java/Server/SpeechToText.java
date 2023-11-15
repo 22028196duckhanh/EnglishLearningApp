@@ -1,35 +1,37 @@
 package Server;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 public class SpeechToText {
-    public static String speechToText() {
+    public static String speechToText(String language) {
         try {
             // Specify the Python script and its arguments (if any)
             String pythonScript = "python";
-            String scriptPath = "src/main/resources/Utils/sound/speech.py";
+            String scriptPath = "C:\\Users\\Admin\\Downloads\\speech.py";
 
             ProcessBuilder processBuilder = new ProcessBuilder(pythonScript, scriptPath);
 
             Process process = processBuilder.start();
 
+            OutputStream outputStream = process.getOutputStream();
+            String inputData = language;
+            outputStream.write(inputData.getBytes());
+            outputStream.flush();
+            outputStream.close();
+
             // Capture and print the output
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            InputStream inputStream = process.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             String line;
             StringBuilder recognizedText = new StringBuilder();
             while ((line = reader.readLine()) != null) {
                 recognizedText.append(line);
             }
-
-            // Wait for the process to finish
-            //int exitCode = process.waitFor();
-            //System.out.println("Exited with code " + exitCode);
-
-            // Get the recognized text from the Python script
-            return recognizedText.toString();
-        } catch (IOException e/*| InterruptedException e*/) {
+            byte[] decodedBytes = Base64.getDecoder().decode(recognizedText.toString());
+            return new String(decodedBytes);
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return "";

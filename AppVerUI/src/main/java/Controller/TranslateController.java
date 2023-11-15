@@ -39,6 +39,8 @@ public class TranslateController {
     private TranslatorAPI translatorAPI = new TranslatorAPI();
     private boolean isListening = false;
     private SpeechRecognitionService recognitionService;
+
+    private Future<?> taskFuture = null;
     @FXML
     private Image speakerImage = new Image("file:src/main/resources/Utils/images/micro.png");
     @FXML
@@ -54,7 +56,7 @@ public class TranslateController {
         text.setWrapText(true);
         text.setPromptText("Type here...");
         translated.setWrapText(true);
-        recognitionService = new SpeechRecognitionService();
+        recognitionService = new SpeechRecognitionService(fromLanguage);
 
         sound.setGraphic(speakerIcon);
         changeLanguage.setGraphic(convertIcon);
@@ -99,19 +101,15 @@ public class TranslateController {
         });
 
         text.textProperty().addListener(new ChangeListener<String>() {
-            ExecutorService threadPool = Executors.newFixedThreadPool(1);
-            Future<?> taskFuture = null; // Keep track of the task's future
+            final ExecutorService threadPool = Executors.newFixedThreadPool(1);
 
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 TranslatorAPI.setText(t1);
 
-                // If there's an existing task running, check its status and cancel it if necessary
                 if (taskFuture != null && !taskFuture.isDone()) {
-                    taskFuture.cancel(true );
-                    System.out.println(taskFuture.state().toString());
+                    taskFuture.cancel(true);
                 }
 
-                // Submit a new translation task
                 taskFuture = threadPool.submit(translatorAPI);
             }
 
@@ -120,12 +118,19 @@ public class TranslateController {
 }
 
 class SpeechRecognitionService extends Service<String> {
+
+    Label fromLanguage;
+
+    SpeechRecognitionService(Label fromLanguage){
+        this.fromLanguage = fromLanguage;
+    }
+
     @Override
     protected Task<String> createTask() {
         return new Task<String>() {
             @Override
             protected String call() throws Exception {
-                return SpeechToText.speechToText();
+                return SpeechToText.speechToText(fromLanguage.getText().substring(0,2).toLowerCase() + '-' + fromLanguage.getText().substring(0,2).toUpperCase());
             }
         };
     }

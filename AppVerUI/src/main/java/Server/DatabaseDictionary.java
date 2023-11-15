@@ -2,13 +2,14 @@ package Server;
 
 import java.sql.*;
 import java.util.ArrayList;
+
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 
-public class DatabaseDictionary extends Dictionary{
+public class DatabaseDictionary extends Dictionary {
     private static final String jdbcURL = "jdbc:sqlite:src/main/resources/Utils/data/dictionary.db";
     private static Connection connection = null;
 
@@ -60,9 +61,9 @@ public class DatabaseDictionary extends Dictionary{
     @Override
     public ArrayList<String> searchWord(String prefix) throws SQLException {
         ArrayList<String> words = new ArrayList<>();
-        String sql_query = "SELECT * FROM av WHERE word LIKE ?";
+        String sql_query = "SELECT word FROM av WHERE word LIKE ?";
         PreparedStatement statement = connection.prepareStatement(sql_query);
-        statement.setString(1, prefix + "%");
+        statement.setString(1, '%' + prefix + '%');
         ResultSet result = statement.executeQuery();
         while (result.next()) {
             String word = result.getString("word");
@@ -152,8 +153,8 @@ public class DatabaseDictionary extends Dictionary{
         String htmlChange = result.getString("change_html");
         result.close();
         statement.close();
-        if (htmlChange==null && html == null) return "";
-        else if (htmlChange==null) return html;
+        if (htmlChange == null && html == null) return "";
+        else if (htmlChange == null) return html;
         return htmlChange;
     }
 
@@ -174,7 +175,29 @@ public class DatabaseDictionary extends Dictionary{
         return success;
     }
 
-    public boolean editHtml(String word,String change) throws SQLException {
+    public void setHighlight(String word) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("SELECT highlight FROM av WHERE word = ?");
+        statement.setString(1, word);
+        ResultSet result = statement.executeQuery();
+        int hi = result.getInt("highlight");
+        try {
+            String sql_query = "UPDATE av SET highlight = " + (hi == 1 ? 0 : 1) + " WHERE word = ?";
+            statement = connection.prepareStatement(sql_query);
+            statement.setString(1, word);
+            statement.execute();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public int getHighlight(String word) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("SELECT highlight FROM av WHERE word = ?");
+        statement.setString(1, word);
+        ResultSet result = statement.executeQuery();
+        return result.getInt("highlight");
+    }
+
+    public boolean editHtml(String word, String change) throws SQLException {
         boolean success = true;
         PreparedStatement statement = null;
         try {
