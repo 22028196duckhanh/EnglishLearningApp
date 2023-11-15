@@ -152,7 +152,8 @@ public class DatabaseDictionary extends Dictionary{
         String htmlChange = result.getString("change_html");
         result.close();
         statement.close();
-        if (htmlChange==null) return html;
+        if (htmlChange==null && html == null) return "";
+        else if (htmlChange==null) return html;
         return htmlChange;
     }
 

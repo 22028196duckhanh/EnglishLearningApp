@@ -6,7 +6,7 @@ import java.util.*;
 public class History {
     private static final int MAX_HISTORY_WORDS = 7;
     private static final String path = "src/main/resources/Utils/data/history.txt";
-    private static ArrayList <String> words = new ArrayList<>();
+    public static ArrayList <String> words = new ArrayList<>();
 
     public static void insertFromFile() {
         try {
@@ -14,7 +14,7 @@ public class History {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                words.add(line);
+                updateHistory(line);
             }
             bufferedReader.close();
         } catch (IOException e) {
@@ -27,7 +27,7 @@ public class History {
     public static void updateHistory(String newWord) {
         words.remove(newWord);
         words.add(newWord);
-        if (words.size() > MAX_HISTORY_WORDS) {
+        while (words.size() > MAX_HISTORY_WORDS) {
             words.remove(0);
         }
     }

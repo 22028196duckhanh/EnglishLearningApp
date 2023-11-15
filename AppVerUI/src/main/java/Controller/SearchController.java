@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.HTMLEditor;
@@ -35,7 +36,9 @@ public class SearchController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        History.insertFromFile();
+        if (History.words.isEmpty()) {
+            History.insertFromFile();
+        }
         defaultHistory(); 
         searchArea.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
@@ -49,8 +52,18 @@ public class SearchController implements Initializable {
                         throw new RuntimeException(e);
                     }
                 }
-                //explanation.setVisible(false);
                 speaker.setVisible(false);
+            }
+        });
+
+        searchArea.setOnKeyPressed(e->{
+            if (e.getCode() == KeyCode.ENTER) {
+                selectedWord = searchArea.getText();
+                try {
+                    setResults();
+                } catch (SQLException ex) {
+                    throw new RuntimeException(ex);
+                }
             }
         });
 
@@ -109,16 +122,25 @@ public class SearchController implements Initializable {
     }
 
     @FXML
-    private void handleMouseSelectWord(MouseEvent arg0) throws SQLException {
+    private void handleSelectWord() throws SQLException {
         selectedWord = listResults.getSelectionModel().getSelectedItem();
+        setResults();
+    }
+
+    private void setResults() throws SQLException {
+        String htmlContent;
         if (selectedWord != null) {
-            //String htmlContent = dictionary.getFullExplain(selectedWord);
-            //htmlContent = "<style>body { color: white; }</style>" + htmlContent;
-            //explanation.getEngine().loadContent(htmlContent, "text/html");
-            String htmlContent = dictionary.getFullExplain(selectedWord);
-            explaination.setHtmlText(htmlContent);
+            htmlContent = dictionary.getFullExplain(selectedWord);
+            System.out.println(selectedWord);
+            if (htmlContent.isEmpty()) {
+                explaination.setHtmlText("<h1>No Results</h1>");
+            } else {
+                explaination.setHtmlText(htmlContent);
+            }
             speaker.setText(selectedWord);
-            History.updateHistory(selectedWord);
+            if (!dictionary.getFullExplain(selectedWord).isEmpty()) {
+                History.updateHistory(selectedWord);
+            }
             speaker.setVisible(true);
             explaination.setVisible(true);
             editWord.setVisible(true);
