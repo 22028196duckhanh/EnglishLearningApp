@@ -185,6 +185,17 @@ public class MenuController implements Initializable {
             }
         });
 
+        highlightBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    showView("/Views/highlight-view.fxml");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
 
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -279,7 +290,7 @@ public class MenuController implements Initializable {
     public AnchorPane boxScreen;
 
     @FXML
-    private Button searchBtn, translateBtn, gameBtn, exitBtn;
+    private Button searchBtn, translateBtn, gameBtn, exitBtn, highlightBtn;
 
     @FXML
     private ImageView handFinger;

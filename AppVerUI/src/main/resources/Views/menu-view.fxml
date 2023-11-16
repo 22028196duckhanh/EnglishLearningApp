@@ -115,7 +115,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="46.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Help" textFill="WHITE">
+            <Button fx:id="highlightBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="46.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Help" textFill="WHITE">
                <padding>
                   <Insets left="40.0" />
                </padding>

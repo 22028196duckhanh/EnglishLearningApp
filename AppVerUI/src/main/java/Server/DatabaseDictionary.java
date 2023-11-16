@@ -2,7 +2,9 @@ package Server;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
+import javafx.util.Pair;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -74,6 +76,19 @@ public class DatabaseDictionary extends Dictionary {
         return words;
     }
 
+    public void searchHighlight(LinkedList<Pair<String, String>> words) throws SQLException {
+        String sql_query = "SELECT * FROM av WHERE highlight = 1";
+        PreparedStatement statement = connection.prepareStatement(sql_query);
+        ResultSet result = statement.executeQuery();
+        while (result.next()) {
+            String word = result.getString("word");
+            String description = result.getString("description");
+            words.add(new Pair<>(word, description));
+        }
+        result.close();
+        statement.close();
+    }
+
     @Override
     public String lookUpWord(String wordTarget) throws SQLException {
         String sql_query = "SELECT * FROM av WHERE word = ?";
@@ -88,7 +103,6 @@ public class DatabaseDictionary extends Dictionary {
         return "/" + pronoun + "/" + "\n" + meaning;
     }
 
-    @Override
     public boolean insertWord(String wordTarget, String wordExplain) throws SQLException {
         boolean success = true;
         PreparedStatement statement = null;
