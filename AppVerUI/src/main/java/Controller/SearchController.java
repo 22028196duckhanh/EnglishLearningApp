@@ -3,6 +3,7 @@ package Controller;
 import Server.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
@@ -70,35 +72,29 @@ public class SearchController implements Initializable {
             }
         });
 
-        highlight.setOnMouseClicked(e -> {
-            try {
-                dictionary.setHighlight(selectedWord);
-                if (dictionary.getHighlight(selectedWord) == 1) {
-                    highlight.setStyle("-fx-background-color: #000000");
-                } else highlight.setStyle("-fx-background-color: #FFFFFF");
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
         speaker.setOnAction(actionEvent -> {
             TextToSpeech.playSoundGoogleTranslate(speaker.getText());
         });
 
         editWord.setOnAction(actionEvent -> {
-            if (explaination.isDisable()) {
-                editWord.setText("confirm");
-                explaination.setDisable(false);
+            explaination.setDisable(false);
+            confirm.setVisible(true);
+            editWord.setVisible(false);
+        });
 
-            } else {
-                editWord.setText("edit");
-                explaination.setDisable(true);
-                try {
-                    dictionary.editHtml(selectedWord, explaination.getHtmlText());
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+        confirm.setOnAction(actionEvent -> {
+            explaination.setDisable(true);
+            confirm.setVisible(false);
+            editWord.setVisible(true);
+            try {
+                dictionary.editHtml(selectedWord, explaination.getHtmlText());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
+            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setTitle("Success");
+            successAlert.setContentText("Edit successfully!");
+            successAlert.showAndWait();
         });
 
         setDefault.setOnAction(actionEvent -> {
@@ -110,10 +106,20 @@ public class SearchController implements Initializable {
                 throw new RuntimeException(e);
             }
         });
-        //explanation.setVisible(false);
 
-        //String css = "body { background-color: #393351; }";
-        //explanation.getEngine().setUserStyleSheetLocation("data:text/css;charset=utf-8," + css);
+        highlight.setOnMouseClicked(e -> {
+            try {
+                dictionary.setHighlight(selectedWord);
+                if (dictionary.getHighlight(selectedWord) == 1) {
+                    highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight2.png"));
+                } else {
+                    highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight1.png"));
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
         Node[] nodes = explaination.lookupAll(".tool-bar").toArray(new Node[0]);
         for (Node node : nodes) {
             node.setVisible(false);
@@ -125,9 +131,8 @@ public class SearchController implements Initializable {
         speaker.setVisible(false);
         explaination.setHtmlText("");
         explaination.setDisable(true);
-//        explaination.setDisable(true);
-//        explaination.setVisible(false);
         highlight.setVisible(false);
+        confirm.setVisible(false);
     }
 
     @FXML
@@ -149,7 +154,6 @@ public class SearchController implements Initializable {
         String htmlContent;
         if (selectedWord != null) {
             htmlContent = style + dictionary.getFullExplain(selectedWord);
-            System.out.println(selectedWord);
             if (htmlContent.isEmpty()) {
                 explaination.setHtmlText("<h1>No Results</h1>");
             } else {
@@ -160,18 +164,15 @@ public class SearchController implements Initializable {
                 History.updateHistory(selectedWord);
             }
             if (dictionary.getHighlight(selectedWord) == 1) {
-                highlight.setStyle("-fx-background-color: #000000");
-            } else highlight.setStyle("-fx-background-color: #FFFFFF");
+                highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight2.png"));
+            } else {
+                highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight1.png"));
+            }
             speaker.setVisible(true);
             explaination.setVisible(true);
             editWord.setVisible(true);
             setDefault.setVisible(true);
             highlight.setVisible(true);
-
-            Image speakerImage = new Image("file:src/main/resources/Utils/images/audio.png");
-
-            ImageView speakerIcon = new ImageView(speakerImage);
-
             speaker.setGraphic(speakerIcon);
         }
     }
@@ -230,7 +231,6 @@ public class SearchController implements Initializable {
                 String pronunciation = pronunciationField.getText();
                 try {
                     if (dictionary.addWord(word,pronunciation,type,meaning)) {
-                        System.out.println("This word already in dictionary");
                         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                         DialogPane tmp1 = successAlert.getDialogPane();
                         successAlert.setTitle("Success");
@@ -268,13 +268,16 @@ public class SearchController implements Initializable {
     private HTMLEditor explaination;
 
     @FXML
+    private ImageView highlight;
+
+    @FXML
     private Button addWord;
 
     @FXML
     private Button editWord;
 
     @FXML
-    private Button highlight;
+    private Button confirm;
 
     @FXML
     private Button setDefault;
@@ -285,12 +288,16 @@ public class SearchController implements Initializable {
     @FXML
     private ListView<String> listResults;
 
-    private String style = "<style>h1 {\n" +
-            "            color: #3366cc;\n" +
+    private Image speakerImage = new Image("file:src/main/resources/Utils/images/audio.png");
+
+    private ImageView speakerIcon = new ImageView(speakerImage);
+
+    private String style = "<style> body {line-height: 1}h1 {\n" +
+            "            color: #990000;\n" +
             "        }\n" +
             "\n" +
             "        h2, h3 {\n" +
-            "            color: #009933;\n" +
+            "            color: #0099CC;\n" +
             "        }\n" +
             "\n" +
             "        ul, ol {\n" +
@@ -302,7 +309,7 @@ public class SearchController implements Initializable {
             "        }\n" +
             "\n" +
             "        i {\n" +
-            "            color: #ff6600;\n" +
+            "            color: #AAAAAA;\n" +
             "        }\n" +
             "\n" +
             "        ul ul, ol ol {\n" +
