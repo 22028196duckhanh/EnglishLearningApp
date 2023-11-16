@@ -46,7 +46,8 @@ public class SearchController implements Initializable {
             public void handle(KeyEvent keyEvent) {
                 if (searchArea.getText().isEmpty()) {
                     defaultHistory();
-                    explaination.setVisible(false);
+                    explaination.setHtmlText("");
+                    explaination.setDisable(true);
                 } else {
                     try {
                         handleOnKeyTyped();
@@ -103,7 +104,7 @@ public class SearchController implements Initializable {
         setDefault.setOnAction(actionEvent -> {
             try {
                 dictionary.setDefault(selectedWord);
-                String htmlContent = dictionary.getFullExplain(selectedWord);
+                String htmlContent = style + dictionary.getFullExplain(selectedWord);
                 explaination.setHtmlText(htmlContent);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
@@ -122,8 +123,10 @@ public class SearchController implements Initializable {
         setDefault.setVisible(false);
         editWord.setVisible(false);
         speaker.setVisible(false);
+        explaination.setHtmlText("");
         explaination.setDisable(true);
-        explaination.setVisible(false);
+//        explaination.setDisable(true);
+//        explaination.setVisible(false);
         highlight.setVisible(false);
     }
 
@@ -145,7 +148,7 @@ public class SearchController implements Initializable {
     private void setResults() throws SQLException {
         String htmlContent;
         if (selectedWord != null) {
-            htmlContent = dictionary.getFullExplain(selectedWord);
+            htmlContent = style + dictionary.getFullExplain(selectedWord);
             System.out.println(selectedWord);
             if (htmlContent.isEmpty()) {
                 explaination.setHtmlText("<h1>No Results</h1>");
@@ -281,4 +284,28 @@ public class SearchController implements Initializable {
 
     @FXML
     private ListView<String> listResults;
+
+    private String style = "<style>h1 {\n" +
+            "            color: #3366cc;\n" +
+            "        }\n" +
+            "\n" +
+            "        h2, h3 {\n" +
+            "            color: #009933;\n" +
+            "        }\n" +
+            "\n" +
+            "        ul, ol {\n" +
+            "            padding-left: 20px;\n" +
+            "        }\n" +
+            "\n" +
+            "        li {\n" +
+            "            margin-bottom: 10px;\n" +
+            "        }\n" +
+            "\n" +
+            "        i {\n" +
+            "            color: #ff6600;\n" +
+            "        }\n" +
+            "\n" +
+            "        ul ul, ol ol {\n" +
+            "            list-style-type: circle;\n" +
+            "        }</style>";
 }
