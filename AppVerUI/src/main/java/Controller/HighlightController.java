@@ -42,8 +42,6 @@ public class HighlightController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        System.out.println(words);
-
         next.setOnAction(actionEvent -> {
             if(iterator.hasNext()){
                 Pair<String,String> tmp= iterator.next();
