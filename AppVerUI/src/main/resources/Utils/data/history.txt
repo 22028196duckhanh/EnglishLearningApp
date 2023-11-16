@@ -1,7 +1,7 @@
-a b c - book
 a font
-fabricated
-a la carte
-a fortiori
-fabric
 fabricant
+fabric
+a la carte
+fabricated
+a b c - book
+a fortiori
