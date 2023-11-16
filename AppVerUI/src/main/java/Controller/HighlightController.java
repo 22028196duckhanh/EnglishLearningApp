@@ -31,7 +31,8 @@ public class HighlightController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         try {
-            dictionary.init();
+            if(dictionary == null)
+                dictionary.init();
             dictionary.searchHighlight(words);
             iterator = words.listIterator();
             front = words.get(0).getKey();

@@ -13,12 +13,20 @@ import org.jsoup.nodes.TextNode;
 
 public class DatabaseDictionary extends Dictionary {
     private static final String jdbcURL = "jdbc:sqlite:src/main/resources/Utils/data/dictionary.db";
-    private static Connection connection = null;
+    private static Connection connection;
+
+    static {
+        try {
+            connection = DriverManager.getConnection(jdbcURL);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public void init() throws SQLException {
         //System.out.println("Connecting to database...");
-        connection = DriverManager.getConnection(jdbcURL);
+        //connection = DriverManager.getConnection(jdbcURL);
         //System.out.println("Database connected!");
     }
 
