@@ -25,6 +25,7 @@
                </cursor>
             </Button>
             <Button fx:id="highlight" layoutX="200.0" layoutY="-36.0" mnemonicParsing="false" text="highlight" />
+            <Button fx:id="addWord" layoutX="121.0" layoutY="-36.0" onAction="#handleAdd" mnemonicParsing="false" text="Add" />
          </children>
       </AnchorPane>
       <TextField fx:id="searchArea" layoutX="14.0" layoutY="51.0" prefHeight="32.0" prefWidth="214.0" stylesheets="@../Utils/css/fullpackstyling.css" />

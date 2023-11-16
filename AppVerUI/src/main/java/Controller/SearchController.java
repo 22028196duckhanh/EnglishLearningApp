@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 
@@ -45,6 +46,7 @@ public class SearchController implements Initializable {
             public void handle(KeyEvent keyEvent) {
                 if (searchArea.getText().isEmpty()) {
                     defaultHistory();
+                    explaination.setVisible(false);
                 } else {
                     try {
                         handleOnKeyTyped();
@@ -171,6 +173,84 @@ public class SearchController implements Initializable {
         }
     }
 
+    @FXML
+    public void handleAdd() {
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setHeaderText("Add a new word");
+        DialogPane tmp = dialog.getDialogPane();
+        dialog.setHeaderText(null);
+
+        Label newWordLabel = new Label("New word: ");
+        TextField newWordField = new TextField();
+
+        Label meaningLabel = new Label("Meaning:");
+        TextArea meaningField = new TextArea();
+        meaningField.setWrapText(true);
+
+        Label typeLabel = new Label("Type:");
+        TextField typeField = new TextField();
+
+        Label pronunciationLabel = new Label("Pronunciation:");
+        TextField pronunciationField = new TextField();
+
+        GridPane gridPane = new GridPane();
+        gridPane.add(newWordLabel, 1, 1);
+        gridPane.add(newWordField, 2, 1);
+        gridPane.add(meaningLabel, 1, 4);
+        gridPane.add(meaningField, 2, 4);
+        gridPane.add(typeLabel, 1, 2);
+        gridPane.add(typeField, 2, 2);
+        gridPane.add(pronunciationLabel, 1, 3);
+        gridPane.add(pronunciationField, 2, 3);
+
+        dialog.getDialogPane().setContent(gridPane);
+
+        ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(okButton, cancelButton);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == okButton) {
+                return "OK";
+            } else if (dialogButton == cancelButton) {
+                return "Cancel";
+            } else {
+                return null;
+            }
+        });
+
+        dialog.showAndWait().ifPresent(response -> {
+            if (response.equals("OK")) {
+                String word = newWordField.getText();
+                String meaning = meaningField.getText();
+                String type = typeField.getText();
+                String pronunciation = pronunciationField.getText();
+                try {
+                    if (dictionary.addWord(word,pronunciation,type,meaning)) {
+                        System.out.println("This word already in dictionary");
+                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                        DialogPane tmp1 = successAlert.getDialogPane();
+                        successAlert.setTitle("Success");
+                        successAlert.setContentText("Add successfully! This word already in dictionary");
+                        successAlert.showAndWait();
+                    }
+                    else {
+                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                        DialogPane tmp1 = successAlert.getDialogPane();
+                        successAlert.setTitle("Fail");
+                        successAlert.setContentText("Word existed!");
+                        successAlert.showAndWait();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            else {
+                dialog.close();
+            }
+        });
+    }
+
     private void defaultHistory() {
         result.clear();
         result.addAll(History.getHistory());
@@ -185,11 +265,13 @@ public class SearchController implements Initializable {
     private HTMLEditor explaination;
 
     @FXML
+    private Button addWord;
+
+    @FXML
     private Button editWord;
 
     @FXML
     private Button highlight;
-
 
     @FXML
     private Button setDefault;
