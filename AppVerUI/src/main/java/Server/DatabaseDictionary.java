@@ -65,7 +65,7 @@ public class DatabaseDictionary extends Dictionary {
         ArrayList<String> words = new ArrayList<>();
         String sql_query = "SELECT word FROM av WHERE word LIKE ?";
         PreparedStatement statement = connection.prepareStatement(sql_query);
-        statement.setString(1, '%' + prefix + '%');
+        statement.setString(1, prefix + '%');
         ResultSet result = statement.executeQuery();
         while (result.next()) {
             String word = result.getString("word");
@@ -219,6 +219,29 @@ public class DatabaseDictionary extends Dictionary {
             statement = connection.prepareStatement(sql_query);
             statement.setString(2, word);
             statement.setString(1, change);
+            statement.execute();
+        } catch (SQLException e) {
+            success = false;
+        } finally {
+            assert statement != null;
+            statement.close();
+        }
+        return success;
+    }
+
+    public boolean addWord(String word, String pronounce, String type, String meaning) throws SQLException {
+        boolean success = true;
+        PreparedStatement statement = null;
+        if (!lookUpWord(word).equals("Not Found")) {
+            return false;
+        }
+        try {
+            String sql_query = "INSERT INTO av (word,html,description,pronounce) VALUES (?, ?, ?, ?)";
+            statement = connection.prepareStatement(sql_query);
+            statement.setString(1, word);
+            statement.setString(2, "<h1>"+word+"</h1><h3><i>"+pronounce+"</i></h3><h2>"+type+"</h2><ul><li>"+meaning+"</li></ul>");
+            statement.setString(3, type +": " +meaning);
+            statement.setString(4, pronounce);
             statement.execute();
         } catch (SQLException e) {
             success = false;

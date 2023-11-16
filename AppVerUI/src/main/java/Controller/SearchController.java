@@ -3,6 +3,7 @@ package Controller;
 import Server.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,6 +14,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 
@@ -45,6 +48,8 @@ public class SearchController implements Initializable {
             public void handle(KeyEvent keyEvent) {
                 if (searchArea.getText().isEmpty()) {
                     defaultHistory();
+                    explaination.setHtmlText("");
+                    explaination.setDisable(true);
                 } else {
                     try {
                         handleOnKeyTyped();
@@ -67,50 +72,54 @@ public class SearchController implements Initializable {
             }
         });
 
-        highlight.setOnMouseClicked(e -> {
-            try {
-                dictionary.setHighlight(selectedWord);
-                if (dictionary.getHighlight(selectedWord) == 1) {
-                    highlight.setStyle("-fx-background-color: #000000");
-                } else highlight.setStyle("-fx-background-color: #FFFFFF");
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
-            }
-        });
-
         speaker.setOnAction(actionEvent -> {
             TextToSpeech.playSoundGoogleTranslate(speaker.getText());
         });
 
         editWord.setOnAction(actionEvent -> {
-            if (explaination.isDisable()) {
-                editWord.setText("confirm");
-                explaination.setDisable(false);
+            explaination.setDisable(false);
+            confirm.setVisible(true);
+            editWord.setVisible(false);
+        });
 
-            } else {
-                editWord.setText("edit");
-                explaination.setDisable(true);
-                try {
-                    dictionary.editHtml(selectedWord, explaination.getHtmlText());
-                } catch (SQLException e) {
-                    throw new RuntimeException(e);
-                }
+        confirm.setOnAction(actionEvent -> {
+            explaination.setDisable(true);
+            confirm.setVisible(false);
+            editWord.setVisible(true);
+            try {
+                dictionary.editHtml(selectedWord, explaination.getHtmlText());
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
             }
+            Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+            successAlert.setTitle("Success");
+            successAlert.setContentText("Edit successfully!");
+            successAlert.showAndWait();
         });
 
         setDefault.setOnAction(actionEvent -> {
             try {
                 dictionary.setDefault(selectedWord);
-                String htmlContent = dictionary.getFullExplain(selectedWord);
+                String htmlContent = style + dictionary.getFullExplain(selectedWord);
                 explaination.setHtmlText(htmlContent);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
         });
-        //explanation.setVisible(false);
 
-        //String css = "body { background-color: #393351; }";
-        //explanation.getEngine().setUserStyleSheetLocation("data:text/css;charset=utf-8," + css);
+        highlight.setOnMouseClicked(e -> {
+            try {
+                dictionary.setHighlight(selectedWord);
+                if (dictionary.getHighlight(selectedWord) == 1) {
+                    highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight2.png"));
+                } else {
+                    highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight1.png"));
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
+
         Node[] nodes = explaination.lookupAll(".tool-bar").toArray(new Node[0]);
         for (Node node : nodes) {
             node.setVisible(false);
@@ -120,9 +129,10 @@ public class SearchController implements Initializable {
         setDefault.setVisible(false);
         editWord.setVisible(false);
         speaker.setVisible(false);
+        explaination.setHtmlText("");
         explaination.setDisable(true);
-        explaination.setVisible(false);
         highlight.setVisible(false);
+        confirm.setVisible(false);
     }
 
     @FXML
@@ -143,8 +153,7 @@ public class SearchController implements Initializable {
     private void setResults() throws SQLException {
         String htmlContent;
         if (selectedWord != null) {
-            htmlContent = dictionary.getFullExplain(selectedWord);
-            System.out.println(selectedWord);
+            htmlContent = style + dictionary.getFullExplain(selectedWord);
             if (htmlContent.isEmpty()) {
                 explaination.setHtmlText("<h1>No Results</h1>");
             } else {
@@ -155,20 +164,94 @@ public class SearchController implements Initializable {
                 History.updateHistory(selectedWord);
             }
             if (dictionary.getHighlight(selectedWord) == 1) {
-                highlight.setStyle("-fx-background-color: #000000");
-            } else highlight.setStyle("-fx-background-color: #FFFFFF");
+                highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight2.png"));
+            } else {
+                highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight1.png"));
+            }
             speaker.setVisible(true);
             explaination.setVisible(true);
             editWord.setVisible(true);
             setDefault.setVisible(true);
             highlight.setVisible(true);
-
-            Image speakerImage = new Image("file:src/main/resources/Utils/images/audio.png");
-
-            ImageView speakerIcon = new ImageView(speakerImage);
-
             speaker.setGraphic(speakerIcon);
         }
+    }
+
+    @FXML
+    public void handleAdd() {
+        Dialog<String> dialog = new Dialog<>();
+        dialog.setHeaderText("Add a new word");
+        DialogPane tmp = dialog.getDialogPane();
+        dialog.setHeaderText(null);
+
+        Label newWordLabel = new Label("New word: ");
+        TextField newWordField = new TextField();
+
+        Label meaningLabel = new Label("Meaning:");
+        TextArea meaningField = new TextArea();
+        meaningField.setWrapText(true);
+
+        Label typeLabel = new Label("Type:");
+        TextField typeField = new TextField();
+
+        Label pronunciationLabel = new Label("Pronunciation:");
+        TextField pronunciationField = new TextField();
+
+        GridPane gridPane = new GridPane();
+        gridPane.add(newWordLabel, 1, 1);
+        gridPane.add(newWordField, 2, 1);
+        gridPane.add(meaningLabel, 1, 4);
+        gridPane.add(meaningField, 2, 4);
+        gridPane.add(typeLabel, 1, 2);
+        gridPane.add(typeField, 2, 2);
+        gridPane.add(pronunciationLabel, 1, 3);
+        gridPane.add(pronunciationField, 2, 3);
+
+        dialog.getDialogPane().setContent(gridPane);
+
+        ButtonType okButton = new ButtonType("OK", ButtonBar.ButtonData.OK_DONE);
+        ButtonType cancelButton = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+        dialog.getDialogPane().getButtonTypes().addAll(okButton, cancelButton);
+
+        dialog.setResultConverter(dialogButton -> {
+            if (dialogButton == okButton) {
+                return "OK";
+            } else if (dialogButton == cancelButton) {
+                return "Cancel";
+            } else {
+                return null;
+            }
+        });
+
+        dialog.showAndWait().ifPresent(response -> {
+            if (response.equals("OK")) {
+                String word = newWordField.getText();
+                String meaning = meaningField.getText();
+                String type = typeField.getText();
+                String pronunciation = pronunciationField.getText();
+                try {
+                    if (dictionary.addWord(word,pronunciation,type,meaning)) {
+                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                        DialogPane tmp1 = successAlert.getDialogPane();
+                        successAlert.setTitle("Success");
+                        successAlert.setContentText("Add successfully! This word already in dictionary");
+                        successAlert.showAndWait();
+                    }
+                    else {
+                        Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
+                        DialogPane tmp1 = successAlert.getDialogPane();
+                        successAlert.setTitle("Fail");
+                        successAlert.setContentText("Word existed!");
+                        successAlert.showAndWait();
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            else {
+                dialog.close();
+            }
+        });
     }
 
     private void defaultHistory() {
@@ -185,11 +268,16 @@ public class SearchController implements Initializable {
     private HTMLEditor explaination;
 
     @FXML
+    private ImageView highlight;
+
+    @FXML
+    private Button addWord;
+
+    @FXML
     private Button editWord;
 
     @FXML
-    private Button highlight;
-
+    private Button confirm;
 
     @FXML
     private Button setDefault;
@@ -199,4 +287,32 @@ public class SearchController implements Initializable {
 
     @FXML
     private ListView<String> listResults;
+
+    private Image speakerImage = new Image("file:src/main/resources/Utils/images/audio.png");
+
+    private ImageView speakerIcon = new ImageView(speakerImage);
+
+    private String style = "<style> body {line-height: 1}h1 {\n" +
+            "            color: #990000;\n" +
+            "        }\n" +
+            "\n" +
+            "        h2, h3 {\n" +
+            "            color: #0099CC;\n" +
+            "        }\n" +
+            "\n" +
+            "        ul, ol {\n" +
+            "            padding-left: 20px;\n" +
+            "        }\n" +
+            "\n" +
+            "        li {\n" +
+            "            margin-bottom: 10px;\n" +
+            "        }\n" +
+            "\n" +
+            "        i {\n" +
+            "            color: #AAAAAA;\n" +
+            "        }\n" +
+            "\n" +
+            "        ul ul, ol ol {\n" +
+            "            list-style-type: circle;\n" +
+            "        }</style>";
 }
