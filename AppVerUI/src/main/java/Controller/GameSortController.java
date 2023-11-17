@@ -10,9 +10,9 @@ import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.*;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
 
@@ -30,6 +30,22 @@ public class GameSortController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         message.setVisible(false);
         scoreText.setText("0");
+        check.setImage(new Image("file:src/main/resources/Utils/images/check_sort.png"));
+        check.setOnMouseEntered(e->{
+            check.setImage(new Image("file:src/main/resources/Utils/images/check_sort_light.png"));
+        });
+        check.setOnMouseExited(e->{
+            check.setImage(new Image("file:src/main/resources/Utils/images/check_sort.png"));
+        });
+        next.setImage(new Image("file:src/main/resources/Utils/images/next.png"));
+        next.setOnMouseEntered(e->{
+            next.setImage(new Image("file:src/main/resources/Utils/images/next-full.png"));
+        });
+        next.setOnMouseExited(e->{
+            next.setImage(new Image("file:src/main/resources/Utils/images/next.png"));
+        });
+        check.setVisible(false);
+        next.setVisible(false);
     }
 
     public void letGo(ActionEvent event) {
@@ -64,30 +80,50 @@ public class GameSortController implements Initializable {
                     answerBox.getChildren().add(buttonList.get(finalI));
                     answerBox.setAlignment(Pos.CENTER);
                     if (answerIsFull(sentence)) {
-                        checkAns = new Button();
-                        checkAns.setText("Check");
-                        checkAns.setStyle("-fx-opacity: 1;"+
-                                "-fx-background-color: #4CAF50; "
-                                        + "-fx-text-fill: white; "
-                                        + "-fx-border-radius: 15; "
-                                        + "-fx-background-radius: 15; "
-                                        + "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-                        );
-                        checkBox.getChildren().add(checkAns);
-                        checkAns.setOnAction(event -> {
+//                        checkAns = new Button();
+//                        checkAns.setText("Check");
+//                        checkAns.setStyle("-fx-opacity: 1;"+
+//                                "-fx-background-color: #4CAF50; "
+//                                        + "-fx-text-fill: white; "
+//                                        + "-fx-border-radius: 15; "
+//                                        + "-fx-background-radius: 15; "
+//                                        + "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
+//                        );
+//                        //checkBox.getChildren().add(checkAns);
+//                        checkAns.setOnAction(event -> {
+//                            CheckAnswer(sentence);
+//                            Button next = new Button();
+//                            next.setText("Next");
+//                            //checkBox.getChildren().add(next);
+//                            answerBox.setDisable(true);
+//                            checkAns.setDisable(true);
+//                            next.setOnAction(e->{
+//                                answerBox.setDisable(false);
+//                                checkAns.setDisable(false);
+//                                answerBox.getChildren().clear();
+//                                index++;
+//                                //checkBox.getChildren().clear();
+//                                if (index>=10) {
+//                                    EndGame();
+//                                    return;
+//                                }
+//                                createCards(listSentence.get(index));
+//                            });
+//                            scoreText.setText(Integer.toString(score));
+//                        });
+                        check.setVisible(true);
+                        check.setOnMouseClicked(event -> {
                             CheckAnswer(sentence);
-                            Button next = new Button();
-                            next.setText("Next");
-                            checkBox.getChildren().add(next);
+                            next.setVisible(true);
                             answerBox.setDisable(true);
-                            checkAns.setDisable(true);
-                            next.setOnAction(e->{
+                            check.setDisable(true);
+                            next.setOnMouseClicked(e -> {
                                 answerBox.setDisable(false);
-                                checkAns.setDisable(false);
+                                check.setDisable(false);
                                 answerBox.getChildren().clear();
                                 index++;
-                                checkBox.getChildren().clear();
-                                if (index>=10) {
+                                next.setVisible(false);
+                                if (index >= 10) {
                                     EndGame();
                                     return;
                                 }
@@ -95,12 +131,12 @@ public class GameSortController implements Initializable {
                             });
                             scoreText.setText(Integer.toString(score));
                         });
-
                     }
                 } else {
                     hBox.getChildren().add(buttonList.get(finalI));
                     hBox.setAlignment(Pos.CENTER);
-                    checkBox.getChildren().clear();
+                    check.setVisible(false);
+                    //checkBox.getChildren().clear();
                 }
             });
         }
@@ -163,17 +199,23 @@ public class GameSortController implements Initializable {
     }
 
     @FXML
-    private AnchorPane anchorPane;
+    private AnchorPane bkgrSort;
     @FXML
     private HBox hBox;
     @FXML
     private Button startBtn;
     @FXML
     private HBox answerBox;
+//    @FXML
+//    private VBox checkBox;
+//    @FXML
+//    private Button checkAns;
     @FXML
-    private VBox checkBox;
+    private ImageView check;
+
     @FXML
-    private Button checkAns;
+    private ImageView next;
+
     @FXML
     private Label message;
     @FXML
