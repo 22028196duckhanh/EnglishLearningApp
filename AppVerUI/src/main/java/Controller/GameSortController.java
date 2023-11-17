@@ -3,15 +3,14 @@ package Controller;
 import Server.Sentence;
 import Server.SortDatabase;
 import Server.SoundEffect;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.animation.TranslateTransition;
 import javafx.util.Duration;
@@ -44,11 +43,12 @@ public class GameSortController implements Initializable {
         next.setOnMouseExited(e->{
             next.setImage(new Image("file:src/main/resources/Utils/images/next.png"));
         });
+        start.setImage(new Image("file:src/main/resources/Utils/images/start.png"));
         check.setVisible(false);
         next.setVisible(false);
     }
 
-    public void letGo(ActionEvent event) {
+    public void letGo(MouseEvent event) {
         SortDatabase.getData();
         index = 0;
         score = 0;
@@ -56,7 +56,7 @@ public class GameSortController implements Initializable {
             listSentence.add(SortDatabase.getRdSentence());
         }
         createCards(listSentence.get(index));
-        startBtn.setVisible(false);
+        start.setVisible(false);
     }
 
     public void createCards(Sentence sentence) {
@@ -177,7 +177,7 @@ public class GameSortController implements Initializable {
     }
 
     public void EndGame() {
-        startBtn.setVisible(true);
+        start.setVisible(true);
         message.setVisible(true);
         System.out.println("Your score:" + score);
     }
@@ -203,7 +203,7 @@ public class GameSortController implements Initializable {
     @FXML
     private HBox hBox;
     @FXML
-    private Button startBtn;
+    private ImageView start;
     @FXML
     private HBox answerBox;
 //    @FXML

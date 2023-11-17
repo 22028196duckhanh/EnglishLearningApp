@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -9,11 +8,10 @@
 
 <AnchorPane fx:id="bkgrSort" prefHeight="586.0" prefWidth="816.0" stylesheets="@../Utils/css/gamesort.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameSortController">
    <children>
-      <Button fx:id="startBtn" layoutX="461.0" layoutY="513.0" mnemonicParsing="false" onAction="#letGo" prefHeight="26.0" prefWidth="143.0" stylesheets="@../Utils/css/game.css" text="Start" />
       <HBox fx:id="hBox" layoutX="119.0" layoutY="300.0" prefHeight="100.0" prefWidth="577.0" stylesheets="@../Utils/css/gamesort.css" />
       <HBox fx:id="answerBox" layoutX="119.0" layoutY="125.0" prefHeight="100.0" prefWidth="578.0" stylesheets="@../Utils/css/gamesort.css" />
-      <Label fx:id="message" layoutX="293.0" layoutY="518.0" text="Do you want to play again?" textFill="WHITE" />
-      <Label fx:id="scoreText" layoutX="194.0" layoutY="497.0" prefHeight="59.0" prefWidth="81.0" text="Label" />
+      <Label fx:id="message" layoutX="158.0" layoutY="518.0" text="Do you want to play again?" textFill="WHITE" />
+      <Label fx:id="scoreText" layoutX="14.0" layoutY="497.0" prefHeight="59.0" prefWidth="81.0" text="Label" />
       <ImageView fx:id="check" fitHeight="59.0" fitWidth="156.0" layoutX="330.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="next" fitHeight="50.0" fitWidth="50.0" layoutX="760.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="213.0" fitWidth="205.0" layoutX="293.0" layoutY="-46.0" pickOnBounds="true" preserveRatio="true">
@@ -21,5 +19,6 @@
             <Image url="@../Utils/images/slogan_sort.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="start" fitHeight="100.0" fitWidth="205.0" layoutX="342.0" layoutY="477.0" onMouseClicked="#letGo" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
