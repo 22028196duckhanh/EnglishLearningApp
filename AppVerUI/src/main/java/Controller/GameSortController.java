@@ -80,38 +80,8 @@ public class GameSortController implements Initializable {
                     answerBox.getChildren().add(buttonList.get(finalI));
                     answerBox.setAlignment(Pos.CENTER);
                     if (answerIsFull(sentence)) {
-//                        checkAns = new Button();
-//                        checkAns.setText("Check");
-//                        checkAns.setStyle("-fx-opacity: 1;"+
-//                                "-fx-background-color: #4CAF50; "
-//                                        + "-fx-text-fill: white; "
-//                                        + "-fx-border-radius: 15; "
-//                                        + "-fx-background-radius: 15; "
-//                                        + "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-//                        );
-//                        //checkBox.getChildren().add(checkAns);
-//                        checkAns.setOnAction(event -> {
-//                            CheckAnswer(sentence);
-//                            Button next = new Button();
-//                            next.setText("Next");
-//                            //checkBox.getChildren().add(next);
-//                            answerBox.setDisable(true);
-//                            checkAns.setDisable(true);
-//                            next.setOnAction(e->{
-//                                answerBox.setDisable(false);
-//                                checkAns.setDisable(false);
-//                                answerBox.getChildren().clear();
-//                                index++;
-//                                //checkBox.getChildren().clear();
-//                                if (index>=10) {
-//                                    EndGame();
-//                                    return;
-//                                }
-//                                createCards(listSentence.get(index));
-//                            });
-//                            scoreText.setText(Integer.toString(score));
-//                        });
                         check.setVisible(true);
+                        check.setDisable(false);
                         check.setOnMouseClicked(event -> {
                             CheckAnswer(sentence);
                             next.setVisible(true);
@@ -119,7 +89,7 @@ public class GameSortController implements Initializable {
                             check.setDisable(true);
                             next.setOnMouseClicked(e -> {
                                 answerBox.setDisable(false);
-                                check.setDisable(false);
+                                check.setVisible(false);
                                 answerBox.getChildren().clear();
                                 index++;
                                 next.setVisible(false);

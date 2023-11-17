@@ -8,8 +8,8 @@
 
 <AnchorPane fx:id="bkgrSort" prefHeight="586.0" prefWidth="816.0" stylesheets="@../Utils/css/gamesort.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameSortController">
    <children>
-      <HBox fx:id="hBox" layoutX="119.0" layoutY="300.0" prefHeight="100.0" prefWidth="577.0" stylesheets="@../Utils/css/gamesort.css" />
-      <HBox fx:id="answerBox" layoutX="119.0" layoutY="125.0" prefHeight="100.0" prefWidth="578.0" stylesheets="@../Utils/css/gamesort.css" />
+      <HBox fx:id="hBox" alignment="CENTER" layoutX="26.0" layoutY="300.0" prefHeight="100.0" prefWidth="706.0" stylesheets="@../Utils/css/gamesort.css" />
+      <HBox fx:id="answerBox" alignment="CENTER" layoutX="26.0" layoutY="125.0" prefHeight="100.0" prefWidth="705.0" stylesheets="@../Utils/css/gamesort.css" />
       <Label fx:id="message" layoutX="158.0" layoutY="518.0" text="Do you want to play again?" textFill="WHITE" />
       <Label fx:id="scoreText" layoutX="14.0" layoutY="497.0" prefHeight="59.0" prefWidth="81.0" text="Label" />
       <ImageView fx:id="check" fitHeight="59.0" fitWidth="156.0" layoutX="330.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
