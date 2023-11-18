@@ -28,7 +28,6 @@ public class GameSortController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         message.setVisible(false);
-        scoreText.setText("0");
         check.setImage(new Image("file:src/main/resources/Utils/images/check_sort.png"));
         check.setOnMouseEntered(e->{
             check.setImage(new Image("file:src/main/resources/Utils/images/check_sort_light.png"));
@@ -46,17 +45,28 @@ public class GameSortController implements Initializable {
         start.setImage(new Image("file:src/main/resources/Utils/images/start.png"));
         check.setVisible(false);
         next.setVisible(false);
+        scoreText.setVisible(false);
+        endScore.setVisible(false);
+        fans.setVisible(false);
     }
 
     public void letGo(MouseEvent event) {
         SortDatabase.getData();
         index = 0;
         score = 0;
+        answerBox.getChildren().clear();
+        endScore.setVisible(false);
+        message.setVisible(false);
+        hBox.setVisible(true);
+        answerBox.setVisible(true);
+        fans.setVisible(true);
+        scoreText.setImage(new Image("file:src/main/resources/Utils/images/score"+score+".png"));
+        start.setVisible(false);
+        scoreText.setVisible(true);
         for (int i = 0; i < 10; i++) {
             listSentence.add(SortDatabase.getRdSentence());
         }
         createCards(listSentence.get(index));
-        start.setVisible(false);
     }
 
     public void createCards(Sentence sentence) {
@@ -84,6 +94,7 @@ public class GameSortController implements Initializable {
                         check.setDisable(false);
                         check.setOnMouseClicked(event -> {
                             CheckAnswer(sentence);
+                            scoreText.setImage(new Image("file:src/main/resources/Utils/images/score"+score+".png"));
                             next.setVisible(true);
                             answerBox.setDisable(true);
                             check.setDisable(true);
@@ -93,20 +104,17 @@ public class GameSortController implements Initializable {
                                 answerBox.getChildren().clear();
                                 index++;
                                 next.setVisible(false);
-                                if (index >= 10) {
-                                    EndGame();
-                                    return;
-                                }
                                 createCards(listSentence.get(index));
                             });
-                            scoreText.setText(Integer.toString(score));
+                            if (index >= 9) {
+                                EndGame();
+                            }
                         });
                     }
                 } else {
                     hBox.getChildren().add(buttonList.get(finalI));
                     hBox.setAlignment(Pos.CENTER);
                     check.setVisible(false);
-                    //checkBox.getChildren().clear();
                 }
             });
         }
@@ -128,28 +136,33 @@ public class GameSortController implements Initializable {
             }
         }
         String ans = s.toString().trim();
-        System.out.println(ans);
         return sentence.check(ans);
     }
 
     private void CheckAnswer(Sentence sentence) {
         if (myCheck(sentence)) {
-            System.out.println("Correct");
             SoundEffect.trueSound();
             score += 10;
             shakeEffectTrue();
 
         } else {
-            System.out.println("Incorrect");
             SoundEffect.falseSound();
             shakeEffectFalse();
         }
     }
 
     public void EndGame() {
+        SoundEffect.endSound();
+        endScore.setImage(new Image("file:src/main/resources/Utils/images/score"+score+".png"));
+        endScore.setVisible(true);
         start.setVisible(true);
         message.setVisible(true);
-        System.out.println("Your score:" + score);
+        hBox.setVisible(false);
+        answerBox.setVisible(false);
+        check.setVisible(false);
+        next.setVisible(false);
+        scoreText.setVisible(false);
+        fans.setVisible(false);
     }
 
     public void shakeEffectFalse() {
@@ -176,10 +189,9 @@ public class GameSortController implements Initializable {
     private ImageView start;
     @FXML
     private HBox answerBox;
-//    @FXML
-//    private VBox checkBox;
-//    @FXML
-//    private Button checkAns;
+    @FXML
+    private ImageView endScore;
+
     @FXML
     private ImageView check;
 
@@ -187,9 +199,13 @@ public class GameSortController implements Initializable {
     private ImageView next;
 
     @FXML
-    private Label message;
+    private ImageView message;
+
     @FXML
-    private Label scoreText;
+    private ImageView scoreText;
+
+    @FXML
+    private Pane fans;
     @FXML
     private Label time;
 }

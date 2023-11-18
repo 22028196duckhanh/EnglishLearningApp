@@ -27,6 +27,9 @@ public class SoundEffect extends Thread {
     public static void falseSound(){
         playAudio("src/main/resources/Utils/sound/false_sound.mp3");
     }
+    public static void endSound(){
+        playAudio("src/main/resources/Utils/sound/endgame.mp3");
+    }
 
     @Override
     public void run() {

@@ -33,3 +33,10 @@
 .button:hover {
     -fx-background-image: url('../images/card_sort_light.png');
 }
+
+.label {
+    -fx-font-family: "Arial";
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
