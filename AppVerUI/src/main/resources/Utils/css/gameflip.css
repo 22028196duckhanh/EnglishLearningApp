@@ -1,0 +1,10 @@
+#specificAnchorPane{
+    -fx-background-image: url('../images/flipgame_background.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+#time {
+    -fx-text-fill: #333333;
+    -fx-font-size: 23px;
+}

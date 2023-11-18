@@ -7,13 +7,15 @@ import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import javafx.util.Pair;
 
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 import java.util.ResourceBundle;
@@ -22,6 +24,8 @@ public class HighlightController implements Initializable {
 
     @FXML
     Button word, next, prev;
+    @FXML
+    AnchorPane anchorPane;
     DatabaseDictionary dictionary = new DatabaseDictionary();
     LinkedList<Pair<String, String>> words = new LinkedList<>();
     private String front, back;
@@ -29,6 +33,19 @@ public class HighlightController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        Image backgroundImage = new Image("file:src/main/resources/Utils/images/fillgame_background.jpg");
+
+        javafx.scene.layout.BackgroundImage background = new javafx.scene.layout.BackgroundImage(
+                backgroundImage,
+                javafx.scene.layout.BackgroundRepeat.NO_REPEAT,
+                javafx.scene.layout.BackgroundRepeat.NO_REPEAT,
+                javafx.scene.layout.BackgroundPosition.DEFAULT,
+                javafx.scene.layout.BackgroundSize.DEFAULT
+        );
+
+        javafx.scene.layout.Background backgroundObject = new javafx.scene.layout.Background(background);
+
+        anchorPane.setBackground(backgroundObject);
 
         try {
             if(dictionary == null)
@@ -42,7 +59,7 @@ public class HighlightController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        next.setOnAction(actionEvent -> {
+        next.setOnMouseClicked(e -> {
             if(iterator.hasNext()){
                 Pair<String,String> tmp= iterator.next();
                 front = tmp.getKey();
@@ -51,7 +68,7 @@ public class HighlightController implements Initializable {
             }
         });
 
-        prev.setOnAction(actionEvent -> {
+        prev.setOnMouseClicked(e -> {
             if(iterator.hasPrevious()){
                 Pair<String,String> tmp= iterator.previous();
                 front = tmp.getKey();

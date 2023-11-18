@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Pair;
 
 import java.net.URL;
@@ -20,6 +21,8 @@ public class GameFillController implements Initializable {
 
     @FXML
     private Label questionLabel;
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private TextField answerField;
     @FXML
@@ -32,10 +35,6 @@ public class GameFillController implements Initializable {
     Set<Pair<String, String>> set = new HashSet<>();
     private String correctAnswer = "";
 
-
-    public GameFillController() throws SQLException, ClassNotFoundException {
-    }
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
@@ -45,6 +44,7 @@ public class GameFillController implements Initializable {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
+        anchorPane.setDisable(false);
     }
 
     public void start() throws SQLException, ClassNotFoundException {

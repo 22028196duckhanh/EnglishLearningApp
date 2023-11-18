@@ -1,0 +1,30 @@
+#anchorPane {
+    -fx-background-image: url('../images/fillgame_background.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+#questionLabel {
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+    -fx-background-color: transparent;
+}
+
+#answerField {
+    -fx-font-size: 18px;
+}
+
+#checkButton {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-background-color: #4CAF50;
+}
+
+#score {
+    -fx-font-size: 24px;
+    -fx-text-fill: black;
+}
+
+#time {
+    -fx-font-size: 24px;
+    -fx-text-fill: black;
+}
