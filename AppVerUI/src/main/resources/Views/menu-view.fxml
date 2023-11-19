@@ -13,9 +13,9 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
    <children>
-      <AnchorPane fx:id="boxScreen" layoutX="202.0" layoutY="38.0" prefHeight="582.0" prefWidth="816.0" stylesheets="@../Utils/css/hand.css">
+      <AnchorPane fx:id="boxScreen" layoutX="88.0" layoutY="23.0" prefHeight="598.0" prefWidth="930.0" stylesheets="@../Utils/css/hand.css">
          <children>
             <ImageView fx:id="handFinger" fitHeight="223.0" fitWidth="230.0" layoutX="297.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,9 +23,14 @@
                </image>
             </ImageView>
          </children></AnchorPane>
-      <HBox alignment="CENTER_RIGHT" layoutX="202.0" prefHeight="38.0" prefWidth="816.0" stylesheets="@../Utils/css/hand.css">
+      <HBox alignment="CENTER_RIGHT" layoutX="-4.0" prefHeight="26.0" prefWidth="1024.0" stylesheets="@../Utils/css/hand.css">
          <children>
-            <Circle fill="#30ff41" onMouseClicked="#min" radius="6.0" stroke="#30ff41" strokeType="INSIDE">
+            <Label prefHeight="20.0" prefWidth="489.0" stylesheets="@../Utils/css/label.css" text="English Dictionary" textFill="#000000e2">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <Circle fill="#17d921" onMouseClicked="#min" radius="6.0" stroke="#17d921" strokeType="INSIDE">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
@@ -33,7 +38,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Circle>
-            <Circle fill="#ffa100" onMouseClicked="#max" radius="6.0" stroke="#ffa100" strokeType="INSIDE">
+            <Circle fill="#feb025" onMouseClicked="#max" radius="6.0" stroke="#feb025" strokeType="INSIDE">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
@@ -41,7 +46,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Circle>
-            <Circle fill="RED" onMouseClicked="#close" radius="6.0" stroke="RED" strokeType="INSIDE">
+            <Circle fill="#fb4746" onMouseClicked="#close" radius="6.0" stroke="#fb4746" strokeType="INSIDE">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
@@ -51,25 +56,20 @@
             </Circle>
          </children>
       </HBox>
-      <VBox layoutY="-5.0" prefHeight="625.0" prefWidth="202.0" stylesheets="@../Utils/css/fullpackstyling.css">
+      <VBox layoutY="26.0" prefHeight="598.0" prefWidth="90.0" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
-            <Pane prefHeight="118.0" prefWidth="202.0">
+            <Pane prefHeight="110.0" prefWidth="90.0">
                <children>
-                  <Label layoutX="70.0" layoutY="50.0" prefHeight="46.0" prefWidth="126.0" text="English Dictionary" textFill="WHITE">
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Label>
-                  <ImageView fitHeight="56.0" fitWidth="57.0" layoutX="6.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="58.0" fitWidth="82.0" layoutX="16.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/images/icon.png" />
+                        <Image url="@../Utils/images/infinity.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="searchBtn" alignment="BASELINE_LEFT" prefHeight="46.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Search" textFill="WHITE">
+            <Button fx:id="searchBtn" alignment="BASELINE_LEFT" prefHeight="69.0" prefWidth="108.0" stylesheets="@../Utils/css/menu.css" text="  Search" textFill="WHITE">
                <padding>
-                  <Insets left="40.0" />
+                  <Insets left="30.0" />
                </padding>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -82,9 +82,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="translateBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="46.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Translate" textFill="WHITE">
+            <Button fx:id="translateBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Translate" textFill="WHITE">
                <padding>
-                  <Insets left="40.0" />
+                  <Insets left="30.0" />
                </padding>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -97,12 +97,12 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="gameBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="48.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Game" textFill="WHITE">
+            <Button fx:id="gameBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Game" textFill="WHITE">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
                <padding>
-                  <Insets left="40.0" />
+                  <Insets left="30.0" />
                </padding>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -115,9 +115,24 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="highlightBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="46.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Help" textFill="WHITE">
+            <Button fx:id="highlightBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Help" textFill="WHITE">
                <padding>
-                  <Insets left="40.0" />
+                  <Insets left="30.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/images/favorite.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="highlightBtn1" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Help" textFill="WHITE">
+               <padding>
+                  <Insets left="30.0" />
                </padding>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -130,9 +145,9 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="exitBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="46.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Exit" textFill="WHITE">
+            <Button fx:id="exitBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Exit" textFill="WHITE">
                <padding>
-                  <Insets left="40.0" />
+                  <Insets left="30.0" />
                </padding>
                <cursor>
                   <Cursor fx:constant="HAND" />

@@ -1,8 +1,10 @@
 .button {
     -fx-background-color: transparent;
-    -fx-text-fill: white;
+    -fx-text-fill: transparent;
+    -fx-font-family: 'Inter';
+    -fx-font-size: 13px;
 }
 .button:hover {
     -fx-background-color: lightblue;
-    -fx-text-fill: black;
+    -fx-text-fill: transparent;
 }

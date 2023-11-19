@@ -1,5 +1,5 @@
 VBox {
-    -fx-background-color : linear-gradient(to top right, #A868A0, #2d46e8);
+    -fx-background-color : linear-gradient(to bottom, #FFF0F5, #F5F8FA);
 }
 
 .button
@@ -8,14 +8,14 @@ VBox {
 }
 
 .text-field {
-    -fx-control-inner-background: #393351;
+    -fx-control-inner-background: #C5FAD5;
     -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
-    -fx-border-radius: 15 15 0 0;
-    -fx-background-radius: 15 15 0 0;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
 }
 
 .list-view {
-    -fx-control-inner-background: #393351;
+    -fx-control-inner-background: #C5FAD5;
     -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
     -fx-border-radius: 0 0 0 0;
     -fx-background-radius: 0 0 0 0;
@@ -37,7 +37,7 @@ VBox {
 }
 
 .list-view .scroll-bar:vertical {
-    -fx-background-color: linear-gradient(to bottom, #7686ee, rgba(65, 225, 212, 0.87));
+    -fx-background-color: #b3d9ff;
     -fx-padding: 0;
     -fx-background-insets: 0;
 }
@@ -48,7 +48,7 @@ VBox {
 }
 
 .list-view .scroll-bar:vertical .thumb {
-    -fx-background-color: linear-gradient(to bottom, #7686ee, rgba(65, 225, 212, 0.87)); /* Change to your desired thumb color */
+    -fx-background-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
     -fx-background-insets: 0;
     -fx-padding: 0.05em;
 }
@@ -61,13 +61,13 @@ VBox {
 
 .text-area
 {
-    -fx-background-color: #393351;
+    -fx-background-color: #C5FAD5;
     -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
     -fx-border-radius: 15;
     -fx-background-radius: 15;
-    -fx-font-family: "Arial", sans-serif;
+    -fx-font-family: 'Inter';
     -fx-font-size: 20px;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
 }
 
 .text-area .scroll-pane {
