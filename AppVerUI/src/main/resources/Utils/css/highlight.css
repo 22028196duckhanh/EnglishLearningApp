@@ -1,0 +1,23 @@
+#anchorPane {
+    -fx-background-color: #f0f0f0; /* Light gray background */
+}
+
+#word {
+    -fx-background-image: url('../images/flashcard.png');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-text-fill: black;
+    -fx-background-repeat: no-repeat;
+    -fx-background-color: transparent;
+    -fx-font-size: 18px;
+}
+
+#next, #prev {
+    -fx-background-color: #27ae60; /* Green background */
+    -fx-text-fill: white; /* White text color */
+    -fx-font-size: 14px; /* Font size */
+}
+
+#next:hover, #prev:hover {
+    -fx-background-color: #218c53; /* Darker green on hover */
+}

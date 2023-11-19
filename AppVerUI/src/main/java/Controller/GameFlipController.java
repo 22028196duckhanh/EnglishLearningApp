@@ -14,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.TextAlignment;
@@ -40,6 +42,9 @@ public class GameFlipController implements Initializable {
     GridPane grid;
     @FXML
     Label time;
+    @FXML
+    ImageView imageview;
+
     private void buttonClicked(Button button) {
         int buttonIndex = Arrays.asList(buttons).indexOf(button);
         if (!fliped[buttonIndex])
@@ -138,6 +143,7 @@ public class GameFlipController implements Initializable {
 
         parallelTransition.play();
     }
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

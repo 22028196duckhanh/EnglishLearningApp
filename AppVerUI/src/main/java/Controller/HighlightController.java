@@ -6,6 +6,7 @@ import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -34,7 +35,7 @@ public class HighlightController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Image backgroundImage = new Image("file:src/main/resources/Utils/images/fillgame_background.jpg");
-
+        word.setWrapText(true);
         javafx.scene.layout.BackgroundImage background = new javafx.scene.layout.BackgroundImage(
                 backgroundImage,
                 javafx.scene.layout.BackgroundRepeat.NO_REPEAT,

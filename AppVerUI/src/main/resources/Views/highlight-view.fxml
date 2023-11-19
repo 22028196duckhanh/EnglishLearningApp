@@ -3,10 +3,10 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="582.0" prefWidth="816.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HighlightController">
+<AnchorPane fx:id="anchorPane" prefHeight="582.0" prefWidth="816.0" stylesheets="@../Utils/css/highlight.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HighlightController">
    <children>
-      <Button fx:id="word" layoutX="192.0" layoutY="137.0" mnemonicParsing="false" prefHeight="307.0" prefWidth="431.0" text="Button" />
-      <Button fx:id="next" layoutX="714.0" layoutY="480.0" mnemonicParsing="false" text="next" />
-      <Button fx:id="prev" layoutX="36.0" layoutY="480.0" mnemonicParsing="false" text="prev" />
+      <Button fx:id="word" alignment="CENTER" contentDisplay="CENTER" layoutX="192.0" layoutY="128.0" mnemonicParsing="false" prefHeight="328.0" prefWidth="431.0" stylesheets="@../Utils/css/highlight.css" textAlignment="CENTER" wrapText="true" />
+      <Button fx:id="next" layoutX="714.0" layoutY="480.0" mnemonicParsing="false" stylesheets="@../Utils/css/highlight.css" text="next" />
+      <Button fx:id="prev" layoutX="36.0" layoutY="480.0" mnemonicParsing="false" stylesheets="@../Utils/css/highlight.css" text="prev" />
    </children>
 </AnchorPane>

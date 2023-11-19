@@ -4,13 +4,18 @@ package Controller;
 import Server.CountdownTimer;
 import Server.FillGame;
 import Server.SoundEffect;
+import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.effect.BlendMode;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.Duration;
 import javafx.util.Pair;
 
 import java.net.URL;
@@ -31,6 +36,8 @@ public class GameFillController implements Initializable {
     private Label score;
     @FXML
     private Label time;
+    @FXML
+    private ImageView imageview;
     private int Score = 0;
     Set<Pair<String, String>> set = new HashSet<>();
     private String correctAnswer = "";
@@ -87,6 +94,13 @@ public class GameFillController implements Initializable {
         }
     }
     private void endGame() {
+        imageview.setImage(new Image("file:src/main/resources/Utils/images/congratulation.gif"));
+        imageview.setBlendMode(BlendMode.MULTIPLY);
+        PauseTransition pause = new PauseTransition(Duration.millis(2000));
+        pause.play();
+        pause.setOnFinished(e->{
+            imageview.setVisible(false);
+        });
         questionLabel.setVisible(false);
         checkButton.setVisible(false);
         answerField.setVisible(false);
