@@ -4,13 +4,16 @@
     -fx-background-repeat: no-repeat;
 }
 #questionLabel {
-    -fx-font-size: 14px;
+    -fx-font-family: "Arial Narrow";
+    -fx-font-size: 18px;
     -fx-text-fill: black;
     -fx-background-color: transparent;
 }
 
 #answerField {
     -fx-font-size: 18px;
+    -fx-outline: none;
+    -fx-border-color: #007bff;
 }
 
 #checkButton {
