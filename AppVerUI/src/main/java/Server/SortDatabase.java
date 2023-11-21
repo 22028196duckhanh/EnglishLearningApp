@@ -16,6 +16,9 @@ public class SortDatabase {
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
+                if (!line.isEmpty()) {
+                    line = line.substring(0, 1).toUpperCase() + line.substring(1);
+                }
                 String[] tmp = line.split("/");
                 Sentence sentence = new Sentence();
                 List<String> cmp = new ArrayList<>(List.of(tmp));
