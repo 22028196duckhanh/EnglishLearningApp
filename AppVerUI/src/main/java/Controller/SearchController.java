@@ -180,8 +180,9 @@ public class SearchController implements Initializable {
     @FXML
     public void handleAdd() {
         Dialog<String> dialog = new Dialog<>();
-        dialog.setHeaderText("Add a new word");
+        dialog.setTitle("Add a new word");
         DialogPane tmp = dialog.getDialogPane();
+        tmp.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/addWord.css")).toExternalForm());
         dialog.setHeaderText(null);
 
         Label newWordLabel = new Label("New word: ");

@@ -1,0 +1,35 @@
+.dialog-pane {
+    -fx-background-color: #f0f0f0; /* Set the background color of the dialog pane */
+}
+
+.label {
+    -fx-font-size: 14px; /* Set the font size for labels */
+    -fx-font-weight: bold; /* Make labels bold */
+}
+
+.text-field, .text-area {
+    -fx-font-size: 14px; /* Set the font size for text fields and text areas */
+    -fx-padding: 5px; /* Add some padding to text fields and text areas */
+}
+
+.grid-pane {
+    -fx-hgap: 10px; /* Set horizontal gap between grid elements */
+    -fx-vgap: 10px; /* Set vertical gap between grid elements */
+}
+
+.button {
+    -fx-font-size: 14px; /* Set the font size for buttons */
+}
+
+.alert {
+    -fx-font-size: 14px; /* Set the font size for alerts */
+}
+
+/* You can customize the colors as per your preference */
+.button:default {
+    -fx-base: #3498db; /* Set the default button color */
+}
+
+.button:cancel {
+    -fx-base: #e74c3c; /* Set the cancel button color */
+}
