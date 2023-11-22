@@ -111,9 +111,9 @@ public class SearchController implements Initializable {
             try {
                 dictionary.setHighlight(selectedWord);
                 if (dictionary.getHighlight(selectedWord) == 1) {
-                    highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight2.png"));
+                    highlight.setImage(new Image("file:src/main/resources/Utils/images/icons8-star2-36.png"));
                 } else {
-                    highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight1.png"));
+                    highlight.setImage(new Image("file:src/main/resources/Utils/images/icons8-star-36.png"));
                 }
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
@@ -164,16 +164,15 @@ public class SearchController implements Initializable {
                 History.updateHistory(selectedWord);
             }
             if (dictionary.getHighlight(selectedWord) == 1) {
-                highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight2.png"));
+                highlight.setImage(new Image("file:src/main/resources/Utils/images/icons8-star2-36.png"));
             } else {
-                highlight.setImage(new Image("file:src/main/resources/Utils/images/highlight1.png"));
+                highlight.setImage(new Image("file:src/main/resources/Utils/images/icons8-star-36.png"));
             }
             speaker.setVisible(true);
             explaination.setVisible(true);
             editWord.setVisible(true);
             setDefault.setVisible(true);
             highlight.setVisible(true);
-            speaker.setGraphic(speakerIcon);
         }
     }
 
@@ -288,10 +287,6 @@ public class SearchController implements Initializable {
 
     @FXML
     private ListView<String> listResults;
-
-    private Image speakerImage = new Image("file:src/main/resources/Utils/images/audio.png");
-
-    private ImageView speakerIcon = new ImageView(speakerImage);
 
     private String style = "<style> body {line-height: 1}h1 {\n" +
             "            color: #990000;\n" +

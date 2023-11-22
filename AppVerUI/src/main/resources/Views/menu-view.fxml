@@ -11,11 +11,10 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
    <children>
-      <AnchorPane fx:id="boxScreen" layoutX="88.0" layoutY="23.0" prefHeight="598.0" prefWidth="930.0" stylesheets="@../Utils/css/hand.css">
+      <AnchorPane fx:id="boxScreen" layoutX="102.0" layoutY="26.0" prefHeight="596.0" prefWidth="916.0" styleClass="menu-view" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
             <ImageView fx:id="handFinger" fitHeight="223.0" fitWidth="230.0" layoutX="297.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -23,13 +22,9 @@
                </image>
             </ImageView>
          </children></AnchorPane>
-      <HBox alignment="CENTER_RIGHT" layoutX="-4.0" prefHeight="26.0" prefWidth="1024.0" stylesheets="@../Utils/css/hand.css">
+      <HBox fx:id="hBox" alignment="CENTER_RIGHT" layoutX="-4.0" prefHeight="26.0" prefWidth="1024.0" styleClass="hBar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
-            <Label prefHeight="20.0" prefWidth="489.0" stylesheets="@../Utils/css/label.css" text="English Dictionary" textFill="#000000e2">
-               <font>
-                  <Font name="System Bold" size="14.0" />
-               </font>
-            </Label>
+            <Label fx:id="label" prefHeight="20.0" prefWidth="517.0" stylesheets="@../Utils/css/fullpackstyling.css" text="English Learning Application" textFill="#000000e2" />
             <Circle fill="#17d921" onMouseClicked="#min" radius="6.0" stroke="#17d921" strokeType="INSIDE">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
@@ -56,18 +51,18 @@
             </Circle>
          </children>
       </HBox>
-      <VBox layoutY="26.0" prefHeight="598.0" prefWidth="90.0" stylesheets="@../Utils/css/fullpackstyling.css">
+      <VBox fx:id="vBox" layoutY="26.0" prefHeight="595.0" prefWidth="102.0" styleClass="menu-bar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
-            <Pane prefHeight="110.0" prefWidth="90.0">
+            <Pane prefHeight="115.0" prefWidth="86.0">
                <children>
-                  <ImageView fitHeight="58.0" fitWidth="82.0" layoutX="16.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="58.0" fitWidth="82.0" layoutX="13.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/images/infinity.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="searchBtn" alignment="BASELINE_LEFT" prefHeight="69.0" prefWidth="108.0" stylesheets="@../Utils/css/menu.css" text="  Search" textFill="WHITE">
+            <Button fx:id="searchBtn" alignment="BASELINE_LEFT" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Search" textFill="WHITE">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -82,7 +77,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="translateBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Translate" textFill="WHITE">
+            <Button fx:id="translateBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Translate" textFill="WHITE">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -97,7 +92,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="gameBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Game" textFill="WHITE">
+            <Button fx:id="gameBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Game" textFill="WHITE">
                <VBox.margin>
                   <Insets />
                </VBox.margin>
@@ -115,7 +110,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="highlightBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Help" textFill="WHITE">
+            <Button fx:id="highlightBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Help" textFill="WHITE">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -130,7 +125,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="highlightBtn1" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Help" textFill="WHITE">
+            <Button fx:id="highlightBtn1" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Help" textFill="WHITE">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -145,7 +140,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button fx:id="exitBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="69.0" prefWidth="202.0" stylesheets="@../Utils/css/menu.css" text="  Exit" textFill="WHITE">
+            <Button fx:id="exitBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Exit" textFill="WHITE">
                <padding>
                   <Insets left="30.0" />
                </padding>
@@ -159,6 +154,27 @@
                      </image>
                   </ImageView>
                </graphic>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Button>
+            <Button fx:id="btnMode" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeMode" prefHeight="58.0" prefWidth="202.0" styleClass="button-3" stylesheets="@../Utils/css/fullpackstyling.css" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <graphic>
+                  <ImageView fx:id="imgMode" fitHeight="53.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/images/icons8-night-48.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets top="50.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="24.0" />
+               </padding>
             </Button>
          </children>
       </VBox>

@@ -2,40 +2,80 @@
     -fx-background-color: transparent;
     -fx-border-width: 0;
     -fx-border-color: transparent;
-    -fx-background-image: url('../images/edit.png');
+    -fx-background-image: url('../images/icons8-edit-48.png');
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
 }
 
 #editWord:hover {
-    -fx-background-image: url('../images/edit.gif');
+    -fx-background-image: url('../images/icons8-edit-48.png');
+    -fx-background-color: lightblue;
+    -fx-background-radius: 10px;
 }
 
 #confirm {
     -fx-background-color: transparent;
     -fx-border-width: 0;
     -fx-border-color: transparent;
-    -fx-background-image: url('../images/check.png');
+    -fx-background-image: url('../images/icons8-check-36.png');
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
 }
 
 #confirm:hover {
-    -fx-background-image: url('../images/check.gif');
+    -fx-background-image: url('../images/icons8-check-36.png');
+    -fx-background-color: lightblue;
+    -fx-background-radius: 10px;
 }
 
 #setDefault {
     -fx-background-color: transparent;
     -fx-border-width: 0;
     -fx-border-color: transparent;
-    -fx-background-image: url('../images/default.png');
+    -fx-background-image: url('../images/icons8-reset-48.png');
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
 }
 
 #setDefault:hover {
-    -fx-background-image: url('../images/default.gif');
+    -fx-background-image: url('../images/icons8-reset-48.png');
+    -fx-background-color: lightblue;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
 }
+
+#speaker {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-image: url('../images/icons8-volume-36.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-text-fill: transparent;
+}
+
+#speaker:hover {
+    -fx-background-color: lightblue;
+    -fx-background-radius: 10px;
+}
+
+#addWord {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-image: url('../images/icons8-add-48.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-text-fill: transparent;
+}
+
+#addWord:hover {
+    -fx-background-color: lightblue;
+    -fx-background-radius: 10px;
+}
+
