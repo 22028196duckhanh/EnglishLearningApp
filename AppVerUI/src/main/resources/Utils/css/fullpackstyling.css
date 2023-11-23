@@ -88,6 +88,20 @@ Button
     -fx-background-radius: 100;
 }
 
+.button-4 {
+    -fx-background-color: dodgerblue;
+}
+
+.button-4:hover {
+    -fx-background-color: #cb88ec;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+
+    transition: -fx-background-color 0.5s ease,
+    -fx-scale-x 0.5s ease,
+    -fx-scale-y 0.5s ease;
+}
+
 /*
 Search View
  */

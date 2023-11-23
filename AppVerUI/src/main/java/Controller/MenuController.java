@@ -39,7 +39,7 @@ public class MenuController implements Initializable {
                         "-fx-background-radius: 15; " +
                         "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
         );
-        gameFillBtn.resizeRelocate(500, 100, 100, 100);
+        gameFillBtn.resizeRelocate(710, 100, 100, 100);
         gameFillBtn.setStyle(
                 "-fx-background-color: #4CAF50; " +
                         "-fx-text-fill: white; " +
@@ -48,7 +48,7 @@ public class MenuController implements Initializable {
                         "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
         );
 
-        gameChoiceBtn.resizeRelocate(500, 500, 100, 100);
+        gameChoiceBtn.resizeRelocate(680, 500, 100, 100);
         gameChoiceBtn.setStyle(
                 "-fx-background-color: #4CAF50; " +
                         "-fx-text-fill: white; " +
@@ -315,6 +315,7 @@ public class MenuController implements Initializable {
 
         label.getStyleClass().clear();
         label.getStyleClass().add("label");
+
 
     }
 

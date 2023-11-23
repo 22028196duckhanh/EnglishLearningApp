@@ -8,10 +8,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="specificAnchorPane" prefHeight="582.0" prefWidth="816.0" stylesheets="@../Utils/css/gameflip.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameFlipController">
+<AnchorPane id="specificAnchorPane" prefHeight="596.0" prefWidth="916.0" stylesheets="@../Utils/css/gameflip.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameFlipController">
    <children>
       <ImageView fx:id="imageview" fitHeight="400.0" fitWidth="400.0" layoutX="210.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
-      <GridPane fx:id="grid" layoutX="161.0" layoutY="51.0" prefHeight="453.0" prefWidth="453.0">
+      <GridPane fx:id="grid" layoutX="217.0" layoutY="86.0" prefHeight="453.0" prefWidth="453.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -25,7 +25,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label fx:id="time" layoutX="700.0" layoutY="59.0" prefHeight="41.0" prefWidth="63.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
+      <Label fx:id="time" layoutX="760.0" layoutY="6.0" prefHeight="41.0" prefWidth="63.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
          <font>
             <Font size="23.0" />
          </font>
