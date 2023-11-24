@@ -9,8 +9,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 // import org.w3c.dom.events.MouseEvent;
 import javafx.scene.input.MouseEvent;
@@ -35,7 +39,7 @@ public class MenuController implements Initializable {
                         "-fx-background-radius: 15; " +
                         "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
         );
-        gameFillBtn.resizeRelocate(500, 100, 100, 100);
+        gameFillBtn.resizeRelocate(710, 100, 100, 100);
         gameFillBtn.setStyle(
                 "-fx-background-color: #4CAF50; " +
                         "-fx-text-fill: white; " +
@@ -44,7 +48,7 @@ public class MenuController implements Initializable {
                         "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
         );
 
-        gameChoiceBtn.resizeRelocate(500, 500, 100, 100);
+        gameChoiceBtn.resizeRelocate(680, 500, 100, 100);
         gameChoiceBtn.setStyle(
                 "-fx-background-color: #4CAF50; " +
                         "-fx-text-fill: white; " +
@@ -284,8 +288,75 @@ public class MenuController implements Initializable {
         Random random = new Random();
         choice = Math.abs(random.nextInt()) % 4 + 1;
     }
+
+    public void changeMode(ActionEvent event) {
+        isLightMode = !isLightMode;
+        if (isLightMode) {
+            setLightMode();
+        } else {
+            setDarkMode();
+        }
+    }
+
+    public void setLightMode() {
+        Image imageMode = new Image("file:src/main/resources/Utils/images/icons8-night-48.png");
+        imgMode.setImage(imageMode);
+
+        boxScreen.getStyleClass().clear();
+        boxScreen.getStyleClass().add("menu-view");
+
+        vBox.getStyleClass().clear();
+        vBox.getStyleClass().add("menu-bar");
+
+        btnMode.setStyle("-fx-background-color: #c2ade6");
+
+        hBox.getStyleClass().clear();
+        hBox.getStyleClass().add("hBar");
+
+        label.getStyleClass().clear();
+        label.getStyleClass().add("label");
+
+
+    }
+
+    public void setDarkMode () {
+        Image imageMode = new Image("file:src/main/resources/Utils/images/icons8-light-mode-48.png");
+        imgMode.setImage(imageMode);
+
+        boxScreen.getStyleClass().clear();
+        boxScreen.getStyleClass().add("menu-view-dark");
+
+
+        vBox.getStyleClass().add("menu-bar-dark");
+
+        btnMode.setStyle("-fx-background-color: #fcff82");
+
+        hBox.getStyleClass().clear();
+        hBox.getStyleClass().add("hBar-dark");
+
+        label.getStyleClass().clear();
+        label.getStyleClass().add("label-dark");
+
+    }
+    private boolean isLightMode = true;
     private int choice;
     private int storage;
+
+    @FXML
+    private ImageView imgMode;
+
+    @FXML
+    private HBox hBox;
+
+    @FXML
+    private VBox vBox;
+
+    @FXML
+    private Label label;
+
+    @FXML
+    private Button btnMode;
+
     @FXML
     public AnchorPane boxScreen;
 

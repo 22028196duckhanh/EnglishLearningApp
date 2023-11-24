@@ -8,29 +8,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.web.HTMLEditor?>
 
-<AnchorPane prefHeight="582.0" prefWidth="929.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchController">
+<AnchorPane prefHeight="582.0" prefWidth="906.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchController">
    <children>
-      <AnchorPane layoutY="127.0" prefHeight="450.0" prefWidth="300.0">
+      <AnchorPane layoutY="127.0" prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: transparent;">
          <children>
-            <ListView fx:id="listResults" layoutX="14.0" layoutY="-48.0" onMouseClicked="#handleSelectWord" prefHeight="498.0" prefWidth="234.0" stylesheets="@../Utils/css/fullpackstyling.css" />
+            <ListView fx:id="listResults" layoutX="14.0" layoutY="-48.0" onMouseClicked="#handleSelectWord" prefHeight="500.3" prefWidth="234.0" stylesheets="@../Utils/css/fullpackstyling.css" />
          </children>
       </AnchorPane>
       <AnchorPane layoutX="264.0" layoutY="82.0" prefHeight="490.0" prefWidth="544.0" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
-            <HTMLEditor fx:id="explaination" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="-15.0" layoutY="-39.0" prefHeight="536.0" prefWidth="674.0" />
-            <Button fx:id="speaker" layoutX="613.0" layoutY="-33.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="40.0" styleClass="speaker" stylesheets="@../Utils/css/fullpackstyling.css" text="speak" textFill="WHITE" wrapText="true">
+            <HTMLEditor fx:id="explaination" htmlText="&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body contenteditable=&quot;true&quot;&gt;&lt;/body&gt;&lt;/html&gt;" layoutX="-15.0" layoutY="-39.0" prefHeight="536.0" prefWidth="650.0" />
+            <Button fx:id="speaker" layoutX="581.0" layoutY="114.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" stylesheets="@../Utils/css/button.css" textFill="WHITE" wrapText="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="editWord" layoutX="510.0" layoutY="-36.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="35.0" stylesheets="@../Utils/css/button.css" text="" />
-            <Button fx:id="setDefault" layoutX="458.0" layoutY="-32.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" stylesheets="@../Utils/css/button.css" text="" />
-            <Button fx:id="confirm" layoutX="553.0" layoutY="-39.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" stylesheets="@../Utils/css/button.css" text="" />
-            <ImageView fx:id="highlight" fitHeight="50.0" fitWidth="50.0" layoutX="275.0" layoutY="-38.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="editWord" layoutX="579.0" layoutY="195.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" stylesheets="@../Utils/css/button.css" text="" />
+            <Button fx:id="setDefault" layoutX="579.0" layoutY="155.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" stylesheets="@../Utils/css/button.css" text="" />
+            <Button fx:id="confirm" layoutX="542.0" layoutY="-38.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="31.0" stylesheets="@../Utils/css/button.css" text="" />
+            <ImageView fx:id="highlight" fitHeight="36.0" fitWidth="36.0" layoutX="578.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true" />
+            <Button fx:id="addWord" layoutX="578.0" layoutY="-39.0" mnemonicParsing="false" onAction="#handleAdd" prefHeight="34.0" prefWidth="34.0" stylesheets="@../Utils/css/button.css" />
          </children>
       </AnchorPane>
       <TextField fx:id="searchArea" layoutX="14.0" layoutY="43.0" prefHeight="35.0" prefWidth="234.0" stylesheets="@../Utils/css/fullpackstyling.css" />
-      <Button fx:id="addWord" layoutX="888.0" layoutY="15.0" mnemonicParsing="false" onAction="#handleAdd" stylesheets="@../Utils/css/button.css" text="add" />
 
    </children>
 </AnchorPane>

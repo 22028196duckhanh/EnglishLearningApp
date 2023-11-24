@@ -1,11 +1,110 @@
-VBox {
+/*
+Menu View
+*/
+
+.menu-bar {
     -fx-background-color : linear-gradient(to bottom, #FFF0F5, #F5F8FA);
 }
 
-.button
-{
+.menu-bar-dark {
+    -fx-background-color: #2d4059
+}
+
+.hBar {
+    -fx-background-radius:  0 0 0 0;
+    -fx-background-color: #D0D0D0;
+}
+
+.hBar-dark {
+    -fx-background-radius:  0 0 0 0;
+    -fx-background-color: #161616;
+}
+
+.menu-view {
+    -fx-background-color : linear-gradient(to bottom, #CCEEFF, #FFF0F5);
+}
+
+.menu-view-dark {
     -fx-background-color : #393351;
 }
+
+@font-face {
+    font-family: "SF Pro";
+    src: url('../fonts/SF-Pro.ttf');
+}
+
+@font-face {
+    font-family: "SF Pro Bold";
+    src: url('../fonts/SF-Pro-Display-Bold.otf');
+}
+
+@font-face {
+    font-family: "SF Pro Text";
+    src: url('../fonts/SF-Pro-Text-Black.otf');
+}
+
+.label {
+    -fx-font-family: 'SF Pro Bold';
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-font-size: 14px;
+    -fx-text-fill: black;
+}
+
+.label-dark {
+    -fx-font-family: 'SF Pro Bold';
+    -fx-font-weight: bold;
+    -fx-font-style: normal;
+    -fx-font-size: 14px;
+    -fx-text-fill: rgba(255, 255, 255, 0.82);
+}
+
+/*
+Button
+ */
+.button-1 {
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-transition: 1s;
+}
+
+.button-1:hover {
+    -fx-background-color: #c2ade6;
+    -fx-text-fill: transparent;
+}
+
+.button-2 {
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+}
+
+.button-3 {
+    -fx-background-color: #c2ade6;
+    -fx-background-radius: 100;
+}
+
+.button-3:hover {
+    -fx-background-color: #c2ade6;
+    -fx-background-radius: 100;
+}
+
+.button-4 {
+    -fx-background-color: dodgerblue;
+}
+
+.button-4:hover {
+    -fx-background-color: #cb88ec;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
+
+    transition: -fx-background-color 0.5s ease,
+    -fx-scale-x 0.5s ease,
+    -fx-scale-y 0.5s ease;
+}
+
+/*
+Search View
+ */
 
 .text-field {
     -fx-control-inner-background: #C5FAD5;
@@ -53,11 +152,9 @@ VBox {
     -fx-padding: 0.05em;
 }
 
-.speaker
-{
-    -fx-background-color: transparent;
-    -fx-text-fill: transparent;
-}
+/*
+Translate View
+ */
 
 .text-area
 {
@@ -65,7 +162,7 @@ VBox {
     -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
     -fx-border-radius: 15;
     -fx-background-radius: 15;
-    -fx-font-family: 'Inter';
+    -fx-font-family: 'SF Pro';
     -fx-font-size: 20px;
     -fx-text-fill: black;
 }

@@ -6,25 +6,25 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="bkgrSort" prefHeight="586.0" prefWidth="816.0" stylesheets="@../Utils/css/gamesort.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.GameSortController">
+<AnchorPane fx:id="bkgrSort" prefHeight="596.0" prefWidth="916.0" stylesheets="@../Utils/css/gamesort.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameSortController">
    <children>
-      <HBox fx:id="hBox" alignment="CENTER" layoutX="26.0" layoutY="300.0" prefHeight="100.0" prefWidth="706.0" stylesheets="@../Utils/css/gamesort.css" />
-      <HBox fx:id="answerBox" alignment="CENTER" layoutX="26.0" layoutY="125.0" prefHeight="100.0" prefWidth="705.0" stylesheets="@../Utils/css/gamesort.css" />
-      <ImageView fx:id="check" fitHeight="59.0" fitWidth="156.0" layoutX="330.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="next" fitHeight="50.0" fitWidth="50.0" layoutX="760.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="213.0" fitWidth="205.0" layoutX="293.0" layoutY="-46.0" pickOnBounds="true" preserveRatio="true">
+      <HBox fx:id="hBox" alignment="CENTER" layoutX="74.0" layoutY="333.0" prefHeight="100.0" prefWidth="706.0" stylesheets="@../Utils/css/gamesort.css" />
+      <HBox fx:id="answerBox" alignment="CENTER" layoutX="79.0" layoutY="137.0" prefHeight="100.0" prefWidth="705.0" stylesheets="@../Utils/css/gamesort.css" />
+      <ImageView fx:id="check" fitHeight="59.0" fitWidth="156.0" layoutX="380.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="next" fitHeight="50.0" fitWidth="50.0" layoutX="852.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="213.0" fitWidth="205.0" layoutX="331.0" layoutY="-48.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Utils/images/slogan_sort.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="start" fitHeight="100.0" fitWidth="205.0" layoutX="342.0" layoutY="477.0" onMouseClicked="#letGo" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="scoreText" fitHeight="65.0" fitWidth="236.0" layoutX="507.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="message" fitHeight="74.0" fitWidth="577.0" layoutX="107.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="start" fitHeight="100.0" fitWidth="205.0" layoutX="380.0" layoutY="200.0" onMouseClicked="#letGo" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="scoreText" fitHeight="65.0" fitWidth="236.0" layoutX="579.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="message" fitHeight="74.0" fitWidth="577.0" layoutX="139.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Utils/images/playagain1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="endScore" fitHeight="100.0" fitWidth="345.0" layoutX="223.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="endScore" fitHeight="100.0" fitWidth="345.0" layoutX="262.0" layoutY="184.0" pickOnBounds="true" preserveRatio="true" />
       <Pane fx:id="fans" layoutX="56.0" layoutY="468.0" prefHeight="118.0" prefWidth="754.0">
          <children>
             <ImageView fitHeight="120.0" fitWidth="120.0" layoutX="163.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">

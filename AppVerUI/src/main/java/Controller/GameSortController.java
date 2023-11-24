@@ -42,7 +42,7 @@ public class GameSortController implements Initializable {
         next.setOnMouseExited(e->{
             next.setImage(new Image("file:src/main/resources/Utils/images/next.png"));
         });
-        start.setImage(new Image("file:src/main/resources/Utils/images/start.png"));
+        start.setImage(new Image("file:src/main/resources/Utils/images/start_white.png"));
         check.setVisible(false);
         next.setVisible(false);
         scoreText.setVisible(false);
@@ -206,6 +206,4 @@ public class GameSortController implements Initializable {
 
     @FXML
     private Pane fans;
-    @FXML
-    private Label time;
 }
