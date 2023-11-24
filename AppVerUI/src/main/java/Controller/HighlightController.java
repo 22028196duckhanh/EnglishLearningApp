@@ -62,11 +62,13 @@ public class HighlightController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        /*
         next.setOnAction(e -> {
             if(iterator.hasNext()){
-                Pair<String,String> tmp= iterator.next();
+                Pair<String,String> tmp = null;
+                while(tmp == null || tmp.getKey().equals(front))
+                    tmp = iterator.next();
                 front = tmp.getKey();
+                System.out.println(front);
                 back = tmp.getValue();
                 word.setText(front);
             }
@@ -74,37 +76,19 @@ public class HighlightController implements Initializable {
 
         prev.setOnAction(e -> {
             if(iterator.hasPrevious()){
-                Pair<String,String> tmp= iterator.previous();
+                Pair<String,String> tmp = null;
+                while(tmp == null || tmp.getKey().equals(front))
+                    tmp = iterator.previous();
                 front = tmp.getKey();
                 back = tmp.getValue();
                 word.setText(front);
             }
         });
-        */
         word.setOnAction(actionEvent -> {
             flipButton1(word);
         });
     }
 
-    @FXML
-    void nextButtonOnAction(ActionEvent event) {
-        if(iterator.hasNext()){
-            Pair<String,String> tmp= iterator.next();
-            front = tmp.getKey();
-            back = tmp.getValue();
-            word.setText(front);
-        }
-    }
-
-    @FXML
-    void prevButtonOnAction(ActionEvent event) {
-        if(iterator.hasPrevious()){
-            Pair<String,String> tmp= iterator.previous();
-            front = tmp.getKey();
-            back = tmp.getValue();
-            word.setText(front);
-        }
-    }
 
     public static void flipButton(Button button) {
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.2), button);
