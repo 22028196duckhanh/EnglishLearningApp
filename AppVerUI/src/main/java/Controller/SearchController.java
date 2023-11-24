@@ -57,7 +57,6 @@ public class SearchController implements Initializable {
                         throw new RuntimeException(e);
                     }
                 }
-                speaker.setVisible(false);
             }
         });
 

@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="bkgrSort" prefHeight="596.0" prefWidth="916.0" stylesheets="@../Utils/css/gamesort.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameSortController">
+<AnchorPane fx:id="bkgrSort" prefHeight="596.0" prefWidth="916.0" stylesheets="@../Utils/css/gamesort.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameSortController">
    <children>
       <HBox fx:id="hBox" alignment="CENTER" layoutX="74.0" layoutY="333.0" prefHeight="100.0" prefWidth="706.0" stylesheets="@../Utils/css/gamesort.css" />
       <HBox fx:id="answerBox" alignment="CENTER" layoutX="79.0" layoutY="137.0" prefHeight="100.0" prefWidth="705.0" stylesheets="@../Utils/css/gamesort.css" />
       <ImageView fx:id="check" fitHeight="59.0" fitWidth="156.0" layoutX="380.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="next" fitHeight="50.0" fitWidth="50.0" layoutX="760.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="next" fitHeight="50.0" fitWidth="50.0" layoutX="852.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="213.0" fitWidth="205.0" layoutX="331.0" layoutY="-48.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Utils/images/slogan_sort.png" />
