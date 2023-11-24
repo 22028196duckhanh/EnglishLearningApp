@@ -1,8 +1,7 @@
 package Server;
 
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.*;
 
 import javafx.util.Pair;
 import org.jsoup.Jsoup;
@@ -70,7 +69,7 @@ public class DatabaseDictionary extends Dictionary {
 
     @Override
     public ArrayList<String> searchWord(String prefix) throws SQLException {
-        ArrayList<String> words = new ArrayList<>();
+        Set<String> words = new TreeSet<>();
         String sql_query = "SELECT word FROM av WHERE word LIKE ?";
         PreparedStatement statement = connection.prepareStatement(sql_query);
         statement.setString(1, prefix + '%');
@@ -81,7 +80,7 @@ public class DatabaseDictionary extends Dictionary {
         }
         result.close();
         statement.close();
-        return words;
+        return new ArrayList<>(words);
     }
 
     public void searchHighlight(LinkedList<Pair<String, String>> words) throws SQLException {

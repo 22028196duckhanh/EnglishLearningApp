@@ -4,6 +4,7 @@ import Server.DatabaseDictionary;
 import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
@@ -25,6 +26,7 @@ public class HighlightController implements Initializable {
 
     @FXML
     Button word, next, prev;
+
     @FXML
     AnchorPane anchorPane;
     DatabaseDictionary dictionary = new DatabaseDictionary();
@@ -60,7 +62,8 @@ public class HighlightController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        next.setOnMouseClicked(e -> {
+        /*
+        next.setOnAction(e -> {
             if(iterator.hasNext()){
                 Pair<String,String> tmp= iterator.next();
                 front = tmp.getKey();
@@ -69,7 +72,7 @@ public class HighlightController implements Initializable {
             }
         });
 
-        prev.setOnMouseClicked(e -> {
+        prev.setOnAction(e -> {
             if(iterator.hasPrevious()){
                 Pair<String,String> tmp= iterator.previous();
                 front = tmp.getKey();
@@ -77,10 +80,30 @@ public class HighlightController implements Initializable {
                 word.setText(front);
             }
         });
-
+        */
         word.setOnAction(actionEvent -> {
             flipButton1(word);
         });
+    }
+
+    @FXML
+    void nextButtonOnAction(ActionEvent event) {
+        if(iterator.hasNext()){
+            Pair<String,String> tmp= iterator.next();
+            front = tmp.getKey();
+            back = tmp.getValue();
+            word.setText(front);
+        }
+    }
+
+    @FXML
+    void prevButtonOnAction(ActionEvent event) {
+        if(iterator.hasPrevious()){
+            Pair<String,String> tmp= iterator.previous();
+            front = tmp.getKey();
+            back = tmp.getValue();
+            word.setText(front);
+        }
     }
 
     public static void flipButton(Button button) {
