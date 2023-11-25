@@ -102,6 +102,21 @@ Button
     -fx-scale-y 0.5s ease;
 }
 
+.backBtn {
+    -fx-text-fill: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-radius: 20;
+    -fx-background-image: url('../images/icons8-back-64.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+.backBtn:hover {
+    -fx-cursor: hand;
+    -fx-background-color: lightblue;
+}
+
 /*
 Search View
  */

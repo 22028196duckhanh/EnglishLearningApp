@@ -40,9 +40,6 @@ public class HelloApplication extends Application {
 
         primaryStage.setTitle("Dictionary Application");
 
-        //Image icon = new Image("icon.png");
-        //primaryStage.getIcons().add(icon);
-
         primaryStage.setScene(scene);
         primaryStage.show();
     }

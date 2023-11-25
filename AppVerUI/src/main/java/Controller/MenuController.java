@@ -103,15 +103,7 @@ public class MenuController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                backBtn.resizeRelocate(100, 500, 100, 100);
-                backBtn.setStyle(
-                        "-fx-background-color: #4CAF50; " +
-                                "-fx-cursor: hand;" +
-                                "-fx-text-fill: white; " +
-                                "-fx-border-radius: 15; " +
-                                "-fx-background-radius: 15; " +
-                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-                );
+                createBackBtn();
                 boxScreen.getChildren().add(backBtn);
                 handFinger.setVisible(false);
             }
@@ -125,14 +117,7 @@ public class MenuController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                backBtn.resizeRelocate(100, 500, 100, 100);
-                backBtn.setStyle(
-                        "-fx-background-color: #4CAF50; " +
-                                "-fx-text-fill: white; " +
-                                "-fx-border-radius: 15; " +
-                                "-fx-background-radius: 15; " +
-                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-                );
+                createBackBtn();
                 boxScreen.getChildren().add(backBtn);
                 handFinger.setVisible(false);
             }
@@ -146,14 +131,7 @@ public class MenuController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                backBtn.resizeRelocate(100, 500, 100, 100);
-                backBtn.setStyle(
-                        "-fx-background-color: #4CAF50; " +
-                                "-fx-text-fill: white; " +
-                                "-fx-border-radius: 15; " +
-                                "-fx-background-radius: 15; " +
-                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-                );
+                createBackBtn();
                 boxScreen.getChildren().add(backBtn);
                 handFinger.setVisible(false);
             }
@@ -167,14 +145,7 @@ public class MenuController implements Initializable {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                backBtn.resizeRelocate(100, 500, 100, 100);
-                backBtn.setStyle(
-                        "-fx-background-color: #4CAF50; " +
-                                "-fx-text-fill: white; " +
-                                "-fx-border-radius: 15; " +
-                                "-fx-background-radius: 15; " +
-                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-                );
+                createBackBtn();
                 boxScreen.getChildren().add(backBtn);
             }
         });
@@ -250,18 +221,21 @@ public class MenuController implements Initializable {
                 } else if (choice == 3){
                     showView("/Views/multiple-choice-view.fxml");
                 }
-                backBtn.resizeRelocate(100, 500, 100, 100);
-                backBtn.setStyle(
-                        "-fx-background-color: #4CAF50; " +
-                                "-fx-text-fill: white; " +
-                                "-fx-border-radius: 15; " +
-                                "-fx-background-radius: 15; " +
-                                "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87))");                boxScreen.getChildren().add(backBtn);
+                createBackBtn();
+                boxScreen.getChildren().add(backBtn);
 
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
         });
+    }
+
+    private void createBackBtn() {
+        backBtn.setLayoutX(5);
+        backBtn.setLayoutY(5);
+        backBtn.setPrefSize(36, 36);
+        backBtn.getStyleClass().add("backBtn");
+        backBtn.getStylesheets().add("file:src/main/resources/Utils/css/fullpackstyling.css");
     }
 
     @FXML
@@ -316,6 +290,8 @@ public class MenuController implements Initializable {
         label.getStyleClass().clear();
         label.getStyleClass().add("label");
 
+//        TranslateController.fromLanguage.getStyleClass().clear();
+//        TranslateController.fromLanguage.getStyleClass().add("label");
 
     }
 
@@ -337,8 +313,10 @@ public class MenuController implements Initializable {
         label.getStyleClass().clear();
         label.getStyleClass().add("label-dark");
 
+//        TranslateController.fromLanguage.getStyleClass().clear();
+//        TranslateController.fromLanguage.getStyleClass().add("label-dark");
     }
-    private boolean isLightMode = true;
+    public static boolean isLightMode = true;
     private int choice;
     private int storage;
 
