@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="596.0" prefWidth="916.0" stylesheets="@../Utils/css/highlight.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HighlightController">
+<AnchorPane fx:id="anchorPane" prefHeight="593.0" prefWidth="916.0" stylesheets="@../Utils/css/highlight.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HighlightController">
    <children>
       <Button fx:id="word" alignment="CENTER" contentDisplay="CENTER" layoutX="242.0" layoutY="134.0" mnemonicParsing="false" prefHeight="328.0" prefWidth="431.0" stylesheets="@../Utils/css/highlight.css" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="next" layoutX="727.0" layoutY="480.0" mnemonicParsing="false" stylesheets="@../Utils/css/highlight.css" text="next" />

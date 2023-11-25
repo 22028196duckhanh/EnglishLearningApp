@@ -2,30 +2,44 @@
 Menu View
 */
 
+.pane {
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-background-color: transparent;
+
+}
 .menu-bar {
     -fx-background-color : linear-gradient(to bottom, #FFF0F5, #F5F8FA);
+    -fx-background-radius: 0 0 0 15;
+    -fx-border-radius: 0 0 0 15;
 }
 
 .menu-bar-dark {
-    -fx-background-color: #2d4059
+    -fx-background-color: #2d4059;
+    -fx-background-radius: 0 0 15 0;
+    -fx-border-radius: 0 0 15 0;
 }
 
 .hBar {
-    -fx-background-radius:  0 0 0 0;
+    -fx-background-radius:  15 15 0 0;
     -fx-background-color: #D0D0D0;
 }
 
 .hBar-dark {
-    -fx-background-radius:  0 0 0 0;
+    -fx-background-radius:  15 15 0 0;
     -fx-background-color: #161616;
 }
 
 .menu-view {
     -fx-background-color : linear-gradient(to bottom, #CCEEFF, #FFF0F5);
+    -fx-background-radius: 0 0 15 0;
+    -fx-border-radius: 0 0 15 0;
 }
 
 .menu-view-dark {
     -fx-background-color : #393351;
+    -fx-background-radius: 0 0 15 0;
+    -fx-border-radius: 0 0 15 0;
 }
 
 @font-face {
@@ -71,6 +85,7 @@ Button
 .button-1:hover {
     -fx-background-color: #c2ade6;
     -fx-text-fill: transparent;
+    -fx-background-radius: 48;
 }
 
 .button-2 {
@@ -80,12 +95,12 @@ Button
 
 .button-3 {
     -fx-background-color: #c2ade6;
-    -fx-background-radius: 100;
+    -fx-background-radius: 48;
 }
 
 .button-3:hover {
     -fx-background-color: #c2ade6;
-    -fx-background-radius: 100;
+    -fx-background-radius: 48;
 }
 
 .button-4 {
@@ -106,7 +121,8 @@ Button
     -fx-text-fill: transparent;
     -fx-border-width: 0;
     -fx-border-color: transparent;
-    -fx-background-radius: 20;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
     -fx-background-image: url('../images/icons8-back-64.png');
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
@@ -114,7 +130,7 @@ Button
 
 .backBtn:hover {
     -fx-cursor: hand;
-    -fx-background-color: lightblue;
+    -fx-background-image: url('../images/icons8-back-64-2.png');
 }
 
 /*
@@ -124,15 +140,15 @@ Search View
 .text-field {
     -fx-control-inner-background: #C5FAD5;
     -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
-    -fx-border-radius: 0 0 0 0;
-    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 15 15 0 0;
+    -fx-background-radius: 15 15 0 0;
 }
 
 .list-view {
     -fx-control-inner-background: #C5FAD5;
     -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
-    -fx-border-radius: 0 0 0 0;
-    -fx-background-radius: 0 0 0 0;
+    -fx-border-radius: 0 0 15 15;
+    -fx-background-radius: 0 0 15 15;
 }
 
 .list-view .list-cell:filled:selected {

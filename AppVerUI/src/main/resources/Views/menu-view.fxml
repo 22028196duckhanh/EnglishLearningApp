@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" styleClass="pane" stylesheets="@../Utils/css/fullpackstyling.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
    <children>
-      <AnchorPane fx:id="boxScreen" layoutX="102.0" layoutY="26.0" prefHeight="596.0" prefWidth="916.0" styleClass="menu-view" stylesheets="@../Utils/css/fullpackstyling.css">
+      <AnchorPane fx:id="boxScreen" layoutX="102.0" layoutY="26.0" prefHeight="593.0" prefWidth="916.0" styleClass="menu-view" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
             <ImageView fx:id="handFinger" fitHeight="223.0" fitWidth="230.0" layoutX="340.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -22,7 +22,7 @@
                </image>
             </ImageView>
          </children></AnchorPane>
-      <HBox fx:id="hBox" alignment="CENTER_RIGHT" layoutX="-4.0" prefHeight="26.0" prefWidth="1024.0" styleClass="hBar" stylesheets="@../Utils/css/fullpackstyling.css">
+      <HBox fx:id="hBox" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="1018.0" styleClass="hBar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
             <Label fx:id="label" prefHeight="20.0" prefWidth="517.0" stylesheets="@../Utils/css/fullpackstyling.css" text="English Learning Application" textFill="#000000e2" />
             <Circle fill="#17d921" onMouseClicked="#min" radius="6.0" stroke="#17d921" strokeType="INSIDE">
@@ -51,7 +51,7 @@
             </Circle>
          </children>
       </HBox>
-      <VBox fx:id="vBox" layoutY="26.0" prefHeight="595.0" prefWidth="102.0" styleClass="menu-bar" stylesheets="@../Utils/css/fullpackstyling.css">
+      <VBox fx:id="vBox" layoutY="26.0" prefHeight="593.0" prefWidth="102.0" styleClass="menu-bar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
             <Pane prefHeight="115.0" prefWidth="86.0">
                <children>

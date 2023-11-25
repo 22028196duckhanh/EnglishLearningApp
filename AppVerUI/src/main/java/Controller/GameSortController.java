@@ -35,12 +35,12 @@ public class GameSortController implements Initializable {
         check.setOnMouseExited(e->{
             check.setImage(new Image("file:src/main/resources/Utils/images/check_sort.png"));
         });
-        next.setImage(new Image("file:src/main/resources/Utils/images/next.png"));
+        next.setImage(new Image("file:src/main/resources/Utils/images/icons8-next-64.png"));
         next.setOnMouseEntered(e->{
-            next.setImage(new Image("file:src/main/resources/Utils/images/next-full.png"));
+            next.setImage(new Image("file:src/main/resources/Utils/images/icons8-next-64-2.png"));
         });
         next.setOnMouseExited(e->{
-            next.setImage(new Image("file:src/main/resources/Utils/images/next.png"));
+            next.setImage(new Image("file:src/main/resources/Utils/images/icons8-next-64.png"));
         });
         start.setImage(new Image("file:src/main/resources/Utils/images/start_white.png"));
         check.setVisible(false);
