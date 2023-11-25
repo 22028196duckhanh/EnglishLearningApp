@@ -48,8 +48,9 @@ public class SearchController implements Initializable {
             public void handle(KeyEvent keyEvent) {
                 if (searchArea.getText().isEmpty()) {
                     defaultHistory();
-                    explaination.setHtmlText("");
-                    explaination.setDisable(true);
+                    explanation.setHtmlText("");
+                    explanationOnlyView.getEngine().loadContent("");
+                    //explanation.setDisable(true);
                 } else {
                     try {
                         handleOnKeyTyped();
@@ -76,20 +77,29 @@ public class SearchController implements Initializable {
         });
 
         editWord.setOnAction(actionEvent -> {
-            explaination.setDisable(false);
+            explanationOnlyView.setVisible(false);
+            explanation.setVisible(true);
             confirm.setVisible(true);
             editWord.setVisible(false);
         });
 
         confirm.setOnAction(actionEvent -> {
-            explaination.setDisable(true);
-            confirm.setVisible(false);
-            editWord.setVisible(true);
             try {
-                dictionary.editHtml(selectedWord, explaination.getHtmlText());
+                dictionary.editHtml(selectedWord, explanation.getHtmlText().replace("<body contenteditable=\"true\">",""));
+                String html = dictionary.getFullExplain(selectedWord);
+                String htmlContent = html;
+                if(!html.startsWith(style,22)) {
+                    htmlContent = style + dictionary.getFullExplain(selectedWord);
+                }
+                explanation.setHtmlText(htmlContent);
+                explanationOnlyView.getEngine().loadContent(htmlContent);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+            confirm.setVisible(false);
+            editWord.setVisible(true);
+            explanation.setVisible(false);
+            explanationOnlyView.setVisible(true);
             Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
             successAlert.setTitle("Success");
             successAlert.setContentText("Edit successfully!");
@@ -100,7 +110,8 @@ public class SearchController implements Initializable {
             try {
                 dictionary.setDefault(selectedWord);
                 String htmlContent = style + dictionary.getFullExplain(selectedWord);
-                explaination.setHtmlText(htmlContent);
+                explanation.setHtmlText(htmlContent);
+                explanationOnlyView.getEngine().loadContent(htmlContent);
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
@@ -119,7 +130,7 @@ public class SearchController implements Initializable {
             }
         });
 
-        Node[] nodes = explaination.lookupAll(".tool-bar").toArray(new Node[0]);
+        Node[] nodes = explanation.lookupAll(".tool-bar").toArray(new Node[0]);
         for (Node node : nodes) {
             node.setVisible(false);
             node.setManaged(false);
@@ -128,8 +139,10 @@ public class SearchController implements Initializable {
         setDefault.setVisible(false);
         editWord.setVisible(false);
         speaker.setVisible(false);
-        explaination.setHtmlText("");
-        explaination.setDisable(true);
+        explanation.setHtmlText("");
+        explanationOnlyView.getEngine().loadContent("");
+        explanationOnlyView.setVisible(true);
+        explanation.setVisible(false);
         highlight.setVisible(false);
         confirm.setVisible(false);
     }
@@ -153,10 +166,12 @@ public class SearchController implements Initializable {
         String htmlContent;
         if (selectedWord != null) {
             htmlContent = style + dictionary.getFullExplain(selectedWord);
-            if (htmlContent.isEmpty()) {
-                explaination.setHtmlText("<h1>No Results</h1>");
+            if (htmlContent.equals(style)) {
+                explanation.setHtmlText("<h1>No Results</h1>");
+                explanationOnlyView.getEngine().loadContent("<h1>No Results</h1>");
             } else {
-                explaination.setHtmlText(htmlContent);
+                explanation.setHtmlText(htmlContent);
+                explanationOnlyView.getEngine().loadContent(htmlContent);
             }
             speaker.setText(selectedWord);
             if (!dictionary.getFullExplain(selectedWord).isEmpty()) {
@@ -167,12 +182,14 @@ public class SearchController implements Initializable {
             } else {
                 highlight.setImage(new Image("file:src/main/resources/Utils/images/icons8-star-36.png"));
             }
-            speaker.setVisible(true);
-            explaination.setVisible(true);
-            editWord.setVisible(true);
-            setDefault.setVisible(true);
-            highlight.setVisible(true);
         }
+        speaker.setVisible(true);
+        explanation.setVisible(false);
+        explanationOnlyView.setVisible(true);
+        editWord.setVisible(true);
+        setDefault.setVisible(true);
+        highlight.setVisible(true);
+        confirm.setVisible(false);
     }
 
     @FXML
@@ -264,7 +281,10 @@ public class SearchController implements Initializable {
     private TextField searchArea;
 
     @FXML
-    private HTMLEditor explaination;
+    private HTMLEditor explanation;
+
+    @FXML
+    private WebView explanationOnlyView;
 
     @FXML
     private ImageView highlight;
