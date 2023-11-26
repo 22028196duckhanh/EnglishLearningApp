@@ -1,8 +1,11 @@
 #anchorPane {
-    -fx-background-color: #f0f0f0; /* Light gray background */
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 0 15 0;
+    -fx-border-radius:  0 0 15 0;
 }
 
 #word {
+    -fx-cursor: hand;
     -fx-background-image: url('../images/flashcard.png');
     -fx-background-size: cover;
     -fx-background-position: center;
@@ -12,12 +15,49 @@
     -fx-font-size: 18px;
 }
 
-#next, #prev {
-    -fx-background-color: #27ae60; /* Green background */
-    -fx-text-fill: white; /* White text color */
-    -fx-font-size: 14px; /* Font size */
+#next {
+    -fx-cursor: hand;
+    -fx-text-fill: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-background-image: url('../images/icons8-next-64.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
 }
 
-#next:hover, #prev:hover {
-    -fx-background-color: #218c53; /* Darker green on hover */
+#prev {
+    -fx-cursor: hand;
+    -fx-text-fill: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-background-image: url('../images/icons8-back-64.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+#next:hover {
+    -fx-cursor: hand;
+    -fx-text-fill: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-background-image: url('../images/icons8-next-64-2.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+}
+
+#prev:hover {
+    -fx-text-fill: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+    -fx-background-radius: 10;
+    -fx-background-image: url('../images/icons8-back-64-2.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
 }

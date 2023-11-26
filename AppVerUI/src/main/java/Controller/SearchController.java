@@ -1,9 +1,9 @@
 package Controller;
 
 import Server.*;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.css.PseudoClass;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -13,18 +13,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
 
 import java.net.URL;
-import java.security.PrivateKey;
 import java.sql.SQLException;
 import java.util.Objects;
-import java.util.PriorityQueue;
-import java.util.Queue;
 import java.util.ResourceBundle;
 
 public class SearchController implements Initializable {
@@ -117,6 +112,8 @@ public class SearchController implements Initializable {
             }
         });
 
+
+
         highlight.setOnMouseClicked(e -> {
             try {
                 dictionary.setHighlight(selectedWord);
@@ -145,6 +142,9 @@ public class SearchController implements Initializable {
         explanation.setVisible(false);
         highlight.setVisible(false);
         confirm.setVisible(false);
+
+        String css = "body { background-color: #defcf9; }";
+        explanationOnlyView.getEngine().setUserStyleSheetLocation("data:text/css;charset=utf-8," + css);
     }
 
     @FXML
@@ -277,6 +277,7 @@ public class SearchController implements Initializable {
         listResults.setItems(result);
     }
 
+
     @FXML
     private TextField searchArea;
 
@@ -307,7 +308,7 @@ public class SearchController implements Initializable {
     @FXML
     private ListView<String> listResults;
 
-    private String style = "<style> body {line-height: 1}h1 {\n" +
+    private String style = "<style> body {line-height: 1; background-color: #defcf9;}h1 {\n" +
             "            color: #990000;\n" +
             "        }\n" +
             "\n" +

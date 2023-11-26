@@ -1,6 +1,7 @@
 package Controller;
 
 import Server.History;
+
 import javafx.animation.RotateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -10,13 +11,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-// import org.w3c.dom.events.MouseEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
@@ -66,16 +67,18 @@ public class MenuController implements Initializable {
                         "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
         );
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
             public void handle(ActionEvent event) {
                 try {
                     showView("/Views/search-view.fxml");
+                    gameBtn.setSelected(false);
+                    translateBtn.setSelected(false);
+                    highlightBtn.setSelected(false);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                handFinger.setVisible(false);
             }
         });
+
 
         gameBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -87,6 +90,10 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameChoiceBtn);
                 boxScreen.getChildren().add(handFinger);
                 handFinger.setVisible(true);
+
+                searchBtn.setSelected(false);
+                translateBtn.setSelected(false);
+                highlightBtn.setSelected(false);
             }
         });
 
@@ -154,6 +161,9 @@ public class MenuController implements Initializable {
             public void handle(ActionEvent event) {
                 try {
                     showView("/Views/translate-view.fxml");
+                    searchBtn.setSelected(false);
+                    gameBtn.setSelected(false);
+                    highlightBtn.setSelected(false);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -165,6 +175,9 @@ public class MenuController implements Initializable {
             public void handle(ActionEvent event) {
                 try {
                     showView("/Views/highlight-view.fxml");
+                    searchBtn.setSelected(false);
+                    gameBtn.setSelected(false);
+                    translateBtn.setSelected(false);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -339,7 +352,10 @@ public class MenuController implements Initializable {
     public AnchorPane boxScreen;
 
     @FXML
-    private Button searchBtn, translateBtn, gameBtn, exitBtn, highlightBtn;
+    private ToggleButton searchBtn, translateBtn, gameBtn, highlightBtn;
+
+    @FXML
+    private Button exitBtn;
 
     @FXML
     private ImageView handFinger;

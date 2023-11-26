@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -62,13 +63,7 @@
                   </ImageView>
                </children>
             </Pane>
-            <Button fx:id="searchBtn" alignment="BASELINE_LEFT" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Search" textFill="WHITE">
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+            <ToggleButton fx:id="searchBtn" mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -76,14 +71,8 @@
                      </image>
                   </ImageView>
                </graphic>
-            </Button>
-            <Button fx:id="translateBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Translate" textFill="WHITE">
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+            </ToggleButton>
+            <ToggleButton fx:id="translateBtn" mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -91,17 +80,8 @@
                      </image>
                   </ImageView>
                </graphic>
-            </Button>
-            <Button fx:id="gameBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Game" textFill="WHITE">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+            </ToggleButton>
+            <ToggleButton fx:id="gameBtn" mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -109,14 +89,8 @@
                      </image>
                   </ImageView>
                </graphic>
-            </Button>
-            <Button fx:id="highlightBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Help" textFill="WHITE">
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+            </ToggleButton>
+            <ToggleButton fx:id="highlightBtn" mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -124,14 +98,8 @@
                      </image>
                   </ImageView>
                </graphic>
-            </Button>
-            <Button fx:id="highlightBtn1" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Help" textFill="WHITE">
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+            </ToggleButton>
+            <ToggleButton mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -139,11 +107,8 @@
                      </image>
                   </ImageView>
                </graphic>
-            </Button>
+            </ToggleButton>
             <Button fx:id="exitBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Exit" textFill="WHITE">
-               <padding>
-                  <Insets left="30.0" />
-               </padding>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -157,6 +122,9 @@
                <VBox.margin>
                   <Insets />
                </VBox.margin>
+               <padding>
+                  <Insets left="30.0" />
+               </padding>
             </Button>
             <Button fx:id="btnMode" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeMode" prefHeight="58.0" prefWidth="202.0" styleClass="button-3" stylesheets="@../Utils/css/fullpackstyling.css" textFill="WHITE">
                <cursor>
@@ -170,7 +138,7 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="50.0" />
+                  <Insets top="49.0" />
                </VBox.margin>
                <padding>
                   <Insets left="24.0" />
