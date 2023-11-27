@@ -1,0 +1,39 @@
+.text-field {
+    -fx-control-inner-background: #014584;
+    -fx-border-color:  linear-gradient(to right, #5267f8, rgba(65, 225, 212, 0.87));
+    -fx-border-radius: 15 15 0 0;
+    -fx-background-radius: 15 15 0 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-text-fill: white;
+}
+
+.list-view {
+    -fx-control-inner-background: #014584;
+    -fx-border-color:  linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
+    -fx-border-radius: 0 0 15 15;
+    -fx-background-radius: 0 0 15 15;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
+.list-view .list-cell {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.list-view .list-cell:filled:selected {
+    -fx-background-color: lightblue;
+    -fx-text-fill: white;
+}
+
+.list-view .list-cell:filled:focused:selected {
+    -fx-background-color: lightblue;
+    -fx-text-fill: black;
+}
+
+.list-view .list-cell:filled:hover {
+    -fx-background-color: lightblue;
+    -fx-text-fill: black;
+}
+

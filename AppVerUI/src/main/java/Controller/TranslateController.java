@@ -1,26 +1,26 @@
 package Controller;
 
 import Server.SpeechToText;
-import Server.TextToSpeech;
 import Server.TranslatorAPI;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
-import java.io.IOException;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.Objects;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
 
 public class TranslateController {
 
@@ -112,8 +112,19 @@ public class TranslateController {
 
                 taskFuture = threadPool.submit(translatorAPI);
             }
-
         });
+
+        if (!MenuController.isLightMode) {
+            fromLanguage.getStyleClass().clear();
+            toLanguage.getStyleClass().clear();
+            text.getStylesheets().removeAll();
+            translated.getStylesheets().removeAll();
+
+            fromLanguage.getStyleClass().add("label-dark");
+            toLanguage.getStyleClass().add("label-dark");
+            text.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darktranslate.css")).toExternalForm());
+            translated.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darktranslate.css")).toExternalForm());
+        }
     }
 }
 

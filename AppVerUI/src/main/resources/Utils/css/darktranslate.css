@@ -1,0 +1,19 @@
+.text-area {
+    -fx-background-color: #343541;
+    -fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-font-family: 'SF Pro';
+    -fx-font-size: 20px;
+    -fx-text-fill: rgb(255, 255, 255);
+}
+
+.text-area .scroll-pane {
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.text-area .scroll-pane .content{
+    -fx-background-color: transparent;
+}

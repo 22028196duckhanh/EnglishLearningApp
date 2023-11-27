@@ -116,7 +116,6 @@ public class SearchController implements Initializable {
         });
 
 
-
         highlight.setOnMouseClicked(e -> {
             try {
                 dictionary.setHighlight(selectedWord);
@@ -148,6 +147,78 @@ public class SearchController implements Initializable {
 
         String css = "body { background-color: #defcf9; }";
         explanationOnlyView.getEngine().setUserStyleSheetLocation("data:text/css;charset=utf-8," + css);
+
+        if (!MenuController.isLightMode) {
+            String css_dark = "body { background-color: #343541; }";
+            explanationOnlyView.getEngine().setUserStyleSheetLocation("data:text/css;charset=utf-8," + css_dark);
+
+            style = "<style> body {line-height: 1; background-color: #343541; color: white; max-width: 580px; } " +
+                    "        h1 {\n" +
+                    "            color: white;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        h2, h3 {\n" +
+                    "            color: white;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        ul, ol {\n" +
+                    "            padding-left: 20px;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        li {\n" +
+                    "            margin-bottom: 10px;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        i {\n" +
+                    "            color: white;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        ul ul, ol ol {\n" +
+                    "            list-style-type: circle;\n" +
+                    "        }</style>";
+
+            searchArea.getStylesheets().removeAll();
+            listResults.getStylesheets().removeAll();
+            addWord.getStylesheets().removeAll();
+            editWord.getStylesheets().removeAll();
+            confirm.getStylesheets().removeAll();
+            setDefault.getStylesheets().removeAll();
+            speaker.getStylesheets().removeAll();
+
+            searchArea.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darksearch.css")).toExternalForm());
+            listResults.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darksearch.css")).toExternalForm());
+            addWord.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            editWord.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            confirm.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            setDefault.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            speaker.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+
+        } else {
+            style = "<style> body {line-height: 1; background-color: #defcf9; max-width: 580px; } " +
+                    "        h1 {\n" +
+                    "            color: red;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        h2, h3 {\n" +
+                    "            color: #0099CC;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        ul, ol {\n" +
+                    "            padding-left: 20px;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        li {\n" +
+                    "            margin-bottom: 10px;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        i {\n" +
+                    "            color: black;\n" +
+                    "        }\n" +
+                    "\n" +
+                    "        ul ul, ol ol {\n" +
+                    "            list-style-type: circle;\n" +
+                    "        }</style>";
+        }
     }
 
     @FXML
@@ -311,8 +382,9 @@ public class SearchController implements Initializable {
     @FXML
     private ListView<String> listResults;
 
-    private String style = "<style> body {line-height: 1; background-color: #defcf9;}h1 {\n" +
-            "            color: #990000;\n" +
+    private String style = "<style> body {line-height: 1; background-color: #defcf9; max-width: 580px; } " +
+            "        h1 {\n" +
+            "            color: red;\n" +
             "        }\n" +
             "\n" +
             "        h2, h3 {\n" +
@@ -328,7 +400,7 @@ public class SearchController implements Initializable {
             "        }\n" +
             "\n" +
             "        i {\n" +
-            "            color: #AAAAAA;\n" +
+            "            color: black;\n" +
             "        }\n" +
             "\n" +
             "        ul ul, ol ol {\n" +

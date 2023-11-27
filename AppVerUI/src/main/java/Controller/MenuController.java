@@ -66,19 +66,22 @@ public class MenuController implements Initializable {
                         "-fx-background-radius: 15; " +
                         "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
         );
+
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
                     showView("/Views/search-view.fxml");
+
                     gameBtn.setSelected(false);
                     translateBtn.setSelected(false);
                     highlightBtn.setSelected(false);
+                    homeBtn.setSelected(false);
+                    btnMode.setVisible(false);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
-
 
         gameBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -94,6 +97,9 @@ public class MenuController implements Initializable {
                 searchBtn.setSelected(false);
                 translateBtn.setSelected(false);
                 highlightBtn.setSelected(false);
+                homeBtn.setSelected(false);
+
+                btnMode.setVisible(true);
             }
         });
 
@@ -161,9 +167,12 @@ public class MenuController implements Initializable {
             public void handle(ActionEvent event) {
                 try {
                     showView("/Views/translate-view.fxml");
+
                     searchBtn.setSelected(false);
                     gameBtn.setSelected(false);
                     highlightBtn.setSelected(false);
+                    homeBtn.setSelected(false);
+                    btnMode.setVisible(false);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -175,15 +184,18 @@ public class MenuController implements Initializable {
             public void handle(ActionEvent event) {
                 try {
                     showView("/Views/highlight-view.fxml");
+
                     searchBtn.setSelected(false);
                     gameBtn.setSelected(false);
                     translateBtn.setSelected(false);
+                    homeBtn.setSelected(false);
+
+                    btnMode.setVisible(true);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
             }
         });
-
 
         backBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -198,12 +210,29 @@ public class MenuController implements Initializable {
                 handFinger.setVisible(true);
             }
         });
+
         handFinger.setOnMouseClicked(e-> {
             spin(handFinger);
         });
+
         choice = 1;
         storage = 0;
         handFinger.setVisible(false);
+        homeBtn.setSelected(true);
+
+        homeBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                boxScreen.getChildren().clear();
+
+                searchBtn.setSelected(false);
+                gameBtn.setSelected(false);
+                translateBtn.setSelected(false);
+                highlightBtn.setSelected(false);
+
+                btnMode.setVisible(true);
+            }
+        });
     }
 
     public void setView(Node view) {
@@ -278,10 +307,10 @@ public class MenuController implements Initializable {
 
     public void changeMode(ActionEvent event) {
         isLightMode = !isLightMode;
-        if (isLightMode) {
-            setLightMode();
-        } else {
+        if (btnMode.isSelected()) {
             setDarkMode();
+        } else {
+            setLightMode();
         }
     }
 
@@ -302,10 +331,6 @@ public class MenuController implements Initializable {
 
         label.getStyleClass().clear();
         label.getStyleClass().add("label");
-
-//        TranslateController.fromLanguage.getStyleClass().clear();
-//        TranslateController.fromLanguage.getStyleClass().add("label");
-
     }
 
     public void setDarkMode () {
@@ -325,11 +350,10 @@ public class MenuController implements Initializable {
 
         label.getStyleClass().clear();
         label.getStyleClass().add("label-dark");
-
-//        TranslateController.fromLanguage.getStyleClass().clear();
-//        TranslateController.fromLanguage.getStyleClass().add("label-dark");
     }
+
     public static boolean isLightMode = true;
+
     private int choice;
     private int storage;
 
@@ -346,13 +370,13 @@ public class MenuController implements Initializable {
     private Label label;
 
     @FXML
-    private Button btnMode;
+    private ToggleButton btnMode;
 
     @FXML
     public AnchorPane boxScreen;
 
     @FXML
-    private ToggleButton searchBtn, translateBtn, gameBtn, highlightBtn;
+    private ToggleButton homeBtn, searchBtn, translateBtn, gameBtn, highlightBtn;
 
     @FXML
     private Button exitBtn;

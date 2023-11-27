@@ -54,15 +54,24 @@
       </HBox>
       <VBox fx:id="vBox" layoutY="26.0" prefHeight="593.0" prefWidth="102.0" styleClass="menu-bar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
-            <Pane prefHeight="115.0" prefWidth="86.0">
+            <Pane prefHeight="76.0" prefWidth="86.0">
                <children>
-                  <ImageView fitHeight="58.0" fitWidth="82.0" layoutX="13.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="58.0" fitWidth="58.0" layoutX="15.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/images/infinity.png" />
                      </image>
                   </ImageView>
                </children>
             </Pane>
+            <ToggleButton fx:id="homeBtn" mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css">
+               <graphic>
+                  <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../Utils/images/home.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </ToggleButton>
             <ToggleButton fx:id="searchBtn" mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css">
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
@@ -126,10 +135,7 @@
                   <Insets left="30.0" />
                </padding>
             </Button>
-            <Button fx:id="btnMode" alignment="BASELINE_LEFT" mnemonicParsing="false" onAction="#changeMode" prefHeight="58.0" prefWidth="202.0" styleClass="button-3" stylesheets="@../Utils/css/fullpackstyling.css" textFill="WHITE">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
+            <ToggleButton fx:id="btnMode" mnemonicParsing="false" onAction="#changeMode" prefHeight="58.0" prefWidth="86.0" styleClass="button-3" stylesheets="@../Utils/css/fullpackstyling.css">
                <graphic>
                   <ImageView fx:id="imgMode" fitHeight="53.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -138,12 +144,9 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="49.0" />
+                  <Insets top="28.0" />
                </VBox.margin>
-               <padding>
-                  <Insets left="24.0" />
-               </padding>
-            </Button>
+            </ToggleButton>
          </children>
       </VBox>
    </children>

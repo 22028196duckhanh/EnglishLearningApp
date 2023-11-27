@@ -8,16 +8,15 @@ Menu View
 }
 
 .menu-bar {
-    -fx-background-color:
-            #c7f3ff;
+    -fx-background-color: #fae6f3;
     -fx-background-radius: 0 0 0 15;
     -fx-border-radius: 0 0 0 15;
 }
 
 .menu-bar-dark {
     -fx-background-color: #2d4059;
-    -fx-background-radius: 0 0 15 0;
-    -fx-border-radius: 0 0 15 0;
+    -fx-background-radius: 0 0 0 15;
+    -fx-border-radius: 0 0 0 15;
 }
 
 .hBar {
@@ -39,7 +38,7 @@ Menu View
 }
 
 .menu-view-dark {
-    -fx-background-color : #393351;
+    -fx-background-color : #343541;
     -fx-background-radius: 0 0 15 0;
     -fx-border-radius: 0 0 15 0;
 }
@@ -72,7 +71,7 @@ Menu View
     -fx-font-weight: bold;
     -fx-font-style: normal;
     -fx-font-size: 14px;
-    -fx-text-fill: rgba(255, 255, 255, 0.91);
+    -fx-text-fill: rgb(255, 255, 255);
 }
 
 /*
@@ -108,6 +107,7 @@ Button
 .button-3 {
     -fx-background-color: #c2ade6;
     -fx-background-radius: 48;
+    -fx-cursor: hand;
 }
 
 .button-3:hover {
@@ -157,21 +157,42 @@ Search View
     -fx-background-radius: 15 15 0 0;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
+    -fx-text-fill: black;
+}
+
+.text-field-dark{
+    -fx-control-inner-background: #4f3b78;
+    -fx-border-color:  linear-gradient(to right, #5267f8, rgba(65, 225, 212, 0.87));
+    -fx-border-radius: 15 15 0 0;
+    -fx-background-radius: 15 15 0 0;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-text-fill: white;
 }
 
 .list-view {
     -fx-control-inner-background: #C5FAD5;
-    -fx-border-color:  #00539C;
+    -fx-border-color:  linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
     -fx-border-radius: 0 0 15 15;
     -fx-background-radius: 0 0 15 15;
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
 }
+
+.list-view-dark {
+    -fx-control-inner-background: #4f3b78;
+    -fx-border-color:  linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));
+    -fx-border-radius: 0 0 15 15;
+    -fx-background-radius: 0 0 15 15;
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}
+
 .list-view .list-cell {
     -fx-background-color: transparent;
     -fx-text-fill: black;
-
 }
+
 .list-view .list-cell:filled:selected {
     -fx-background-color: lightblue;
     -fx-text-fill: black;
