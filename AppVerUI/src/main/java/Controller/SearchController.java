@@ -50,7 +50,10 @@ public class SearchController implements Initializable {
                     defaultHistory();
                     explanation.setHtmlText("");
                     explanationOnlyView.getEngine().loadContent("");
-                    //explanation.setDisable(true);
+                    setDefault.setVisible(false);
+                    editWord.setVisible(false);
+                    speaker.setVisible(false);
+                    highlight.setVisible(false);
                 } else {
                     try {
                         handleOnKeyTyped();
