@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
@@ -26,7 +27,8 @@ public class HighlightController implements Initializable {
 
     @FXML
     Button word, next, prev;
-
+    @FXML
+    Label empty;
     @FXML
     AnchorPane anchorPane;
     DatabaseDictionary dictionary = new DatabaseDictionary();
@@ -36,28 +38,21 @@ public class HighlightController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Image backgroundImage = new Image("file:src/main/resources/Utils/images/fillgame_background.jpg");
         word.setWrapText(true);
-        javafx.scene.layout.BackgroundImage background = new javafx.scene.layout.BackgroundImage(
-                backgroundImage,
-                javafx.scene.layout.BackgroundRepeat.NO_REPEAT,
-                javafx.scene.layout.BackgroundRepeat.NO_REPEAT,
-                javafx.scene.layout.BackgroundPosition.DEFAULT,
-                javafx.scene.layout.BackgroundSize.DEFAULT
-        );
-
-        javafx.scene.layout.Background backgroundObject = new javafx.scene.layout.Background(background);
-
-        anchorPane.setBackground(backgroundObject);
 
         try {
-            if(dictionary == null)
-                dictionary.init();
             dictionary.searchHighlight(words);
+            empty.setVisible(words.isEmpty());
+            word.setVisible(!words.isEmpty());
+            next.setVisible(!words.isEmpty());
+            prev.setVisible(!words.isEmpty());
             iterator = words.listIterator();
-            front = words.get(0).getKey();
-            back = words.get(0).getValue();
-            word.setText(front);
+
+            if(!words.isEmpty()) {
+                front = words.get(0).getKey();
+                back = words.get(0).getValue();
+                word.setText(front);
+            }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -65,10 +60,11 @@ public class HighlightController implements Initializable {
         next.setOnAction(e -> {
             if(iterator.hasNext()){
                 Pair<String,String> tmp = null;
-                while(tmp == null || tmp.getKey().equals(front))
+                while(iterator.hasNext() && (tmp == null || tmp.getKey().equals(front))) {
                     tmp = iterator.next();
+                }
+                assert tmp != null;
                 front = tmp.getKey();
-                System.out.println(front);
                 back = tmp.getValue();
                 word.setText(front);
             }
@@ -77,8 +73,10 @@ public class HighlightController implements Initializable {
         prev.setOnAction(e -> {
             if(iterator.hasPrevious()){
                 Pair<String,String> tmp = null;
-                while(tmp == null || tmp.getKey().equals(front))
+                while(iterator.hasPrevious() && (tmp == null || tmp.getKey().equals(front))) {
                     tmp = iterator.previous();
+                }
+                assert tmp != null;
                 front = tmp.getKey();
                 back = tmp.getValue();
                 word.setText(front);

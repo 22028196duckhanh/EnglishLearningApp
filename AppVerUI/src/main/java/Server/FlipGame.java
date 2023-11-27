@@ -15,6 +15,8 @@ public class FlipGame {
             if (resultSet.next()) {
                 column2Value = resultSet.getString("imageLink");
             }
+            statement.close();
+            resultSet.close();
             return column2Value;
         } finally {
             if (connection != null) {

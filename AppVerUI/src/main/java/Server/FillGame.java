@@ -21,6 +21,9 @@ public class FillGame {
             column2Value = resultSet.getString("question");
             column3Value = resultSet.getString("answer");
         }
+        resultSet.close();
+        connection.close();
+        statement.close();
         return new Pair<String, String>(column2Value, column3Value);
     }
 }
