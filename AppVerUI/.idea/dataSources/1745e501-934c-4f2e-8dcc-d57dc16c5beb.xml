@@ -446,8 +446,8 @@
     <routine id="176" parent="1" name="fts5"/>
     <schema id="177" parent="1" name="main">
       <Current>1</Current>
-      <IntrospectionTimestamp>2023-11-15.21:49:28.310</IntrospectionTimestamp>
-      <LocalIntrospectionTimestamp>2023-11-15.14:49:28</LocalIntrospectionTimestamp>
+      <IntrospectionTimestamp>2023-10-12.16:29:31.792</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-10-12.09:29:31</LocalIntrospectionTimestamp>
     </schema>
     <argument id="178" parent="16">
       <ArgumentDirection>R</ArgumentDirection>
@@ -1494,61 +1494,51 @@
       <DasType>TEXT|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="526" parent="518" name="change_html">
-      <DasType>TEXT|0s</DasType>
-      <Position>6</Position>
-    </column>
-    <column id="527" parent="518" name="highlight">
-      <DasType>integer|0s</DasType>
-      <DefaultExpression>0</DefaultExpression>
-      <NotNull>1</NotNull>
-      <Position>7</Position>
-    </column>
-    <key id="528" parent="518">
+    <key id="526" parent="518">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="529" parent="519" name="type">
+    <column id="527" parent="519" name="type">
       <DasType>TEXT|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="530" parent="519" name="name">
+    <column id="528" parent="519" name="name">
       <DasType>TEXT|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="531" parent="519" name="tbl_name">
+    <column id="529" parent="519" name="tbl_name">
       <DasType>TEXT|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="532" parent="519" name="rootpage">
+    <column id="530" parent="519" name="rootpage">
       <DasType>INT|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="533" parent="519" name="sql">
+    <column id="531" parent="519" name="sql">
       <DasType>TEXT|0s</DasType>
       <Position>5</Position>
     </column>
-    <column id="534" parent="520" name="id">
+    <column id="532" parent="520" name="id">
       <DasType>integer|0s</DasType>
       <Position>1</Position>
     </column>
-    <column id="535" parent="520" name="word">
+    <column id="533" parent="520" name="word">
       <DasType>text|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="536" parent="520" name="html">
+    <column id="534" parent="520" name="html">
       <DasType>text|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="537" parent="520" name="description">
+    <column id="535" parent="520" name="description">
       <DasType>TEXT|0s</DasType>
       <Position>4</Position>
     </column>
-    <column id="538" parent="520" name="pronounce">
+    <column id="536" parent="520" name="pronounce">
       <DasType>TEXT|0s</DasType>
       <Position>5</Position>
     </column>
-    <key id="539" parent="520">
+    <key id="537" parent="520">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>

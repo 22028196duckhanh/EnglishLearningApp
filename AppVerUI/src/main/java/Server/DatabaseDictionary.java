@@ -69,7 +69,7 @@ public class DatabaseDictionary extends Dictionary {
 
     @Override
     public ArrayList<String> searchWord(String prefix) throws SQLException {
-        Set<String> words = new TreeSet<>();
+        Set<String> words = new LinkedHashSet<>();
         String sql_query = "SELECT word FROM av WHERE word LIKE ?";
         PreparedStatement statement = connection.prepareStatement(sql_query);
         statement.setString(1, prefix + '%');

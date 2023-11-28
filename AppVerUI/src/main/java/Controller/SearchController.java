@@ -38,6 +38,7 @@ public class SearchController implements Initializable {
             History.insertFromFile();
         }
         defaultHistory();
+        searchArea.setPromptText("Search here");
         searchArea.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -49,6 +50,7 @@ public class SearchController implements Initializable {
                     editWord.setVisible(false);
                     speaker.setVisible(false);
                     highlight.setVisible(false);
+                    searchArea.setPromptText("Search here");
                 } else {
                     try {
                         handleOnKeyTyped();
@@ -232,6 +234,7 @@ public class SearchController implements Initializable {
 
     @FXML
     private void handleSelectWord() throws SQLException {
+        if (searchArea.getText().isEmpty() && listResults.getSelectionModel().isEmpty()) return;
         selectedWord = listResults.getSelectionModel().getSelectedItem();
         setResults();
     }
