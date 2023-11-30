@@ -15,5 +15,7 @@
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
+      <Button fx:id="delete" layoutX="62.0" layoutY="39.0" mnemonicParsing="false" text="delele" />
+      <Button fx:id="drop" layoutX="221.0" layoutY="39.0" mnemonicParsing="false" text="drop" />
    </children>
 </AnchorPane>

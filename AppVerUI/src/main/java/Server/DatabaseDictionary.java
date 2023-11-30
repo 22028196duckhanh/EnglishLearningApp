@@ -4,11 +4,6 @@ import java.sql.*;
 import java.util.*;
 
 import javafx.util.Pair;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.nodes.Node;
-import org.jsoup.nodes.TextNode;
 
 public class DatabaseDictionary extends Dictionary {
     private static final String jdbcURL = "jdbc:sqlite:src/main/resources/Utils/data/dictionary.db";
@@ -216,6 +211,17 @@ public class DatabaseDictionary extends Dictionary {
         statement.setString(1, word);
         ResultSet result = statement.executeQuery();
         return result.getInt("highlight");
+    }
+
+    public void deleteHighlight(String word) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("UPDATE av SET highlight = 0 WHERE word = ?");
+        statement.setString(1, word);
+        statement.executeUpdate();
+    }
+
+    public void dropHighlight() throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("UPDATE av SET highlight = 0 WHERE highlight = 1");
+        statement.executeUpdate();
     }
 
     public boolean editHtml(String word, String change) throws SQLException {

@@ -26,7 +26,7 @@ import java.util.ResourceBundle;
 public class HighlightController implements Initializable {
 
     @FXML
-    Button word, next, prev;
+    Button word, next, prev, delete, drop;
     @FXML
     Label empty;
     @FXML
@@ -40,22 +40,36 @@ public class HighlightController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         word.setWrapText(true);
 
-        try {
-            dictionary.searchHighlight(words);
-            empty.setVisible(words.isEmpty());
-            word.setVisible(!words.isEmpty());
-            next.setVisible(!words.isEmpty());
-            prev.setVisible(!words.isEmpty());
-            iterator = words.listIterator();
+        isEmptyScene();
 
-            if(!words.isEmpty()) {
-                front = words.get(0).getKey();
-                back = words.get(0).getValue();
-                word.setText(front);
+        drop.setOnAction(e ->{
+            isEmptyScene();
+            try {
+                dictionary.dropHighlight();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
             }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+        });
+
+        delete.setOnAction(e -> {
+            try {
+                // Check if there is a next or previous element
+                if (iterator.hasNext()) {
+                    next.fire();
+                } else if (iterator.hasPrevious()) {
+                    prev.fire();
+                } else {
+                    isEmptyScene();
+                }
+
+                // Delete the element and update the iterator
+                iterator.remove();
+                dictionary.deleteHighlight(front);
+                words.remove(new Pair<>(front, back));
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
+        });
 
         next.setOnAction(e -> {
             if(iterator.hasNext()){
@@ -85,6 +99,25 @@ public class HighlightController implements Initializable {
         word.setOnAction(actionEvent -> {
             flipButton1(word);
         });
+    }
+
+    private void isEmptyScene() {
+        try {
+            dictionary.searchHighlight(words);
+            empty.setVisible(words.isEmpty());
+            word.setVisible(!words.isEmpty());
+            next.setVisible(!words.isEmpty());
+            prev.setVisible(!words.isEmpty());
+            iterator = words.listIterator();
+
+            if(!words.isEmpty()) {
+                front = words.get(0).getKey();
+                back = words.get(0).getValue();
+                word.setText(front);
+            }
+        } catch (SQLException h) {
+            throw new RuntimeException(h);
+        }
     }
 
 

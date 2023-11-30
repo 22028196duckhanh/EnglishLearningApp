@@ -1,26 +1,30 @@
 package Controller;
 
 import Server.SpeechToText;
+import Server.TextToSpeech;
 import Server.TranslatorAPI;
-
+import javafx.animation.PauseTransition;
+import javafx.animation.Transition;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 
-import java.util.Objects;
+import java.io.IOException;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-
 
 public class TranslateController {
 
@@ -49,7 +53,8 @@ public class TranslateController {
     private ImageView speakerIcon = new ImageView(speakerImage);
     @FXML
     private ImageView convertIcon = new ImageView(convertImage);
-
+    PauseTransition pause = new PauseTransition(Duration.millis(300));
+    private final ExecutorService threadPool = Executors.newSingleThreadExecutor();
     public void initialize() {
         TranslatorAPI.setTextArea(translated);
         translated.setEditable(false);
@@ -84,6 +89,14 @@ public class TranslateController {
                 text.setPromptText("Type here...");
             }
             TranslatorAPI.changeLanguage();
+            translated.setText("");
+            TranslatorAPI.setText(text.getText());
+
+            if (taskFuture != null && !taskFuture.isDone()) {
+                taskFuture.cancel(true);
+            }
+
+            taskFuture = threadPool.submit(translatorAPI);
         });
 
         recognitionService.setOnSucceeded(event -> {
@@ -101,30 +114,16 @@ public class TranslateController {
         });
 
         text.textProperty().addListener(new ChangeListener<String>() {
-            final ExecutorService threadPool = Executors.newFixedThreadPool(1);
 
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 TranslatorAPI.setText(t1);
-
-                if (taskFuture != null && !taskFuture.isDone()) {
-                    taskFuture.cancel(true);
-                }
-
-                taskFuture = threadPool.submit(translatorAPI);
+                pause.playFromStart();
             }
+
         });
-
-        if (!MenuController.isLightMode) {
-            fromLanguage.getStyleClass().clear();
-            toLanguage.getStyleClass().clear();
-            text.getStylesheets().removeAll();
-            translated.getStylesheets().removeAll();
-
-            fromLanguage.getStyleClass().add("label-dark");
-            toLanguage.getStyleClass().add("label-dark");
-            text.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darktranslate.css")).toExternalForm());
-            translated.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darktranslate.css")).toExternalForm());
-        }
+        pause.setOnFinished(e ->{
+            taskFuture = threadPool.submit(translatorAPI);
+        });
     }
 }
 

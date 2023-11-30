@@ -19,6 +19,7 @@ public class TranslatorAPI implements Runnable{
     private static final String apiURL = "https://script.google.com/macros/s/AKfycbwuoarMpriRLadcHsMXF7W5EPE5TqzW9d5FaU6CHTZdQNPSXCdEhv_Unk_S9pWzPgT-jA/exec";
     public static void translate(String langFrom, String langTo) throws IOException {
         // INSERT YOU URL HERE
+
         String s = "?q=" + URLEncoder.encode(text, StandardCharsets.UTF_8) +
                 "&target=" + langTo +
                 "&source=" + langFrom;
