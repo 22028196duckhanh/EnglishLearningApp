@@ -9,13 +9,14 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="593.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
+<AnchorPane prefHeight="593.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
    <children>
       <TextArea fx:id="translated" layoutX="472.0" layoutY="161.0" prefHeight="254.0" prefWidth="430.0" styleClass="text-area" stylesheets="@../Utils/css/fullpackstyling.css" />
-      <Button fx:id="sound" layoutX="10.0" layoutY="424.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="62.0" styleClass="button-2" stylesheets="@../Utils/css/fullpackstyling.css" text="sound">
+      <Button fx:id="sound" layoutX="10.0" layoutY="451.0" mnemonicParsing="false" prefHeight="49.0" prefWidth="62.0" styleClass="button-2" stylesheets="@../Utils/css/fullpackstyling.css" text="sound">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Button>
+         </cursor>
+      </Button>
       <TextArea fx:id="text" layoutX="14.0" layoutY="161.0" prefHeight="254.0" prefWidth="430.0" stylesheets="@../Utils/css/fullpackstyling.css" />
       <Pane layoutX="10.0" layoutY="5.0" prefHeight="150.0" prefWidth="380.0">
          <children>
