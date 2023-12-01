@@ -3,6 +3,7 @@ package Controller;
 import Server.History;
 
 import javafx.animation.RotateTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -206,6 +207,8 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameFlipBtn);
                 boxScreen.getChildren().add(gameChoiceBtn);
                 handFinger.setRotate(0);
+                handFinger.setLayoutX(289);
+                handFinger.setLayoutX(137);
                 boxScreen.getChildren().add(handFinger);
                 handFinger.setVisible(true);
             }
@@ -249,10 +252,16 @@ public class MenuController implements Initializable {
     public void spin(ImageView imgView) {
         randomGame();
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(3), imgView);
+        TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1), imgView);
         int angle = 360 * 3 + (choice-2) * 90;
         rotateTransition.setByAngle(angle);
+        translateTransition.setAutoReverse(false);
+        translateImage(translateTransition,imgView,choice);
         rotateTransition.play();
         rotateTransition.setOnFinished(e -> {
+            translateTransition.play();
+        });
+        translateTransition.setOnFinished(e -> {
             try {
                 if (choice == 1) {
                     showView("/Views/game-sort-view.fxml");
@@ -270,6 +279,30 @@ public class MenuController implements Initializable {
                 throw new RuntimeException(ex);
             }
         });
+    }
+
+    private void translateImage(TranslateTransition translateTransition, ImageView imgView, int choice) {
+        switch (choice) {
+            case 1:
+                translateTransition.setToX(imgView.getTranslateX() - 100);
+                translateTransition.setToY(imgView.getTranslateY() - 100);
+                break;
+            case 2:
+                translateTransition.setToX(imgView.getTranslateX() + 100);
+                translateTransition.setToY(imgView.getTranslateY() - 100);
+                break;
+            case 3:
+                translateTransition.setToX(imgView.getTranslateX() + 100);
+                translateTransition.setToY(imgView.getTranslateY() + 100);
+                break;
+            case 4:
+                translateTransition.setToX(imgView.getTranslateX() - 100);
+                translateTransition.setToY(imgView.getTranslateY() + 100);
+                break;
+            default:
+                // Handle invalid choice
+                break;
+        }
     }
 
     private void createBackBtn() {
