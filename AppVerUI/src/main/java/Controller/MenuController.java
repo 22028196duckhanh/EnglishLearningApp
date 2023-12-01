@@ -206,9 +206,6 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameFillBtn);
                 boxScreen.getChildren().add(gameFlipBtn);
                 boxScreen.getChildren().add(gameChoiceBtn);
-                handFinger.setRotate(0);
-                handFinger.setLayoutX(289);
-                handFinger.setLayoutX(137);
                 boxScreen.getChildren().add(handFinger);
                 handFinger.setVisible(true);
             }
@@ -255,7 +252,7 @@ public class MenuController implements Initializable {
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1), imgView);
         int angle = 360 * 3 + (choice-2) * 90;
         rotateTransition.setByAngle(angle);
-        translateTransition.setAutoReverse(false);
+        translateTransition.setAutoReverse(true);
         translateImage(translateTransition,imgView,choice);
         rotateTransition.play();
         rotateTransition.setOnFinished(e -> {
@@ -272,6 +269,9 @@ public class MenuController implements Initializable {
                 } else if (choice == 3){
                     showView("/Views/multiple-choice-view.fxml");
                 }
+                handFinger.setRotate(0);
+                handFinger.setTranslateX(0);
+                handFinger.setTranslateY(0);
                 createBackBtn();
                 boxScreen.getChildren().add(backBtn);
 
