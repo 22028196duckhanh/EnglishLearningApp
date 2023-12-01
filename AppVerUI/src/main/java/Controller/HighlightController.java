@@ -30,22 +30,25 @@ public class HighlightController implements Initializable {
     @FXML
     Label empty;
     @FXML
+    Label wordNumber;
+    @FXML
     AnchorPane anchorPane;
     DatabaseDictionary dictionary = new DatabaseDictionary();
     LinkedList<Pair<String, String>> words = new LinkedList<>();
     private String front, back;
-    private ListIterator<Pair<String,String>> iterator;
+    private int count;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         word.setWrapText(true);
-
         isEmptyScene();
 
-        drop.setOnAction(e ->{
+        drop.setOnAction(e -> {
             isEmptyScene();
             try {
                 dictionary.dropHighlight();
+                words.clear();
+                isEmptyScene();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
@@ -53,47 +56,52 @@ public class HighlightController implements Initializable {
 
         delete.setOnAction(e -> {
             try {
-                // Check if there is a next or previous element
-                if (iterator.hasNext()) {
-                    next.fire();
-                } else if (iterator.hasPrevious()) {
-                    prev.fire();
-                } else {
-                    isEmptyScene();
-                }
+                if (words.size() == 1) {
+                    drop.fire();
+                } else if (!words.isEmpty()) {
+                    words.remove(count);
 
-                // Delete the element and update the iterator
-                iterator.remove();
-                dictionary.deleteHighlight(front);
-                words.remove(new Pair<>(front, back));
+                    if (!words.isEmpty()) {
+                        if (count >= words.size()) {
+                            count = words.size() - 1;
+                        }
+
+                        Pair<String, String> tmp = words.get(count);
+                        front = tmp.getKey();
+                        back = tmp.getValue();
+                        word.setText(front);
+                        wordNumber.setText(count + 1 + "/" + words.size());
+                    } else {
+                        isEmptyScene();
+                    }
+
+                    dictionary.deleteHighlight(front);
+                }
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
             }
         });
 
+
         next.setOnAction(e -> {
-            if(iterator.hasNext()){
-                Pair<String,String> tmp = null;
-                while(iterator.hasNext() && (tmp == null || tmp.getKey().equals(front))) {
-                    tmp = iterator.next();
-                }
-                assert tmp != null;
+            if (count + 1 < words.size()) {
+                count++;
+                Pair<String, String> tmp = words.get(count);
                 front = tmp.getKey();
                 back = tmp.getValue();
                 word.setText(front);
+                wordNumber.setText(count + 1 + "/" + words.size());
             }
         });
 
         prev.setOnAction(e -> {
-            if(iterator.hasPrevious()){
-                Pair<String,String> tmp = null;
-                while(iterator.hasPrevious() && (tmp == null || tmp.getKey().equals(front))) {
-                    tmp = iterator.previous();
-                }
-                assert tmp != null;
+            if (count - 1 >= 0) {
+                count--;
+                Pair<String, String> tmp = words.get(count);
                 front = tmp.getKey();
                 back = tmp.getValue();
                 word.setText(front);
+                wordNumber.setText(count + 1 + "/" + words.size());
             }
         });
         word.setOnAction(actionEvent -> {
@@ -104,13 +112,17 @@ public class HighlightController implements Initializable {
     private void isEmptyScene() {
         try {
             dictionary.searchHighlight(words);
+            wordNumber.setText(count + 1 + "/" + words.size());
             empty.setVisible(words.isEmpty());
             word.setVisible(!words.isEmpty());
             next.setVisible(!words.isEmpty());
             prev.setVisible(!words.isEmpty());
-            iterator = words.listIterator();
+            wordNumber.setVisible(!words.isEmpty());
 
-            if(!words.isEmpty()) {
+            delete.setVisible(!words.isEmpty());
+            drop.setVisible(!words.isEmpty());
+
+            if (!words.isEmpty()) {
                 front = words.get(0).getKey();
                 back = words.get(0).getValue();
                 word.setText(front);

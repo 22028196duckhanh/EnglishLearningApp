@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,8 +9,13 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="specificAnchorPane" prefHeight="593.0" prefWidth="916.0" stylesheets="@../Utils/css/gameflip.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameFlipController">
+<AnchorPane id="specificAnchorPane" prefHeight="593.0" prefWidth="916.0" stylesheets="@../Utils/css/gameflip.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameFlipController">
    <children>
+      <Label fx:id="time" layoutX="760.0" layoutY="6.0" prefHeight="41.0" prefWidth="63.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
       <ImageView fx:id="imageview" fitHeight="400.0" fitWidth="400.0" layoutX="210.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true" />
       <GridPane fx:id="grid" layoutX="217.0" layoutY="86.0" prefHeight="453.0" prefWidth="453.0">
         <columnConstraints>
@@ -25,10 +31,16 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label fx:id="time" layoutX="760.0" layoutY="6.0" prefHeight="41.0" prefWidth="63.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
+      <Label fx:id="finalScore" alignment="CENTER" layoutX="360.0" layoutY="259.0" prefHeight="42.0" prefWidth="210.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
+      <Label fx:id="restartLabel" alignment="CENTER" layoutX="364.0" layoutY="329.0" prefHeight="42.0" prefWidth="202.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <Button fx:id="restart" layoutX="432.0" layoutY="425.0" mnemonicParsing="false" text="restart" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package Controller;
 
+import Server.SoundEffect;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,7 +17,7 @@ import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.Set;
 
-public class MultipleChoiceController implements Initializable {
+public class MultipleChoiceController extends Game implements Initializable {
 
     @FXML
     Label ques;
@@ -27,9 +28,17 @@ public class MultipleChoiceController implements Initializable {
     @FXML
     Label score;
     @FXML
+    Label time;
+    @FXML
     AnchorPane anchorPane;
+    @FXML
+    private Label finalScore;
+    @FXML
+    private Label restartLabel;
+    @FXML
+    private Button restart;
     private int id = 0;
-    private Set<Integer> idSet = new HashSet<>();
+    private Set<Integer> idSet;
     private String ans = "";
     Iterator<Integer> iterator;
     Button clickedButton;
@@ -39,6 +48,11 @@ public class MultipleChoiceController implements Initializable {
         B.setStyle("-fx-opacity: 1;");
         C.setStyle("-fx-opacity: 1;");
         D.setStyle("-fx-opacity: 1;");
+        getTime(time);
+        finalScore.setVisible(false);
+        restartLabel.setVisible(false);
+        restart.setVisible(false);
+        restart.setOnAction(e -> initialize(url, resourceBundle));
         start();
     }
 
@@ -63,6 +77,15 @@ public class MultipleChoiceController implements Initializable {
     }
 
     public void start() {
+        super.score = 0;
+        A.setVisible(true);
+        B.setVisible(true);
+        C.setVisible(true);
+        D.setVisible(true);
+        ques.setVisible(true);
+        explain.setVisible(true);
+        idSet = new HashSet<>();
+        score.setText("Score: " + super.score);
         while (idSet.size() < 10) {
             idSet.add((int) (Math.random() * 80 + 1));
         }
@@ -101,19 +124,34 @@ public class MultipleChoiceController implements Initializable {
         D.setDisable(true);
         explain.setVisible(true);
         if (ans.equals(userAnswer)) {
+            super.setScore();
+            score.setText("Score: " + super.score);
+            SoundEffect.trueSound();
             clickedButton.setStyle("-fx-background-color: #77FF77;-fx-opacity: 1;");
         } else {
+            SoundEffect.falseSound();
             clickedButton.setStyle("-fx-background-color: #FF5555;-fx-opacity: 1;");
         }
         anchorPane.requestFocus();
         anchorPane.setOnMouseClicked(event -> {
                 showQues(iterator, clickedButton);
                 explain.setVisible(false);
-                anchorPane.setOnKeyReleased(null);
+                anchorPane.setOnMouseClicked(null);
         });
     }
-
-    private void end() {
-
+    @Override
+    public void end() {
+        A.setVisible(false);
+        B.setVisible(false);
+        C.setVisible(false);
+        D.setVisible(false);
+        ques.setVisible(false);
+        explain.setVisible(false);
+        time.setVisible(false);
+        score.setVisible(false);
+        finalScore.setVisible(true);
+        restart.setVisible(true);
+        restartLabel.setVisible(true);
+        finalScore.setText("Your score: " + super.score);
     }
 }

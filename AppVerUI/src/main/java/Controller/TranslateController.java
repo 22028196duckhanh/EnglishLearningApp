@@ -53,7 +53,7 @@ public class TranslateController {
     private ImageView speakerIcon = new ImageView(speakerImage);
     @FXML
     private ImageView convertIcon = new ImageView(convertImage);
-    PauseTransition pause = new PauseTransition(Duration.millis(300));
+    PauseTransition pause = new PauseTransition(Duration.millis(500));
     private final ExecutorService threadPool = Executors.newSingleThreadExecutor();
     public void initialize() {
         TranslatorAPI.setTextArea(translated);

@@ -5,9 +5,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="593.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MultipleChoiceController">
+<AnchorPane fx:id="anchorPane" prefHeight="593.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MultipleChoiceController">
    <children>
-      <Label fx:id="ques" alignment="CENTER" layoutX="221.0" layoutY="129.0" prefHeight="70.0" prefWidth="471.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Label">
+      <Label fx:id="ques" alignment="CENTER" layoutX="221.0" layoutY="129.0" prefHeight="70.0" prefWidth="471.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Label" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>
@@ -37,5 +37,26 @@
             <Font size="15.0" />
          </font>
       </Label>
+      <Label fx:id="time" alignment="CENTER" layoutX="537.0" layoutY="33.0" prefHeight="70.0" prefWidth="471.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Label" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="score" alignment="CENTER" layoutX="-66.0" layoutY="33.0" prefHeight="70.0" prefWidth="471.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Label" wrapText="true">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label fx:id="finalScore" alignment="CENTER" layoutX="214.0" layoutY="261.0" prefHeight="89.0" prefWidth="485.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Label" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="restartLabel" alignment="CENTER" layoutX="214.0" layoutY="311.0" prefHeight="89.0" prefWidth="485.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Do you want to restart?" wrapText="true">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="restart" layoutX="431.0" layoutY="422.0" mnemonicParsing="false" text="restart" />
    </children>
 </AnchorPane>

@@ -1,6 +1,5 @@
 package Controller;
 
-import Server.CountdownTimer;
 import Server.FlipGame;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PauseTransition;
@@ -22,19 +21,27 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.*;
 
-public class GameFlipController implements Initializable {
+import static javafx.util.Duration.*;
 
-    private List<Pair<String, ImageView>> symbols = new ArrayList<>();
-    private Button[] buttons = new Button[16];
+public class GameFlipController extends Game implements Initializable {
+
+    private List<Pair<String, ImageView>> symbols;
+    private Button[] buttons;
     private String lastButtonKey = "";
     private Button lastButtonClicked = null;
-    ImageView[] imageView = new ImageView[16];
+    ImageView[] imageView;
     private String link = "file:src/main/resources/Utils/data/flipgamedata/";
-    private boolean[] fliped = new boolean[16];
+    private boolean[] fliped;
     @FXML
     GridPane grid;
     @FXML
     Label time;
+    @FXML
+    private Label finalScore;
+    @FXML
+    private Label restartLabel;
+    @FXML
+    private Button restart;
     @FXML
     ImageView imageview;
 
@@ -42,6 +49,17 @@ public class GameFlipController implements Initializable {
         int buttonIndex = Arrays.asList(buttons).indexOf(button);
         if (!fliped[buttonIndex])
             flipButton1(button, true);
+    }
+
+    @Override
+    public void end() {
+        grid.setVisible(false);
+        restart.setVisible(true);
+        time.setVisible(false);
+        finalScore.setVisible(true);
+        finalScore.setText("Your Score: " + super.score);
+        restartLabel.setText("Do you want to restart?");
+        restartLabel.setVisible(true);
     }
 
     private void changeGraphic(Button button) {
@@ -63,6 +81,7 @@ public class GameFlipController implements Initializable {
                 PauseTransition pause = getPauseTransition(button, buttonIndex);
                 pause.play();
             } else {
+                super.setScore();
                 button.minHeight(150);
                 button.minWidth(150);
             }
@@ -76,12 +95,12 @@ public class GameFlipController implements Initializable {
         final Button buttonToReset = lastButtonClicked;
         for (int i = 0; i < 16; i++)
             buttons[i].setDisable(true);
-        PauseTransition pause = new PauseTransition(Duration.millis(500));
+        PauseTransition pause = new PauseTransition(millis(500));
         pause.setOnFinished(event -> {
             Platform.runLater(() -> {
                 flipButton1(button, false);
                 flipButton1(buttonToReset, false);
-                PauseTransition Pause = new PauseTransition(Duration.millis(200));
+                PauseTransition Pause = new PauseTransition(millis(200));
                 Pause.setOnFinished(e -> {
                     Platform.runLater(() -> {
                         button.setGraphic(imageView[buttonIndex]);
@@ -102,11 +121,11 @@ public class GameFlipController implements Initializable {
         return pause;
     }
 
-    public static void flipButton(Button button) {
-        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(0.2), button);
+    public void flipButton(Button button) {
+        RotateTransition rotateTransition = new RotateTransition(seconds(0.2), button);
         rotateTransition.setAxis(Rotate.Y_AXIS);
 
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.2), button);
+        ScaleTransition scaleTransition = new ScaleTransition(seconds(0.2), button);
         scaleTransition.setFromX(0);
         scaleTransition.setToX(1);
 
@@ -114,6 +133,14 @@ public class GameFlipController implements Initializable {
         parallelTransition.setCycleCount(1);
 
         parallelTransition.setOnFinished(event -> {
+            for (int i = 0; i < fliped.length; i++) {
+                if(!fliped[i]) break;
+                else if(i == 15) {
+                    PauseTransition tmp = new PauseTransition(Duration.millis(1000));
+                    tmp.setOnFinished(e -> end());
+                    tmp.play();
+                }
+            }
             button.setScaleX(1);
         });
 
@@ -122,7 +149,7 @@ public class GameFlipController implements Initializable {
 
     public void flipButton1(Button button, boolean isFront) {
 
-        ScaleTransition scaleTransition = new ScaleTransition(Duration.seconds(0.2), button);
+        ScaleTransition scaleTransition = new ScaleTransition(seconds(0.2), button);
         scaleTransition.setFromX(1);
         scaleTransition.setToX(0);
 
@@ -140,8 +167,21 @@ public class GameFlipController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        CountdownTimer.resetTime();
-        CountdownTimer.gettime(time);
+        grid.setVisible(true);
+        time.setVisible(true);
+        restart.setVisible(false);
+        finalScore.setVisible(false);
+        restartLabel.setVisible(false);
+        lastButtonClicked = null;
+        lastButtonKey = "";
+        buttons = new Button[16];
+        fliped = new boolean[16];
+        imageView = new ImageView[16];
+        symbols = new ArrayList<>();
+        grid.getChildren().clear();
+        super.score = 0;
+        super.stopTimeline();
+        getTime(time);
         Set<String> set = new HashSet<>();
         while (set.size() < 8) {
             try {
@@ -165,7 +205,6 @@ public class GameFlipController implements Initializable {
             }
         }
         Collections.shuffle(symbols);
-
         for (int i = 0; i < 16; i++) {
             buttons[i] = new Button();
             buttons[i].minHeight(100);
@@ -180,5 +219,8 @@ public class GameFlipController implements Initializable {
             buttons[i].setOnAction(e -> buttonClicked(buttons[finalI]));
             grid.add(buttons[i], i % 4, i / 4);
         }
+        restart.setOnAction(e -> {
+            initialize(url, resourceBundle);
+        });
     }
 }

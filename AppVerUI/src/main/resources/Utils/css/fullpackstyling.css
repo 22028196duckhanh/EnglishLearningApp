@@ -273,3 +273,14 @@ Translate View
 .text-area .scroll-pane .content{
     -fx-background-color: transparent;
 }
+#finalScore{
+    --body-font-size: 25;
+}
+#restartLabel{
+    --body-font-size: 25;
+}
+#restart {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-background-color: #4CAF50;
+}
