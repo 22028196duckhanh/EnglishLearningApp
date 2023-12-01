@@ -15,7 +15,6 @@ public class GameCard {
     }
 
     public void showQuestion() {
-        System.out.println(this.question);
         int i = 0;
         for (Map.Entry<String, Boolean> tmp : answer.entrySet()) {
             System.out.println((char)('A'+i) + "." + tmp.getKey());
