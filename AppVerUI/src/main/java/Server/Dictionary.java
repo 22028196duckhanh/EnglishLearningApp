@@ -1,6 +1,5 @@
 package Server;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -37,14 +36,15 @@ public abstract class Dictionary {
 
     public String displayAllWords() throws SQLException {
         ArrayList<Word> list = getAllWords();
-        return printAsTable(list, 0, list.size()-1);
+        return printAsTable(list, 0, list.size() - 1);
     }
 
-    public void exportToFile() {}
+    public void exportToFile() {
+    }
 
     public abstract String getFullExplain(String selectedWord) throws SQLException;
 
-    public boolean editHtml(String word,String change) throws SQLException{
+    public boolean editHtml(String word, String change) throws SQLException {
         return true;
     }
 

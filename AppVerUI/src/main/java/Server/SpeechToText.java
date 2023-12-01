@@ -7,7 +7,6 @@ import java.util.Base64;
 public class SpeechToText {
     public static String speechToText(String language) {
         try {
-            // Specify the Python script and its arguments (if any)
             String pythonScript = "python";
             String scriptPath = "C:\\Users\\Admin\\Downloads\\speech.py";
 

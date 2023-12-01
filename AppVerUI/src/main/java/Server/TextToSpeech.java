@@ -11,18 +11,6 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class TextToSpeech {
-//    public static void playKevinSpeech(String text) {
-//        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
-//        Voice voice = VoiceManager.getInstance().getVoice("kevin16");
-//        if (voice != null) {
-//            voice.allocate();
-//            voice.speak(text);
-//            voice.deallocate();
-//        } else {
-//            System.out.println("Something went wrong");
-//        }
-//    }
-
     public static void playSoundGoogleTranslate(String text) {
         try {
             String api = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q="

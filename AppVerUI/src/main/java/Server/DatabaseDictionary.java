@@ -7,7 +7,7 @@ import javafx.util.Pair;
 
 public class DatabaseDictionary extends Dictionary {
     private static final String jdbcURL = "jdbc:sqlite:src/main/resources/Utils/data/dictionary.db";
-    private static Connection connection;
+    private static final Connection connection;
 
     static {
         try {
@@ -19,9 +19,6 @@ public class DatabaseDictionary extends Dictionary {
 
     @Override
     public void init() throws SQLException {
-        //System.out.println("Connecting to database...");
-        //connection = DriverManager.getConnection(jdbcURL);
-        //System.out.println("Database connected!");
     }
 
     @Override
@@ -252,8 +249,8 @@ public class DatabaseDictionary extends Dictionary {
             String sql_query = "INSERT INTO av (word,html,description,pronounce) VALUES (?, ?, ?, ?)";
             statement = connection.prepareStatement(sql_query);
             statement.setString(1, word);
-            statement.setString(2, "<h1>"+word+"</h1><h3><i>"+pronounce+"</i></h3><h2>"+type+"</h2><ul><li>"+meaning+"</li></ul>");
-            statement.setString(3, type +": " +meaning);
+            statement.setString(2, "<h1>" + word + "</h1><h3><i>" + pronounce + "</i></h3><h2>" + type + "</h2><ul><li>" + meaning + "</li></ul>");
+            statement.setString(3, type + ": " + meaning);
             statement.setString(4, pronounce);
             statement.execute();
         } catch (SQLException e) {

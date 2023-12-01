@@ -7,18 +7,13 @@ import java.io.File;
 
 public class SoundEffect extends Thread {
 
-    /*Enum Sound {
-        String a = "true";
-    };*/
     public static void playAudio(String filePath) {
         Media media = new Media(new File(filePath).toURI().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-        // Play the audio
         mediaPlayer.play();
 
-        // Optionally, you can set the volume
-        mediaPlayer.setVolume(0.5); // Adjust the volume (0.0 to 1.0)
+        mediaPlayer.setVolume(0.5);
     }
 
     public static void trueSound(){

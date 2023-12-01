@@ -10,6 +10,8 @@ import java.util.Random;
 public class SortDatabase {
     private static final List<Sentence> data = new ArrayList<>();
     private static final String path = "src/main/resources/Utils/data/sortdata.txt";
+
+    private static final int NUMS_OF_QUES = 285;
     public static void getData() {
         try {
             FileReader fileReader = new FileReader(path);
@@ -42,6 +44,6 @@ public class SortDatabase {
     }
 
     public static Sentence getRdSentence() {
-        return data.get(new Random().nextInt(81));
+        return data.get(new Random().nextInt(NUMS_OF_QUES));
     }
 }
