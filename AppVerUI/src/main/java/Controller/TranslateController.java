@@ -14,17 +14,21 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextFormatter;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.function.UnaryOperator;
 
 public class TranslateController {
 
@@ -40,19 +44,16 @@ public class TranslateController {
     private Label fromLanguage;
     @FXML
     private Label toLanguage;
+    @FXML
+    private Label characterCount;
     private TranslatorAPI translatorAPI = new TranslatorAPI();
     private boolean isListening = false;
     private SpeechRecognitionService recognitionService;
 
+    private final int maxCharacters = 2500;
+
     private Future<?> taskFuture = null;
-    @FXML
-    private Image speakerImage = new Image("file:src/main/resources/Utils/images/micro.png");
-    @FXML
-    private Image convertImage = new Image("file:src/main/resources/Utils/images/convert.png");
-    @FXML
-    private ImageView speakerIcon = new ImageView(speakerImage);
-    @FXML
-    private ImageView convertIcon = new ImageView(convertImage);
+
     PauseTransition pause = new PauseTransition(Duration.millis(500));
     private final ExecutorService threadPool = Executors.newSingleThreadExecutor();
     public void initialize() {
@@ -63,8 +64,6 @@ public class TranslateController {
         translated.setWrapText(true);
         recognitionService = new SpeechRecognitionService(fromLanguage);
 
-        sound.setGraphic(speakerIcon);
-        changeLanguage.setGraphic(convertIcon);
 
         sound.setOnAction((ActionEvent actionEvent) -> {
             isListening = !isListening;
@@ -121,6 +120,40 @@ public class TranslateController {
             }
 
         });
+
+        text.textProperty().addListener((observable, oldValue, newValue) -> {
+            int count = newValue.length();
+            characterCount.setText("Word Count: " + count + "/2500");
+        });
+
+        TextFormatter<String> textFormatter = new TextFormatter<>(change -> {
+            String newText = change.getControlNewText();
+            if (newText.length() <= maxCharacters) {
+                return change;
+            }
+            return null;
+        });
+
+        text.setTextFormatter(textFormatter);
+
+        if (!MenuController.isLightMode) {
+            fromLanguage.getStyleClass().clear();
+            toLanguage.getStyleClass().clear();
+            text.getStylesheets().removeAll();
+            translated.getStylesheets().removeAll();
+            changeLanguage.getStylesheets().removeAll();
+            sound.getStylesheets().removeAll();
+            characterCount.getStyleClass().clear();
+
+            fromLanguage.getStyleClass().add("label-dark");
+            toLanguage.getStyleClass().add("label-dark");
+            characterCount.getStyleClass().add("label-dark");
+            text.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darktranslate.css")).toExternalForm());
+            translated.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darktranslate.css")).toExternalForm());
+            changeLanguage.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            sound.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+        }
+
         pause.setOnFinished(e ->{
             taskFuture = threadPool.submit(translatorAPI);
         });

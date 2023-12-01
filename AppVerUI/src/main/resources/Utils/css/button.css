@@ -6,12 +6,14 @@
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
+    -fx-cursor: hand;
 }
 
 #editWord:hover {
     -fx-background-image: url('../images/icons8-edit-48.png');
     -fx-background-color: lightblue;
     -fx-background-radius: 10px;
+    -fx-cursor: hand;
 }
 
 #confirm {
@@ -72,10 +74,48 @@
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
     -fx-text-fill: transparent;
+    -fx-cursor: hand;
 }
 
 #addWord:hover {
     -fx-background-color: lightblue;
     -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+
+#changeLanguage {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-image: url('../images/icons8-convert-50.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-text-fill: transparent;
+    -fx-cursor: hand;
+}
+
+#changeLanguage:hover {
+    -fx-background-color: lightblue;
+    -fx-background-radius: 15px;
+    -fx-cursor: hand;
+}
+
+#sound {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-image: url('../images/icons8-microphone-48.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-text-fill: transparent;
+    -fx-cursor: hand;
+}
+
+#sound:hover {
+    -fx-background-color: lightblue;
+    -fx-background-radius: 15px;
+    -fx-cursor: hand;
 }
 

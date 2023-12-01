@@ -33,40 +33,30 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        gameSortBtn.resizeRelocate(100, 100, 100, 100);
-        gameSortBtn.setStyle(
-                "-fx-background-color: #4CAF50; " +
-                        "-fx-text-fill: white; " +
-                        "-fx-border-radius: 15; " +
-                        "-fx-background-radius: 15; " +
-                        "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-        );
-        gameFillBtn.resizeRelocate(710, 100, 100, 100);
-        gameFillBtn.setStyle(
-                "-fx-background-color: #4CAF50; " +
-                        "-fx-text-fill: white; " +
-                        "-fx-border-radius: 15; " +
-                        "-fx-background-radius: 15; " +
-                        "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-        );
+        gameSortBtn.setLayoutX(10);
+        gameSortBtn.setLayoutY(10);
+        gameSortBtn.setPrefSize(300, 194);
+        gameSortBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
+        gameSortBtn.getStyleClass().add("gameSortBtn");
 
-        gameChoiceBtn.resizeRelocate(680, 500, 100, 100);
-        gameChoiceBtn.setStyle(
-                "-fx-background-color: #4CAF50; " +
-                        "-fx-text-fill: white; " +
-                        "-fx-border-radius: 15; " +
-                        "-fx-background-radius: 15; " +
-                        "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-        );
+        gameFillBtn.setLayoutX(600);
+        gameFillBtn.setLayoutY(10);
+        gameFillBtn.setPrefSize(300, 183);
+        gameFillBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
+        gameFillBtn.getStyleClass().add("gameFillBtn");
 
-        gameFlipBtn.resizeRelocate(100, 500, 100, 100);
-        gameFlipBtn.setStyle(
-                "-fx-background-color: #4CAF50; " +
-                        "-fx-text-fill: white; " +
-                        "-fx-border-radius: 15; " +
-                        "-fx-background-radius: 15; " +
-                        "-fx-border-color: linear-gradient(to bottom, #5267f8, rgba(65, 225, 212, 0.87));"
-        );
+        gameFlipBtn.setLayoutX(10);
+        gameFlipBtn.setLayoutY(400);
+        gameFlipBtn.setPrefSize(300, 183);
+        gameFlipBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
+        gameFlipBtn.getStyleClass().add("gameFlipBtn");
+
+        gameChoiceBtn.setLayoutX(600);
+        gameChoiceBtn.setLayoutY(400);
+        gameChoiceBtn.setPrefSize(300, 185);
+        gameChoiceBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
+        gameChoiceBtn.getStyleClass().add("gameChoiceBtn");
+
 
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
