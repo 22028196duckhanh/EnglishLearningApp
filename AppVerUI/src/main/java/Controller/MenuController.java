@@ -33,27 +33,27 @@ public class MenuController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        gameSortBtn.setLayoutX(10);
+        gameSortBtn.setLayoutX(18);
         gameSortBtn.setLayoutY(10);
-        gameSortBtn.setPrefSize(300, 194);
+        gameSortBtn.setPrefSize(335, 200);
         gameSortBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
         gameSortBtn.getStyleClass().add("gameSortBtn");
 
-        gameFillBtn.setLayoutX(600);
+        gameFillBtn.setLayoutX(562);
         gameFillBtn.setLayoutY(10);
-        gameFillBtn.setPrefSize(300, 183);
+        gameFillBtn.setPrefSize(335, 200);
         gameFillBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
         gameFillBtn.getStyleClass().add("gameFillBtn");
 
-        gameFlipBtn.setLayoutX(10);
-        gameFlipBtn.setLayoutY(400);
-        gameFlipBtn.setPrefSize(300, 183);
+        gameFlipBtn.setLayoutX(18);
+        gameFlipBtn.setLayoutY(385);
+        gameFlipBtn.setPrefSize(335, 200);
         gameFlipBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
         gameFlipBtn.getStyleClass().add("gameFlipBtn");
 
-        gameChoiceBtn.setLayoutX(600);
-        gameChoiceBtn.setLayoutY(400);
-        gameChoiceBtn.setPrefSize(300, 185);
+        gameChoiceBtn.setLayoutX(562);
+        gameChoiceBtn.setLayoutY(385);
+        gameChoiceBtn.setPrefSize(335, 200);
         gameChoiceBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
         gameChoiceBtn.getStyleClass().add("gameChoiceBtn");
 
@@ -213,7 +213,10 @@ public class MenuController implements Initializable {
         homeBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                handFinger.setVisible(true);
                 boxScreen.getChildren().clear();
+
+                handFinger.setVisible(true);
 
                 searchBtn.setSelected(false);
                 gameBtn.setSelected(false);

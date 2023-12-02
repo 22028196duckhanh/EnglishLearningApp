@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" styleClass="pane" stylesheets="@../Utils/css/fullpackstyling.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="619.0" prefWidth="1017.0" styleClass="pane" stylesheets="@../Utils/css/fullpackstyling.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MenuController">
    <children>
       <AnchorPane fx:id="boxScreen" layoutX="102.0" layoutY="26.0" prefHeight="593.0" prefWidth="916.0" styleClass="menu-view" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
@@ -54,7 +54,7 @@
       </HBox>
       <VBox fx:id="vBox" layoutY="26.0" prefHeight="593.0" prefWidth="102.0" styleClass="menu-bar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
-            <Pane prefHeight="76.0" prefWidth="86.0">
+            <Pane prefHeight="84.0" prefWidth="86.0">
                <children>
                   <ImageView fitHeight="58.0" fitWidth="58.0" layoutX="15.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -67,7 +67,7 @@
                <graphic>
                   <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../Utils/images/home.png" />
+                        <Image url="@../Utils/images/icons8-home-48.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -108,15 +108,6 @@
                   </ImageView>
                </graphic>
             </ToggleButton>
-            <ToggleButton mnemonicParsing="false" prefHeight="58.0" prefWidth="86.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css">
-               <graphic>
-                  <ImageView fitHeight="36.0" fitWidth="26.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../Utils/images/icons8-help-48.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </ToggleButton>
             <Button fx:id="exitBtn" alignment="BASELINE_LEFT" mnemonicParsing="false" prefHeight="58.0" prefWidth="202.0" styleClass="button-1" stylesheets="@../Utils/css/fullpackstyling.css" text="  Exit" textFill="WHITE">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -144,7 +135,7 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="28.0" />
+                  <Insets top="80.0" />
                </VBox.margin>
             </ToggleButton>
          </children>

@@ -7,6 +7,12 @@ Menu View
     -fx-background-color: transparent;
 }
 
+.pane-2 {
+    -fx-background-color: #defcf9;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+}
+
 .menu-bar {
     -fx-background-color: #fae6f3;
     -fx-background-radius: 0 0 0 15;
