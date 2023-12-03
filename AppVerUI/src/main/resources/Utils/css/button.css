@@ -119,3 +119,21 @@
     -fx-cursor: hand;
 }
 
+#speakFrom, #speakTo {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-image: url('../images/icons8-volume-36.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-text-fill: transparent;
+    -fx-cursor: hand;
+}
+
+#speakFrom:hover, #speakTo:hover {
+    -fx-background-color: lightblue;
+    -fx-background-radius: 15px;
+    -fx-cursor: hand;
+}
+

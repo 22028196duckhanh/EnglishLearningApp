@@ -22,6 +22,11 @@
                   <Image url="@../Utils/images/supercat1.png" />
                </image>
             </ImageView>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="349.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="342.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="89.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="342.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" />
          </children></AnchorPane>
       <HBox fx:id="hBox" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="1018.0" styleClass="hBar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>

@@ -1,7 +1,5 @@
 package Server;
 
-// com.sun.speech.freetts.Voice;
-// com.sun.speech.freetts.VoiceManager;
 import javazoom.jl.player.Player;
 
 import java.io.InputStream;
@@ -11,9 +9,12 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 public class TextToSpeech {
-    public static void playSoundGoogleTranslate(String text) {
+    public static void playSoundGoogleTranslate(String text, String language) {
         try {
-            String api = "https://translate.google.com/translate_tts?ie=UTF-8&tl=en&client=tw-ob&q="
+            if(text.isEmpty()) {
+                return;
+            }
+            String api = "https://translate.google.com/translate_tts?ie=UTF-8&tl="+language+"&client=tw-ob&q="
                             + URLEncoder.encode(text, StandardCharsets.UTF_8);
             URL url = new URL(api);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();

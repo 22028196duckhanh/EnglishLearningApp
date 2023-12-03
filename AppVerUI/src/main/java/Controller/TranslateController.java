@@ -37,6 +37,10 @@ public class TranslateController {
     @FXML
     private Button sound;
     @FXML
+    private Button speakFrom;
+    @FXML
+    private Button speakTo;
+    @FXML
     private TextArea translated;
     @FXML
     private Button changeLanguage;
@@ -74,6 +78,14 @@ public class TranslateController {
             } else {
                 recognitionService.cancel();
             }
+        });
+
+        speakFrom.setOnAction(e -> {
+            TextToSpeech.playSoundGoogleTranslate(text.getText(),fromLanguage.getText().substring(0,2).toLowerCase());
+        });
+
+        speakTo.setOnAction(e -> {
+            TextToSpeech.playSoundGoogleTranslate(translated.getText(),toLanguage.getText().substring(0,2).toLowerCase());
         });
 
         changeLanguage.setOnAction((ActionEvent actionEvent) -> {
@@ -145,6 +157,8 @@ public class TranslateController {
             translated.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darktranslate.css")).toExternalForm());
             changeLanguage.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
             sound.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            speakFrom.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            speakTo.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
         }
 
         pause.setOnFinished(e ->{
