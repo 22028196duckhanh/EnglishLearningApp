@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="593.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
+<AnchorPane prefHeight="593.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.TranslateController">
    <children>
       <TextArea fx:id="translated" layoutX="472.0" layoutY="161.0" prefHeight="254.0" prefWidth="430.0" styleClass="text-area" stylesheets="@../Utils/css/fullpackstyling.css" />
       <Button fx:id="sound" layoutX="12.0" layoutY="426.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" stylesheets="@../Utils/css/button.css" text="sound">
@@ -39,5 +39,15 @@
          </children>
       </Pane>
       <Label fx:id="characterCount" alignment="BASELINE_LEFT" layoutX="305.0" layoutY="417.0" prefHeight="58.0" prefWidth="192.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Word Count: 0/2500" />
+      <Button fx:id="speakFrom" layoutX="64.0" layoutY="426.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" stylesheets="@../Utils/css/button.css" text="sound">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button fx:id="speakTo" layoutX="497.0" layoutY="426.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="40.0" stylesheets="@../Utils/css/button.css" text="sound">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

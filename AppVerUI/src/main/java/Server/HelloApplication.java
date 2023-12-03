@@ -27,19 +27,14 @@ public class HelloApplication extends Application {
             yOffset = event.getSceneY();
         });
 
-
         root.setOnMouseDragged(event -> {
             primaryStage.setX(event.getScreenX() - xOffset);
             primaryStage.setY(event.getScreenY() - yOffset);
         });
 
         Scene scene = new Scene(root);
-
-
         scene.setFill(Color.TRANSPARENT);
-
         primaryStage.setTitle("Dictionary Application");
-
         primaryStage.setScene(scene);
         primaryStage.show();
     }

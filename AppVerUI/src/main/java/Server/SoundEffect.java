@@ -25,4 +25,7 @@ public class SoundEffect {
     public static void endSound(){
         playAudio("src/main/resources/Utils/sound/endgame.mp3");
     }
+    public static void playSound() {
+        playAudio("src/main/resources/Utils/sound/letplay.mp3");
+    }
 }

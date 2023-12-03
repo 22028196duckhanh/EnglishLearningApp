@@ -2,6 +2,7 @@ package Controller;
 
 import Server.History;
 
+import Server.SoundEffect;
 import javafx.animation.RotateTransition;
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -89,8 +90,8 @@ public class MenuController implements Initializable {
                 translateBtn.setSelected(false);
                 highlightBtn.setSelected(false);
                 homeBtn.setSelected(false);
-
                 btnMode.setVisible(true);
+                SoundEffect.playSound();
             }
         });
 

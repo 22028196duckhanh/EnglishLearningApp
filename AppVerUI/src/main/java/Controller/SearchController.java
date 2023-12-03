@@ -73,7 +73,7 @@ public class SearchController implements Initializable {
         });
 
         speaker.setOnAction(actionEvent -> {
-            TextToSpeech.playSoundGoogleTranslate(speaker.getText());
+            TextToSpeech.playSoundGoogleTranslate(speaker.getText(),"en");
         });
 
         editWord.setOnAction(actionEvent -> {
