@@ -8,11 +8,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.GridPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import javafx.util.Pair;
@@ -21,6 +21,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.ListIterator;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class HighlightController implements Initializable {
@@ -45,19 +46,71 @@ public class HighlightController implements Initializable {
 
         drop.setOnAction(e -> {
             isEmptyScene();
-            try {
-                dictionary.dropHighlight();
-                words.clear();
-                isEmptyScene();
-            } catch (SQLException ex) {
-                throw new RuntimeException(ex);
+            Dialog<String> dialog = new Dialog<>();
+
+            dialog.setTitle("drop highlight");
+            DialogPane dialogPane = dialog.getDialogPane();
+            dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/addWord.css")).toExternalForm());
+            dialog.setHeaderText(null);
+
+            Label pronunciationLabel = new Label("Do you want to delete all the highlight?");
+            pronunciationLabel.setStyle("-fx-font-size: 17;");
+            pronunciationLabel.setMinSize(330, 150);
+            pronunciationLabel.setMaxSize(320, 150);
+            AnchorPane contentPane = new AnchorPane();
+            contentPane.getChildren().add(pronunciationLabel);
+            AnchorPane.setTopAnchor(pronunciationLabel, 0.0);
+            AnchorPane.setBottomAnchor(pronunciationLabel, 0.0);
+            AnchorPane.setLeftAnchor(pronunciationLabel, 0.0);
+            AnchorPane.setRightAnchor(pronunciationLabel, 0.0);
+
+            dialogPane.setContent(contentPane);
+
+            ButtonType okButton = new ButtonType("YES", ButtonBar.ButtonData.OK_DONE);
+            ButtonType cancelButton = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+            dialogPane.getButtonTypes().addAll(okButton, cancelButton);
+
+            ButtonBar buttonBar = (ButtonBar) dialogPane.lookup(".button-bar");
+            if (buttonBar != null) {
+                buttonBar.setButtonMinWidth(Pos.CENTER.ordinal());
             }
+
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == okButton) {
+                    return "OK";
+                } else if (dialogButton == cancelButton) {
+                    return "Cancel";
+                } else {
+                    return null;
+                }
+            });
+
+            dialog.showAndWait().ifPresent(response -> {
+                if (response.equals("OK")) {
+                    try {
+                        dictionary.dropHighlight();
+                        words.clear();
+                        isEmptyScene();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                } else {
+                    dialog.close();
+                }
+            });
+
         });
 
         delete.setOnAction(e -> {
             try {
                 if (words.size() == 1) {
-                    drop.fire();
+                    try {
+                        dictionary.dropHighlight();
+                        words.clear();
+                        isEmptyScene();
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 } else if (!words.isEmpty()) {
                     words.remove(count);
 

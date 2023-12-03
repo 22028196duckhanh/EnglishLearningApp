@@ -12,6 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
@@ -217,6 +220,7 @@ public class GameFlipController extends Game implements Initializable {
             buttons[i].setWrapText(false);
             buttons[i].setMinSize(150, 150);
             buttons[i].setPrefSize(150, 150);
+            buttons[i].setFont(Font.font("Arial", FontWeight.BOLD, 14));
 
             buttons[i].setStyle("-fx-background-color: transparent;-fx-background-radius: 10px; -fx-padding: 10;-fx-opacity: 1;");
             int finalI = i;

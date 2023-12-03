@@ -15,20 +15,21 @@ public class SpeechToText {
             Process process = processBuilder.start();
 
             OutputStream outputStream = process.getOutputStream();
-            String inputData = language;
-            outputStream.write(inputData.getBytes());
+            outputStream.write(language.getBytes());
             outputStream.flush();
             outputStream.close();
 
-            // Capture and print the output
             InputStream inputStream = process.getInputStream();
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             String line;
             StringBuilder recognizedText = new StringBuilder();
             while ((line = reader.readLine()) != null) {
+                System.out.println(line);
                 recognizedText.append(line);
             }
+
             byte[] decodedBytes = Base64.getDecoder().decode(recognizedText.toString());
+
             return new String(decodedBytes);
         } catch (IOException e) {
             e.printStackTrace();

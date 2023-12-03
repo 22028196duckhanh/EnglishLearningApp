@@ -112,16 +112,9 @@ public class TranslateController {
             }
         });
 
-        text.textProperty().addListener(new ChangeListener<String>() {
-
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                TranslatorAPI.setText(t1);
-                pause.playFromStart();
-            }
-
-        });
-
         text.textProperty().addListener((observable, oldValue, newValue) -> {
+            TranslatorAPI.setText(newValue);
+            pause.playFromStart();
             int count = newValue.length();
             characterCount.setText("Word Count: " + count + "/2500");
         });
