@@ -4,6 +4,7 @@ import Server.DatabaseDictionary;
 import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -136,10 +137,21 @@ public class HighlightController implements Initializable {
             if (count + 1 < words.size()) {
                 count++;
                 Pair<String, String> tmp = words.get(count);
-                front = tmp.getKey();
-                back = tmp.getValue();
-                word.setText(front);
-                wordNumber.setText(count + 1 + "/" + words.size());
+                TranslateTransition transition1 = new TranslateTransition(Duration.seconds(0.25), word);
+                TranslateTransition transition2 = new TranslateTransition(Duration.seconds(0.25), word);
+
+                transition1.setFromX(0);
+                transition1.setToX(-800);
+                transition2.setFromX(800);
+                transition2.setToX(0);
+                transition1.play();
+                transition1.setOnFinished(ek -> {
+                    front = tmp.getKey();
+                    back = tmp.getValue();
+                    word.setText(front);
+                    wordNumber.setText(count + 1 + "/" + words.size());
+                    transition2.play();
+                });
             }
         });
 
@@ -149,6 +161,15 @@ public class HighlightController implements Initializable {
                 Pair<String, String> tmp = words.get(count);
                 front = tmp.getKey();
                 back = tmp.getValue();
+                TranslateTransition transition1 = new TranslateTransition(Duration.seconds(0.25), word);
+                TranslateTransition transition2 = new TranslateTransition(Duration.seconds(0.25), word);
+
+                transition1.setFromX(0);
+                transition1.setToX(800);
+                transition2.setFromX(-800);
+                transition2.setToX(0);
+                transition1.play();
+                transition1.setOnFinished(ek -> transition2.play());
                 word.setText(front);
                 wordNumber.setText(count + 1 + "/" + words.size());
             }
