@@ -1,17 +1,19 @@
 .gameSortBtn {
     -fx-border-width: 0;
     -fx-border-color: transparent;
-    -fx-background-image: url('../images/Untitled.png');
+    -fx-background-image: url('../images/Untitled-modified.png');
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
     -fx-text-fill: transparent;
+    -fx-background-radius: 20;
 }
 
 .gameSortBtn:hover {
     -fx-cursor: hand;
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
+    -fx-background-radius: 20;
 
     transition: -fx-background-color 0.5s ease,
     -fx-scale-x 0.5s ease,
@@ -22,17 +24,19 @@
     -fx-background-color: transparent;
     -fx-border-width: 0;
     -fx-border-color: transparent;
-    -fx-background-image: url('../images/Untitled2.png');
+    -fx-background-image: url('../images/Untitled2-modified.png');
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
     -fx-text-fill: transparent;
+    -fx-background-radius: 20;
 }
 
 .gameFillBtn:hover {
     -fx-cursor: hand;
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
+    -fx-background-radius: 20;
 
     transition: -fx-background-color 0.5s ease,
     -fx-scale-x 0.5s ease,
@@ -43,17 +47,19 @@
     -fx-background-color: transparent;
     -fx-border-width: 0;
     -fx-border-color: transparent;
-    -fx-background-image: url('../images/Untitled3.png');
+    -fx-background-image: url('../images/Untitled3-modified.png');
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
     -fx-text-fill: transparent;
+    -fx-background-radius: 20;
 }
 
 .gameFlipBtn:hover {
     -fx-cursor: hand;
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
+    -fx-background-radius: 20;
 
     transition: -fx-background-color 0.5s ease,
     -fx-scale-x 0.5s ease,
@@ -64,17 +70,19 @@
     -fx-background-color: transparent;
     -fx-border-width: 0;
     -fx-border-color: transparent;
-    -fx-background-image: url('../images/Untitled4.png');
+    -fx-background-image: url('../images/Untitled4-modified.png');
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center center;
     -fx-text-fill: transparent;
+    -fx-background-radius: 20;
 }
 
 .gameChoiceBtn:hover {
     -fx-cursor: hand;
     -fx-scale-x: 1.1;
     -fx-scale-y: 1.1;
+    -fx-background-radius: 20;
 
     transition: -fx-background-color 0.5s ease,
     -fx-scale-x 0.5s ease,
