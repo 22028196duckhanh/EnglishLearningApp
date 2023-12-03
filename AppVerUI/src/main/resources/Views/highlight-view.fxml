@@ -15,8 +15,8 @@
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Button fx:id="delete" layoutX="62.0" layoutY="39.0" mnemonicParsing="false" text="delele" />
-      <Button fx:id="drop" layoutX="221.0" layoutY="39.0" mnemonicParsing="false" text="drop" />
+      <Button fx:id="delete" layoutX="293.0" layoutY="516.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="50.0" style="-fx-opacity: 1;" stylesheets="@../Utils/css/highlight.css" />
+      <Button fx:id="drop" layoutX="600.0" layoutY="516.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="50.0" stylesheets="@../Utils/css/highlight.css" />
       <Label fx:id="wordNumber" layoutX="440.0" layoutY="488.0" text="Label">
          <font>
             <Font name="System Bold" size="14.0" />

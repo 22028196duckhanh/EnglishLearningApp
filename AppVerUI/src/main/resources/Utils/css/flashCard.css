@@ -20,3 +20,17 @@
 #prev:hover, #next:hover {
     -fx-background-color: #45a049;
 }
+
+#delete {
+    -fx-background-image: url('../images/back.png');
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+#drop {
+    -fx-background-image: url('../images/audio.png');
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}

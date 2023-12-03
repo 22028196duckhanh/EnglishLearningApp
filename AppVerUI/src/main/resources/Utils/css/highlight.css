@@ -65,3 +65,17 @@
     -fx-background-size: cover;
     -fx-background-repeat: no-repeat;
 }
+
+#delete {
+    -fx-background-image: url('../images/images.delete-icon.png');
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}
+
+#drop {
+    -fx-background-image: url('../images/images.drop-icon.png');
+    -fx-background-size: cover;
+    -fx-background-position: center center;
+    -fx-background-repeat: no-repeat;
+}

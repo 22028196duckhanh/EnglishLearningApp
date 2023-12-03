@@ -61,19 +61,15 @@ public class HighlightController implements Initializable {
                 } else if (!words.isEmpty()) {
                     words.remove(count);
 
-                    if (!words.isEmpty()) {
-                        if (count >= words.size()) {
-                            count = words.size() - 1;
-                        }
-
-                        Pair<String, String> tmp = words.get(count);
-                        front = tmp.getKey();
-                        back = tmp.getValue();
-                        word.setText(front);
-                        wordNumber.setText(count + 1 + "/" + words.size());
-                    } else {
-                        isEmptyScene();
+                    if (count >= words.size()) {
+                        count = words.size() - 1;
                     }
+
+                    Pair<String, String> tmp = words.get(count);
+                    front = tmp.getKey();
+                    back = tmp.getValue();
+                    word.setText(front);
+                    wordNumber.setText(count + 1 + "/" + words.size());
 
                     dictionary.deleteHighlight(front);
                 }

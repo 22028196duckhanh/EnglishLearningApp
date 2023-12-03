@@ -75,6 +75,13 @@ public class DatabaseDictionary extends Dictionary {
         return new ArrayList<>(words);
     }
 
+    private boolean isInList(LinkedList<Pair<String, String>> words, String w){
+        for(Pair<String,String> i : words){
+            if(i.getKey().equals(w)) return true;
+        }
+        return false;
+    }
+
     public void searchHighlight(LinkedList<Pair<String, String>> words) throws SQLException {
         String sql_query = "SELECT * FROM av WHERE highlight = 1";
         PreparedStatement statement = connection.prepareStatement(sql_query);
@@ -82,7 +89,8 @@ public class DatabaseDictionary extends Dictionary {
         while (result.next()) {
             String word = result.getString("word");
             String description = result.getString("description");
-            words.add(new Pair<>(word, description));
+            if(!isInList(words,word))
+                words.add(new Pair<>(word, description));
         }
         result.close();
         statement.close();
