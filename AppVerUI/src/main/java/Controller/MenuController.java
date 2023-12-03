@@ -203,6 +203,7 @@ public class MenuController implements Initializable {
         });
 
         handFinger.setOnMouseClicked(e-> {
+            handFinger.setDisable(true);
             spin(handFinger);
         });
 
@@ -268,6 +269,7 @@ public class MenuController implements Initializable {
                 handFinger.setTranslateY(0);
                 createBackBtn();
                 boxScreen.getChildren().add(backBtn);
+                handFinger.setDisable(false);
 
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
