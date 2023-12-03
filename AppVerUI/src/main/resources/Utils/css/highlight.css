@@ -1,7 +1,11 @@
 #anchorPane {
     -fx-background-color: transparent;
     -fx-background-radius: 0 0 15 0;
-    -fx-border-radius:  0 0 15 0;
+    -fx-border-radius: 0 0 15 0;
+    -fx-background-image: url('../images/background-multichoice.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
 }
 
 #word {

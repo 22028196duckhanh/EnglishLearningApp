@@ -7,6 +7,16 @@ Menu View
     -fx-background-color: transparent;
 }
 
+#anchorPane {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0 0 15 0;
+    -fx-border-radius: 0 0 15 0;
+    -fx-background-image: url('../images/mutipleChoicebackground.jpg');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
 .menu-bar {
     -fx-background-color: #fae6f3;
     -fx-background-radius: 0 0 0 15;
@@ -74,12 +84,14 @@ Menu View
     -fx-text-fill: rgb(255, 255, 255);
 }
 
-/*
-Button
- */
-
 
 .button-1 {
+    -fx-background-color: transparent;
+    -fx-text-fill: transparent;
+    -fx-cursor: hand;
+}
+
+#restart {
     -fx-background-color: transparent;
     -fx-text-fill: transparent;
     -fx-cursor: hand;

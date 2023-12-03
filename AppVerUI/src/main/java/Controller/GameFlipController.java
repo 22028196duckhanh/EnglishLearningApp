@@ -35,6 +35,8 @@ public class GameFlipController extends Game implements Initializable {
     @FXML
     GridPane grid;
     @FXML
+    ImageView congratulations;
+    @FXML
     Label time;
     @FXML
     private Label finalScore;
@@ -60,6 +62,7 @@ public class GameFlipController extends Game implements Initializable {
         finalScore.setText("Your Score: " + super.score);
         restartLabel.setText("Do you want to restart?");
         restartLabel.setVisible(true);
+        congratulations.setVisible(true);
     }
 
     private void changeGraphic(Button button) {
@@ -174,6 +177,7 @@ public class GameFlipController extends Game implements Initializable {
         restartLabel.setVisible(false);
         lastButtonClicked = null;
         lastButtonKey = "";
+        congratulations.setVisible(false);
         buttons = new Button[16];
         fliped = new boolean[16];
         imageView = new ImageView[16];

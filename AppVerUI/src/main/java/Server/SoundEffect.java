@@ -5,7 +5,7 @@ import javafx.scene.media.MediaPlayer;
 
 import java.io.File;
 
-public class SoundEffect extends Thread {
+public class SoundEffect {
 
     public static void playAudio(String filePath) {
         Media media = new Media(new File(filePath).toURI().toString());
@@ -24,10 +24,5 @@ public class SoundEffect extends Thread {
     }
     public static void endSound(){
         playAudio("src/main/resources/Utils/sound/endgame.mp3");
-    }
-
-    @Override
-    public void run() {
-
     }
 }
