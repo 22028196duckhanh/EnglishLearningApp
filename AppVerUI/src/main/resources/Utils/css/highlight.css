@@ -67,6 +67,10 @@
 }
 
 #delete {
+    -fx-text-fill: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
     -fx-background-image: url('../images/images.delete-icon.png');
     -fx-background-size: cover;
     -fx-background-position: center center;
@@ -74,6 +78,10 @@
 }
 
 #drop {
+    -fx-text-fill: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
     -fx-background-image: url('../images/images.drop-icon.png');
     -fx-background-size: cover;
     -fx-background-position: center center;
