@@ -137,3 +137,19 @@
     -fx-cursor: hand;
 }
 
+#delete {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-image: url('../images/icons8-trash-48.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+}
+
+#delete:hover {
+    -fx-background-color: lightblue;
+    -fx-background-radius: 10px;
+    -fx-cursor: hand;
+}
+

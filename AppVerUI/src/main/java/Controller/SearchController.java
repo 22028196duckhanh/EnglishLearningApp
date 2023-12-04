@@ -7,12 +7,14 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.scene.web.WebView;
@@ -47,6 +49,7 @@ public class SearchController implements Initializable {
                     explanation.setHtmlText("");
                     explanationOnlyView.getEngine().loadContent("");
                     setDefault.setVisible(false);
+                    delete.setVisible(false);
                     editWord.setVisible(false);
                     speaker.setVisible(false);
                     highlight.setVisible(false);
@@ -117,6 +120,59 @@ public class SearchController implements Initializable {
             }
         });
 
+        delete.setOnAction(e -> {
+            Dialog<String> dialog = new Dialog<>();
+
+            dialog.setTitle("Delete word");
+            DialogPane dialogPane = dialog.getDialogPane();
+            dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/addWord.css")).toExternalForm());
+            dialog.setHeaderText(null);
+
+            Label pronunciationLabel = new Label("Do you want to delete this word?");
+            pronunciationLabel.setStyle("-fx-font-size: 17;");
+            pronunciationLabel.setMinSize(330, 150);
+            pronunciationLabel.setMaxSize(320, 150);
+            AnchorPane contentPane = new AnchorPane();
+            contentPane.getChildren().add(pronunciationLabel);
+            AnchorPane.setTopAnchor(pronunciationLabel, 0.0);
+            AnchorPane.setBottomAnchor(pronunciationLabel, 0.0);
+            AnchorPane.setLeftAnchor(pronunciationLabel, 0.0);
+            AnchorPane.setRightAnchor(pronunciationLabel, 0.0);
+
+            dialogPane.setContent(contentPane);
+
+            ButtonType okButton = new ButtonType("YES", ButtonBar.ButtonData.OK_DONE);
+            ButtonType cancelButton = new ButtonType("NO", ButtonBar.ButtonData.CANCEL_CLOSE);
+            dialogPane.getButtonTypes().addAll(okButton, cancelButton);
+
+            ButtonBar buttonBar = (ButtonBar) dialogPane.lookup(".button-bar");
+            if (buttonBar != null) {
+                buttonBar.setButtonMinWidth(Pos.CENTER.ordinal());
+            }
+
+            dialog.setResultConverter(dialogButton -> {
+                if (dialogButton == okButton) {
+                    return "OK";
+                } else if (dialogButton == cancelButton) {
+                    return "Cancel";
+                } else {
+                    return null;
+                }
+            });
+
+            dialog.showAndWait().ifPresent(response -> {
+                if (response.equals("OK")) {
+                    try {
+                        dictionary.deleteWord(selectedWord);
+                    } catch (SQLException ex) {
+                        throw new RuntimeException(ex);
+                    }
+                } else {
+                    dialog.close();
+                }
+            });
+        });
+
 
         highlight.setOnMouseClicked(e -> {
             try {
@@ -138,6 +194,7 @@ public class SearchController implements Initializable {
         }
 
         setDefault.setVisible(false);
+        delete.setVisible(false);
         editWord.setVisible(false);
         speaker.setVisible(false);
         explanation.setHtmlText("");
@@ -186,6 +243,7 @@ public class SearchController implements Initializable {
             confirm.getStylesheets().removeAll();
             setDefault.getStylesheets().removeAll();
             speaker.getStylesheets().removeAll();
+            delete.getStylesheets().removeAll();
 
             searchArea.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darksearch.css")).toExternalForm());
             listResults.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darksearch.css")).toExternalForm());
@@ -194,6 +252,7 @@ public class SearchController implements Initializable {
             confirm.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
             setDefault.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
             speaker.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            delete.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
 
         } else {
             style = "<style> body {line-height: 1; background-color: #defcf9; max-width: 580px; } " +
@@ -265,6 +324,7 @@ public class SearchController implements Initializable {
         explanationOnlyView.setVisible(true);
         editWord.setVisible(true);
         setDefault.setVisible(true);
+        delete.setVisible(true);
         highlight.setVisible(true);
         confirm.setVisible(false);
     }
@@ -375,6 +435,9 @@ public class SearchController implements Initializable {
 
     @FXML
     private Button confirm;
+
+    @FXML
+    private Button delete;
 
     @FXML
     private Button setDefault;
