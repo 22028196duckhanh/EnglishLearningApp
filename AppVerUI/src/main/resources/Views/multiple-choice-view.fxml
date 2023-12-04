@@ -37,12 +37,12 @@
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="time" alignment="CENTER" layoutX="616.0" layoutY="68.0" prefHeight="70.0" prefWidth="268.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Label" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="time" alignment="CENTER" layoutX="634.0" layoutY="34.0" prefHeight="70.0" prefWidth="268.0" style="-fx-font-size: 24;" stylesheets="@../Utils/css/fullpackstyling.css" text="Label" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label fx:id="score" alignment="CENTER" layoutX="40.0" layoutY="68.0" prefHeight="70.0" prefWidth="316.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Label" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="score" alignment="CENTER" layoutX="14.0" layoutY="34.0" prefHeight="70.0" prefWidth="316.0" style="-fx-font-size: 24;" stylesheets="@../Utils/css/fullpackstyling.css" text="Label" textAlignment="CENTER" wrapText="true">
          <font>
             <Font size="15.0" />
          </font>

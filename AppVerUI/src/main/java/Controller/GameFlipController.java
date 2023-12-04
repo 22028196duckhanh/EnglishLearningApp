@@ -223,7 +223,7 @@ public class GameFlipController extends Game implements Initializable {
             buttons[i].setMinSize(150, 150);
             buttons[i].setPrefSize(150, 150);
             buttons[i].setFont(Font.font("Arial", FontWeight.BOLD, 14));
-
+            buttons[i].setWrapText(true);
             buttons[i].setStyle("-fx-background-color: transparent;-fx-background-radius: 10px; -fx-padding: 10;-fx-opacity: 1;");
             int finalI = i;
             buttons[i].setOnAction(e -> buttonClicked(buttons[finalI]));

@@ -36,9 +36,6 @@ public class SearchController implements Initializable {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        if (History.words.isEmpty()) {
-            History.insertFromFile();
-        }
         defaultHistory();
         searchArea.setPromptText("Search here");
         searchArea.setOnKeyTyped(new EventHandler<KeyEvent>() {

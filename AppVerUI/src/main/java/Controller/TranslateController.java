@@ -71,7 +71,11 @@ public class TranslateController {
 
         sound.setOnAction((ActionEvent actionEvent) -> {
             isListening = !isListening;
-
+            if(isListening) {
+                sound.setStyle("-fx-background-color: lightblue;");
+            } else {
+                sound.setStyle("-fx-background-color: transparent;");
+            }
             if (isListening) {
                 recognitionService.restart();
             } else {
@@ -114,7 +118,7 @@ public class TranslateController {
             if (recognizedText != null) {
                 if (text.getText().isEmpty()) {
                     text.setText(recognizedText);
-                } else {
+                } else if(recognizedText.isEmpty()){
                     text.setText(text.getText() + " " + recognizedText);
                 }
             }

@@ -32,6 +32,9 @@ public class MenuController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if (History.words.isEmpty()) {
+            History.insertFromFile();
+        }
 
         gameSortBtn.setLayoutX(18);
         gameSortBtn.setLayoutY(10);

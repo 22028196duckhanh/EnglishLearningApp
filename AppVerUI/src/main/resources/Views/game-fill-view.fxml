@@ -30,14 +30,14 @@
          <font>
             <Font size="24.0" />
          </font></Label>
-      <Label fx:id="finalScore" alignment="CENTER" layoutX="332.0" layoutY="272.0" prefHeight="86.0" prefWidth="227.0" stylesheets="@../Utils/css/gamefill.css" text="Label">
+      <Label fx:id="finalScore" alignment="CENTER" layoutX="331.0" layoutY="211.0" prefHeight="86.0" prefWidth="227.0" stylesheets="@../Utils/css/gamefill.css" text="Label">
          <font>
-            <Font size="25.0" />
+            <Font size="30.0" />
          </font>
       </Label>
-      <Label fx:id="restartLabel" alignment="CENTER" layoutX="186.0" layoutY="358.0" prefHeight="54.0" prefWidth="518.0" stylesheets="@../Utils/css/gamefill.css" text="Do you want to play again?" textAlignment="CENTER" wrapText="true">
+      <Label fx:id="restartLabel" alignment="CENTER" layoutX="187.0" layoutY="330.0" prefHeight="54.0" prefWidth="518.0" stylesheets="@../Utils/css/gamefill.css" text="Do you want to play again?" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font size="14.0" />
+            <Font size="20.0" />
          </font>
       </Label>
       <Button fx:id="restart" layoutX="412.0" layoutY="460.0" mnemonicParsing="false" stylesheets="@../Utils/css/gamefill.css" text="restart" />

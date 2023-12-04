@@ -1,3 +1,6 @@
+.label {
+    -fx-font-size: 24;
+}
 #specificAnchorPane{
     -fx-background-image: url('../images/flipgame_background.jpg');
     -fx-background-size: cover;

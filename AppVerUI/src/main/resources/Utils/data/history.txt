@@ -1,7 +1,3 @@
-hello
-good-bye
-nice
-administration
-ok
-block
-dame
+a posteriori
+a.d.
+a la carte

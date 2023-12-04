@@ -17,7 +17,7 @@
             <Image url="@../Utils/images/congratulation.gif" />
          </image>
       </ImageView>
-      <Label fx:id="time" layoutX="760.0" layoutY="6.0" prefHeight="41.0" prefWidth="63.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
+      <Label fx:id="time" layoutX="760.0" layoutY="6.0" prefHeight="42.0" prefWidth="74.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
          <font>
             <Font size="23.0" />
          </font>
@@ -37,12 +37,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
-      <Label fx:id="finalScore" alignment="CENTER" layoutX="360.0" layoutY="259.0" prefHeight="42.0" prefWidth="210.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
+      <Label fx:id="finalScore" alignment="CENTER" layoutX="300.0" layoutY="180.0" prefHeight="42.0" prefWidth="300.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
          <font>
             <Font size="23.0" />
          </font>
       </Label>
-      <Label fx:id="restartLabel" alignment="CENTER" layoutX="364.0" layoutY="329.0" prefHeight="42.0" prefWidth="202.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
+      <Label fx:id="restartLabel" alignment="CENTER" layoutX="202.0" layoutY="300.0" prefHeight="42.0" prefWidth="502.0" stylesheets="@../Utils/css/gameflip.css" text="Label">
          <font>
             <Font size="23.0" />
          </font>

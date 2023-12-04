@@ -13,6 +13,10 @@
     src: url('../fonts/SF-Pro-Text-Black.otf');
 }
 
+.label {
+    -fx-font-size: 24;
+}
+
 #anchorPane {
     -fx-background-image: url('../images/fillgame_background.jpg');
     -fx-background-size: cover;
