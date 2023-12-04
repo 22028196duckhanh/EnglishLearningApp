@@ -24,7 +24,6 @@ public class SpeechToText {
             String line;
             StringBuilder recognizedText = new StringBuilder();
             while ((line = reader.readLine()) != null) {
-                System.out.println(line);
                 recognizedText.append(line);
             }
 

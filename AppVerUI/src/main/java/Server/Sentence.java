@@ -32,13 +32,10 @@ public class Sentence {
     }
 
     public boolean check(String check) {
-        System.out.println(answer);
         return check.equals(answer);
     }
 
     public void showSentence() {
         String ques = String.join(" | ", cmp);
-        System.out.println(ques);
-        System.out.println(answer);
     }
 }

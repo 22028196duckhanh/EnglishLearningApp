@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GameSortController implements Initializable {
+public class GameSortController extends Game implements Initializable {
     private final ArrayList<Sentence> listSentence = new ArrayList<>();
     private int index = 0;
     private int score = 0;
@@ -107,7 +107,7 @@ public class GameSortController implements Initializable {
                                 createCards(listSentence.get(index));
                             });
                             if (index >= 9) {
-                                EndGame();
+                                end();
                             }
                         });
                     }
@@ -151,7 +151,8 @@ public class GameSortController implements Initializable {
         }
     }
 
-    public void EndGame() {
+    @Override
+    public void end() {
         SoundEffect.endSound();
         endScore.setImage(new Image("file:src/main/resources/Utils/images/score"+score+".png"));
         endScore.setVisible(true);

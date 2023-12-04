@@ -141,6 +141,7 @@ public class MultipleChoiceController extends Game implements Initializable {
     }
     @Override
     public void end() {
+        SoundEffect.endSound();
         A.setVisible(false);
         B.setVisible(false);
         C.setVisible(false);

@@ -36,24 +36,28 @@ public class MenuController implements Initializable {
         gameSortBtn.setLayoutX(18);
         gameSortBtn.setLayoutY(10);
         gameSortBtn.setPrefSize(335, 200);
+        gameSortBtn.setStyle("-fx-opacity: 1");
         gameSortBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/gamebg.css")).toExternalForm());
         gameSortBtn.getStyleClass().add("gameSortBtn");
 
         gameFillBtn.setLayoutX(562);
         gameFillBtn.setLayoutY(10);
         gameFillBtn.setPrefSize(335, 200);
+        gameFillBtn.setStyle("-fx-opacity: 1");
         gameFillBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/gamebg.css")).toExternalForm());
         gameFillBtn.getStyleClass().add("gameFillBtn");
 
         gameFlipBtn.setLayoutX(18);
         gameFlipBtn.setLayoutY(385);
         gameFlipBtn.setPrefSize(335, 200);
+        gameFlipBtn.setStyle("-fx-opacity: 1");
         gameFlipBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/gamebg.css")).toExternalForm());
         gameFlipBtn.getStyleClass().add("gameFlipBtn");
 
         gameChoiceBtn.setLayoutX(562);
         gameChoiceBtn.setLayoutY(385);
         gameChoiceBtn.setPrefSize(335, 200);
+        gameChoiceBtn.setStyle("-fx-opacity: 1");
         gameChoiceBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/gamebg.css")).toExternalForm());
         gameChoiceBtn.getStyleClass().add("gameChoiceBtn");
 

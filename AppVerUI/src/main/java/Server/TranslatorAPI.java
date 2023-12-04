@@ -32,7 +32,6 @@ public class TranslatorAPI implements Runnable{
             response.append(inputLine);
         }
         translated.setText(response.toString());
-        System.out.println(response);
         in.close();
     }
 

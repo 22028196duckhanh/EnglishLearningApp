@@ -1,6 +1,7 @@
 package Controller;
 
 import Server.FlipGame;
+import Server.SoundEffect;
 import javafx.animation.ParallelTransition;
 import javafx.animation.PauseTransition;
 import javafx.animation.RotateTransition;
@@ -58,6 +59,7 @@ public class GameFlipController extends Game implements Initializable {
 
     @Override
     public void end() {
+        SoundEffect.endSound();
         grid.setVisible(false);
         restart.setVisible(true);
         time.setVisible(false);

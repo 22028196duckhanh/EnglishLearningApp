@@ -71,7 +71,6 @@ public class TranslateController {
 
         sound.setOnAction((ActionEvent actionEvent) -> {
             isListening = !isListening;
-            System.out.println(isListening);
 
             if (isListening) {
                 recognitionService.restart();

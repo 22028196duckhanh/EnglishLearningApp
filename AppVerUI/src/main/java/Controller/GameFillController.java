@@ -112,6 +112,7 @@ public class GameFillController extends Game implements Initializable {
     }
     @Override
     public void end() {
+        SoundEffect.endSound();
         imageview.setImage(new Image("file:src/main/resources/Utils/images/congratulation.gif"));
         imageview.setBlendMode(BlendMode.MULTIPLY);
         finalScore.setVisible(true);
