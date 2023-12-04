@@ -29,17 +29,17 @@ public class GameSortController extends Game implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         message.setVisible(false);
         check.setImage(new Image("file:src/main/resources/Utils/images/check_sort.png"));
-        check.setOnMouseEntered(e->{
+        check.setOnMouseEntered(e -> {
             check.setImage(new Image("file:src/main/resources/Utils/images/check_sort_light.png"));
         });
-        check.setOnMouseExited(e->{
+        check.setOnMouseExited(e -> {
             check.setImage(new Image("file:src/main/resources/Utils/images/check_sort.png"));
         });
         next.setImage(new Image("file:src/main/resources/Utils/images/icons8-next-64.png"));
-        next.setOnMouseEntered(e->{
+        next.setOnMouseEntered(e -> {
             next.setImage(new Image("file:src/main/resources/Utils/images/icons8-next-64-2.png"));
         });
-        next.setOnMouseExited(e->{
+        next.setOnMouseExited(e -> {
             next.setImage(new Image("file:src/main/resources/Utils/images/icons8-next-64.png"));
         });
         start.setImage(new Image("file:src/main/resources/Utils/images/start_white.png"));
@@ -60,7 +60,7 @@ public class GameSortController extends Game implements Initializable {
         hBox.setVisible(true);
         answerBox.setVisible(true);
         fans.setVisible(true);
-        scoreText.setImage(new Image("file:src/main/resources/Utils/images/score"+score+".png"));
+        scoreText.setImage(new Image("file:src/main/resources/Utils/images/score" + score + ".png"));
         start.setVisible(false);
         scoreText.setVisible(true);
         for (int i = 0; i < 10; i++) {
@@ -75,7 +75,7 @@ public class GameSortController extends Game implements Initializable {
         for (int i = 0; i < sentence.getSize(); i++) {
             Button button = new Button();
             button.setText(sentence.getCmp().get(i));
-            button.setPrefSize(150,100);
+            button.setPrefSize(150, 100);
             buttonList.add(button);
             button.setStyle("-fx-opacity: 1;");
             hBox.getChildren().add(button);
@@ -94,7 +94,7 @@ public class GameSortController extends Game implements Initializable {
                         check.setDisable(false);
                         check.setOnMouseClicked(event -> {
                             CheckAnswer(sentence);
-                            scoreText.setImage(new Image("file:src/main/resources/Utils/images/score"+score+".png"));
+                            scoreText.setImage(new Image("file:src/main/resources/Utils/images/score" + score + ".png"));
                             next.setVisible(true);
                             answerBox.setDisable(true);
                             check.setDisable(true);
@@ -130,7 +130,7 @@ public class GameSortController extends Game implements Initializable {
             if (answerBox.getChildren().get(i) instanceof Button) {
                 Button tmp = (Button) (answerBox.getChildren().get(i));
                 s.append(tmp.getText());
-                if (i < answerBox.getChildren().size()-1) {
+                if (i < answerBox.getChildren().size() - 1) {
                     s.append("/");
                 }
             }
@@ -154,7 +154,7 @@ public class GameSortController extends Game implements Initializable {
     @Override
     public void end() {
         SoundEffect.endSound();
-        endScore.setImage(new Image("file:src/main/resources/Utils/images/score"+score+".png"));
+        endScore.setImage(new Image("file:src/main/resources/Utils/images/score" + score + ".png"));
         endScore.setVisible(true);
         start.setVisible(true);
         message.setVisible(true);

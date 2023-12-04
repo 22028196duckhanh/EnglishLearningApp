@@ -12,6 +12,7 @@ public class SortDatabase {
     private static final String path = "src/main/resources/Utils/data/sortdata.txt";
 
     private static final int NUMS_OF_QUES = 285;
+
     public static void getData() {
         try {
             FileReader fileReader = new FileReader(path);
@@ -37,7 +38,7 @@ public class SortDatabase {
     }
 
     public void showData() {
-        for (int i = 0; i < data.size() ; i++) {
+        for (int i = 0; i < data.size(); i++) {
             System.out.print(i + ". ");
             data.get(i).showSentence();
         }

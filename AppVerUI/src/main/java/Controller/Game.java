@@ -30,11 +30,14 @@ abstract class Game {
                         }));
         timeline.playFromStart();
     }
+
     abstract void end();
-    public void stopTimeline(){
+
+    public void stopTimeline() {
         this.timeline.getKeyFrames().clear();
     }
-    protected void setScore(){
-        score +=10;
+
+    protected void setScore() {
+        score += 10;
     }
 }

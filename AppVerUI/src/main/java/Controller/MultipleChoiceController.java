@@ -42,6 +42,7 @@ public class MultipleChoiceController extends Game implements Initializable {
     private String ans = "";
     Iterator<Integer> iterator;
     Button clickedButton;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         A.setStyle("-fx-opacity: 1;");
@@ -134,11 +135,12 @@ public class MultipleChoiceController extends Game implements Initializable {
         }
         anchorPane.requestFocus();
         anchorPane.setOnMouseClicked(event -> {
-                showQues(iterator, clickedButton);
-                explain.setVisible(false);
-                anchorPane.setOnMouseClicked(null);
+            showQues(iterator, clickedButton);
+            explain.setVisible(false);
+            anchorPane.setOnMouseClicked(null);
         });
     }
+
     @Override
     public void end() {
         SoundEffect.endSound();

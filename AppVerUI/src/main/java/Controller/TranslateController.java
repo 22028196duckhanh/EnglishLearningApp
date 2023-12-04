@@ -60,6 +60,7 @@ public class TranslateController {
 
     PauseTransition pause = new PauseTransition(Duration.millis(500));
     private final ExecutorService threadPool = Executors.newSingleThreadExecutor();
+
     public void initialize() {
         TranslatorAPI.setTextArea(translated);
         translated.setEditable(false);
@@ -71,7 +72,7 @@ public class TranslateController {
 
         sound.setOnAction((ActionEvent actionEvent) -> {
             isListening = !isListening;
-            if(isListening) {
+            if (isListening) {
                 sound.setStyle("-fx-background-color: lightblue;");
             } else {
                 sound.setStyle("-fx-background-color: transparent;");
@@ -84,11 +85,11 @@ public class TranslateController {
         });
 
         speakFrom.setOnAction(e -> {
-            TextToSpeech.playSoundGoogleTranslate(text.getText(),fromLanguage.getText().substring(0,2).toLowerCase());
+            TextToSpeech.playSoundGoogleTranslate(text.getText(), fromLanguage.getText().substring(0, 2).toLowerCase());
         });
 
         speakTo.setOnAction(e -> {
-            TextToSpeech.playSoundGoogleTranslate(translated.getText(),toLanguage.getText().substring(0,2).toLowerCase());
+            TextToSpeech.playSoundGoogleTranslate(translated.getText(), toLanguage.getText().substring(0, 2).toLowerCase());
         });
 
         changeLanguage.setOnAction((ActionEvent actionEvent) -> {
@@ -118,7 +119,7 @@ public class TranslateController {
             if (recognizedText != null) {
                 if (text.getText().isEmpty()) {
                     text.setText(recognizedText);
-                } else if(recognizedText.isEmpty()){
+                } else if (recognizedText.isEmpty()) {
                     text.setText(text.getText() + " " + recognizedText);
                 }
             }
@@ -164,7 +165,7 @@ public class TranslateController {
             speakTo.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
         }
 
-        pause.setOnFinished(e ->{
+        pause.setOnFinished(e -> {
             taskFuture = threadPool.submit(translatorAPI);
         });
     }
@@ -174,7 +175,7 @@ class SpeechRecognitionService extends Service<String> {
 
     Label fromLanguage;
 
-    SpeechRecognitionService(Label fromLanguage){
+    SpeechRecognitionService(Label fromLanguage) {
         this.fromLanguage = fromLanguage;
     }
 
@@ -183,7 +184,7 @@ class SpeechRecognitionService extends Service<String> {
         return new Task<String>() {
             @Override
             protected String call() throws Exception {
-                return SpeechToText.speechToText(fromLanguage.getText().substring(0,2).toLowerCase() + '-' + fromLanguage.getText().substring(0,2).toUpperCase());
+                return SpeechToText.speechToText(fromLanguage.getText().substring(0, 2).toLowerCase() + '-' + fromLanguage.getText().substring(0, 2).toUpperCase());
             }
         };
     }

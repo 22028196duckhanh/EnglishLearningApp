@@ -217,7 +217,7 @@ public class MenuController implements Initializable {
             }
         });
 
-        handFinger.setOnMouseClicked(e-> {
+        handFinger.setOnMouseClicked(e -> {
             handFinger.setDisable(true);
             gameFillBtn.setDisable(true);
             gameSortBtn.setDisable(true);
@@ -250,9 +250,7 @@ public class MenuController implements Initializable {
                 fadeInTransition(btnMode);
             }
         });
-
         choice = 1;
-        storage = 0;
         handFinger.setVisible(false);
         homeBtn.setSelected(true);
         handleHomeButtonAction();
@@ -275,10 +273,10 @@ public class MenuController implements Initializable {
         randomGame();
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(3), imgView);
         TranslateTransition translateTransition = new TranslateTransition(Duration.seconds(1), imgView);
-        int angle = 360 * 3 + (choice-2) * 90;
+        int angle = 360 * 3 + (choice - 2) * 90;
         rotateTransition.setByAngle(angle);
         translateTransition.setAutoReverse(true);
-        translateImage(translateTransition,imgView,choice);
+        translateImage(translateTransition, imgView, choice);
         rotateTransition.play();
         rotateTransition.setOnFinished(e -> {
             translateTransition.play();
@@ -291,7 +289,7 @@ public class MenuController implements Initializable {
                     showView("/Views/game-fill-view.fxml");
                 } else if (choice == 4) {
                     showView("/Views/game-flip-view.fxml");
-                } else if (choice == 3){
+                } else if (choice == 3) {
                     showView("/Views/multiple-choice-view.fxml");
                 }
                 handFinger.setRotate(0);
@@ -334,7 +332,6 @@ public class MenuController implements Initializable {
                 translateTransition.setToY(imgView.getTranslateY() + 100);
                 break;
             default:
-                // Handle invalid choice
                 break;
         }
     }
@@ -359,7 +356,7 @@ public class MenuController implements Initializable {
         setRotate(c3, true, 145, 24);
 
         Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), evt -> quote.setVisible(false)),
-                new KeyFrame(Duration.seconds( 1), evt -> quote.setVisible(true)));
+                new KeyFrame(Duration.seconds(1), evt -> quote.setVisible(true)));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();
     }
@@ -392,7 +389,7 @@ public class MenuController implements Initializable {
         label.getStyleClass().add("label");
     }
 
-    public void setDarkMode () {
+    public void setDarkMode() {
         Image imageMode = new Image("file:src/main/resources/Utils/images/icons8-light-mode-48.png");
         imgMode.setImage(imageMode);
 
@@ -427,7 +424,7 @@ public class MenuController implements Initializable {
         fadeTransition.play();
     }
 
-     private void setRotate(Circle c, boolean reverse, int angle, int duration) {
+    private void setRotate(Circle c, boolean reverse, int angle, int duration) {
         RotateTransition rotateTransition = new RotateTransition(Duration.seconds(duration), c);
         rotateTransition.setAutoReverse(reverse);
         rotateTransition.setByAngle(angle);
@@ -440,8 +437,6 @@ public class MenuController implements Initializable {
     public static boolean isLightMode = true;
 
     private int choice;
-
-    private int storage;
 
     @FXML
     private ImageView imgMode;

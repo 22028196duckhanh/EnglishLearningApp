@@ -6,7 +6,7 @@ import java.util.*;
 public class History {
     private static final int MAX_HISTORY_WORDS = 7;
     private static final String path = "src/main/resources/Utils/data/history.txt";
-    public static ArrayList <String> words = new ArrayList<>();
+    public static ArrayList<String> words = new ArrayList<>();
 
     public static void insertFromFile() {
         try {

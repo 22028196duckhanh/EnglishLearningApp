@@ -49,7 +49,7 @@ public class GameFillController extends Game implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        restart.setOnAction(e->{
+        restart.setOnAction(e -> {
             try {
                 set.clear();
                 super.score = 0;
@@ -78,8 +78,8 @@ public class GameFillController extends Game implements Initializable {
         }
         Iterator<Pair<String, String>> iterator = set.iterator();
         showQuestion(iterator);
-        answerField.setOnKeyReleased(e ->{
-            if(e.getCode() == KeyCode.ENTER){
+        answerField.setOnKeyReleased(e -> {
+            if (e.getCode() == KeyCode.ENTER) {
                 try {
                     checkAnswer();
                     showQuestion(iterator);
@@ -110,6 +110,7 @@ public class GameFillController extends Game implements Initializable {
             end();
         }
     }
+
     @Override
     public void end() {
         SoundEffect.endSound();
@@ -119,7 +120,7 @@ public class GameFillController extends Game implements Initializable {
         finalScore.setText("Your score: " + super.score);
         PauseTransition pause = new PauseTransition(Duration.millis(2000));
         pause.play();
-        pause.setOnFinished(e->{
+        pause.setOnFinished(e -> {
             imageview.setVisible(false);
         });
         questionLabel.setVisible(false);

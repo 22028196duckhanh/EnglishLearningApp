@@ -142,8 +142,8 @@ public class GameFlipController extends Game implements Initializable {
 
         parallelTransition.setOnFinished(event -> {
             for (int i = 0; i < fliped.length; i++) {
-                if(!fliped[i]) break;
-                else if(i == 15) {
+                if (!fliped[i]) break;
+                else if (i == 15) {
                     PauseTransition tmp = new PauseTransition(Duration.millis(1000));
                     tmp.setOnFinished(e -> end());
                     tmp.play();

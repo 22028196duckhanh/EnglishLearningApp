@@ -26,7 +26,7 @@ public class GameDatabase {
         return rd.nextInt(SUBJECT) + 1;
     }
 
-   private static int getLevel() throws SQLException {
+    private static int getLevel() throws SQLException {
         ArrayList<Integer> listLevel = new ArrayList<>();
         int sj = getSubject();
         String sql_query = "SELECT * FROM level WHERE id_sj = ?";
@@ -71,7 +71,7 @@ public class GameDatabase {
         while (result.next()) {
             ques = result.getString("content");
         }
-        ques = ques.replaceAll("<br/>","\n");
+        ques = ques.replaceAll("<br/>", "\n");
         result.close();
         statement.close();
         return ques;

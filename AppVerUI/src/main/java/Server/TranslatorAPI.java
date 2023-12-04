@@ -11,12 +11,13 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
-public class TranslatorAPI implements Runnable{
+public class TranslatorAPI implements Runnable {
     private static TextArea translated;
     private static String text = "";
     private static String from = "en";
     private static String to = "vi";
     private static final String apiURL = "https://script.google.com/macros/s/AKfycbwuoarMpriRLadcHsMXF7W5EPE5TqzW9d5FaU6CHTZdQNPSXCdEhv_Unk_S9pWzPgT-jA/exec";
+
     public static void translate(String langFrom, String langTo) throws IOException {
         String s = "?q=" + URLEncoder.encode(text, StandardCharsets.UTF_8) +
                 "&target=" + langTo +
@@ -40,7 +41,8 @@ public class TranslatorAPI implements Runnable{
         from = to;
         to = tmp;
     }
-    public static void setTextArea(TextArea translated){
+
+    public static void setTextArea(TextArea translated) {
         TranslatorAPI.translated = translated;
     }
 
@@ -54,7 +56,7 @@ public class TranslatorAPI implements Runnable{
 
     @Override
     public void run() {
-        
+
         try {
             TranslatorAPI.translate(from, to);
         } catch (IOException e) {

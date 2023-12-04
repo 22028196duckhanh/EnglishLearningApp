@@ -22,7 +22,7 @@ public class GameCard {
         int option = c - 'A';
         int i = 0;
         for (Map.Entry<String, Boolean> tmp : answer.entrySet()) {
-            if(i == option) return tmp.getValue();
+            if (i == option) return tmp.getValue();
             i++;
         }
         return false;

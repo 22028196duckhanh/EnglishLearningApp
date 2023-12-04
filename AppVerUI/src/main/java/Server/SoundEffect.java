@@ -16,15 +16,18 @@ public class SoundEffect {
         mediaPlayer.setVolume(0.5);
     }
 
-    public static void trueSound(){
+    public static void trueSound() {
         playAudio("src/main/resources/Utils/sound/true_sound.mp3");
     }
-    public static void falseSound(){
+
+    public static void falseSound() {
         playAudio("src/main/resources/Utils/sound/false_sound.mp3");
     }
-    public static void endSound(){
+
+    public static void endSound() {
         playAudio("src/main/resources/Utils/sound/endgame.mp3");
     }
+
     public static void playSound() {
         playAudio("src/main/resources/Utils/sound/letplay.mp3");
     }

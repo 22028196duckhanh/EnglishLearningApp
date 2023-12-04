@@ -75,9 +75,9 @@ public class DatabaseDictionary extends Dictionary {
         return new ArrayList<>(words);
     }
 
-    private boolean isInList(LinkedList<Pair<String, String>> words, String w){
-        for(Pair<String,String> i : words){
-            if(i.getKey().equals(w)) return true;
+    private boolean isInList(LinkedList<Pair<String, String>> words, String w) {
+        for (Pair<String, String> i : words) {
+            if (i.getKey().equals(w)) return true;
         }
         return false;
     }
@@ -89,7 +89,7 @@ public class DatabaseDictionary extends Dictionary {
         while (result.next()) {
             String word = result.getString("word");
             String description = result.getString("description");
-            if(!isInList(words,word))
+            if (!isInList(words, word))
                 words.add(new Pair<>(word, description));
         }
         result.close();

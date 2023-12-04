@@ -11,11 +11,11 @@ import java.nio.charset.StandardCharsets;
 public class TextToSpeech {
     public static void playSoundGoogleTranslate(String text, String language) {
         try {
-            if(text.isEmpty()) {
+            if (text.isEmpty()) {
                 return;
             }
-            String api = "https://translate.google.com/translate_tts?ie=UTF-8&tl="+language+"&client=tw-ob&q="
-                            + URLEncoder.encode(text, StandardCharsets.UTF_8);
+            String api = "https://translate.google.com/translate_tts?ie=UTF-8&tl=" + language + "&client=tw-ob&q="
+                    + URLEncoder.encode(text, StandardCharsets.UTF_8);
             URL url = new URL(api);
             HttpURLConnection con = (HttpURLConnection) url.openConnection();
             InputStream audio = con.getInputStream();

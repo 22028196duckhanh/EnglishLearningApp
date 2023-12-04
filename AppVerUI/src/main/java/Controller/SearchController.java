@@ -73,7 +73,7 @@ public class SearchController implements Initializable {
         });
 
         speaker.setOnAction(actionEvent -> {
-            TextToSpeech.playSoundGoogleTranslate(speaker.getText(),"en");
+            TextToSpeech.playSoundGoogleTranslate(speaker.getText(), "en");
         });
 
         editWord.setOnAction(actionEvent -> {
@@ -85,10 +85,10 @@ public class SearchController implements Initializable {
 
         confirm.setOnAction(actionEvent -> {
             try {
-                dictionary.editHtml(selectedWord, explanation.getHtmlText().replace("<body contenteditable=\"true\">",""));
+                dictionary.editHtml(selectedWord, explanation.getHtmlText().replace("<body contenteditable=\"true\">", ""));
                 String html = dictionary.getFullExplain(selectedWord);
                 String htmlContent = html;
-                if(!html.startsWith(style,22)) {
+                if (!html.startsWith(style, 22)) {
                     htmlContent = style + dictionary.getFullExplain(selectedWord);
                 }
                 explanation.setHtmlText(htmlContent);
@@ -390,14 +390,13 @@ public class SearchController implements Initializable {
                 String type = typeField.getText();
                 String pronunciation = pronunciationField.getText();
                 try {
-                    if (dictionary.addWord(word,pronunciation,type,meaning)) {
+                    if (dictionary.addWord(word, pronunciation, type, meaning)) {
                         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                         DialogPane tmp1 = successAlert.getDialogPane();
                         successAlert.setTitle("Success");
                         successAlert.setContentText("Add successfully! This word already in dictionary");
                         successAlert.showAndWait();
-                    }
-                    else {
+                    } else {
                         Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
                         DialogPane tmp1 = successAlert.getDialogPane();
                         successAlert.setTitle("Fail");
@@ -407,8 +406,7 @@ public class SearchController implements Initializable {
                 } catch (SQLException e) {
                     throw new RuntimeException(e);
                 }
-            }
-            else {
+            } else {
                 dialog.close();
             }
         });
