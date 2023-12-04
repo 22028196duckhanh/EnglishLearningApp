@@ -167,6 +167,16 @@ public class SearchController implements Initializable {
                     } catch (SQLException ex) {
                         throw new RuntimeException(ex);
                     }
+                    defaultHistory();
+                    explanation.setHtmlText("");
+                    explanationOnlyView.getEngine().loadContent("");
+                    setDefault.setVisible(false);
+                    delete.setVisible(false);
+                    editWord.setVisible(false);
+                    speaker.setVisible(false);
+                    highlight.setVisible(false);
+                    searchArea.setPromptText("Search here");
+                    searchArea.setText("");
                 } else {
                     dialog.close();
                 }
