@@ -9,7 +9,7 @@
 <?import javafx.scene.web.HTMLEditor?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="593.0" prefWidth="916.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchController">
+<AnchorPane prefHeight="593.0" prefWidth="916.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchController">
    <children>
       <AnchorPane layoutY="127.0" prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: transparent;">
          <children>
@@ -32,7 +32,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <Button fx:id="delete" layoutX="588.0" layoutY="237.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" stylesheets="@../Utils/css/button.css" text="" />
+            <Button fx:id="delete" layoutX="586.0" layoutY="237.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="35.0" stylesheets="@../Utils/css/button.css" text="" />
          </children>
       </AnchorPane>
       <TextField fx:id="searchArea" layoutX="6.0" layoutY="43.0" prefHeight="35.0" prefWidth="242.0" stylesheets="@../Utils/css/fullpackstyling.css" />

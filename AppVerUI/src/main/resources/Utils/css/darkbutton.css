@@ -137,6 +137,7 @@
     -fx-background-color: lightblue;
     -fx-background-radius: 15px;
     -fx-cursor: hand;
+    -fx-background-image: url('../images/icons8-volume-36.png');
 }
 
 #delete {
@@ -153,5 +154,6 @@
     -fx-background-color: lightblue;
     -fx-background-radius: 10px;
     -fx-cursor: hand;
+    -fx-background-image: url('../images/icons8-trash-48-white.png');
 }
 

@@ -76,6 +76,13 @@ Menu View
     -fx-text-fill: rgb(255, 255, 255);
 }
 
+.label-2 {
+    -fx-font-family: 'SF Pro';
+    -fx-font-style: normal;
+    -fx-font-size: 36px;
+    -fx-text-fill: red;
+}
+
 /*
 Button
  */

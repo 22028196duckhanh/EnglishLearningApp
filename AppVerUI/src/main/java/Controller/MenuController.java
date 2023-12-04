@@ -3,8 +3,8 @@ package Controller;
 import Server.History;
 
 import Server.SoundEffect;
-import javafx.animation.RotateTransition;
-import javafx.animation.TranslateTransition;
+import javafx.animation.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -19,8 +19,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -37,25 +36,25 @@ public class MenuController implements Initializable {
         gameSortBtn.setLayoutX(18);
         gameSortBtn.setLayoutY(10);
         gameSortBtn.setPrefSize(335, 200);
-        gameSortBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
+        gameSortBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/gamebg.css")).toExternalForm());
         gameSortBtn.getStyleClass().add("gameSortBtn");
 
         gameFillBtn.setLayoutX(562);
         gameFillBtn.setLayoutY(10);
         gameFillBtn.setPrefSize(335, 200);
-        gameFillBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
+        gameFillBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/gamebg.css")).toExternalForm());
         gameFillBtn.getStyleClass().add("gameFillBtn");
 
         gameFlipBtn.setLayoutX(18);
         gameFlipBtn.setLayoutY(385);
         gameFlipBtn.setPrefSize(335, 200);
-        gameFlipBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
+        gameFlipBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/gamebg.css")).toExternalForm());
         gameFlipBtn.getStyleClass().add("gameFlipBtn");
 
         gameChoiceBtn.setLayoutX(562);
         gameChoiceBtn.setLayoutY(385);
         gameChoiceBtn.setPrefSize(335, 200);
-        gameChoiceBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/test.css")).toExternalForm());
+        gameChoiceBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/gamebg.css")).toExternalForm());
         gameChoiceBtn.getStyleClass().add("gameChoiceBtn");
 
 
@@ -63,12 +62,14 @@ public class MenuController implements Initializable {
             public void handle(ActionEvent event) {
                 try {
                     showView("/Views/search-view.fxml");
-
+                    searchBtn.setSelected(true);
                     gameBtn.setSelected(false);
                     translateBtn.setSelected(false);
                     highlightBtn.setSelected(false);
                     homeBtn.setSelected(false);
-                    btnMode.setVisible(false);
+
+                    fadeOutTransition(btnMode);
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -90,14 +91,15 @@ public class MenuController implements Initializable {
                 translateBtn.setSelected(false);
                 highlightBtn.setSelected(false);
                 homeBtn.setSelected(false);
-                btnMode.setVisible(true);
+
+                fadeOutTransition(btnMode);
                 SoundEffect.playSound();
             }
         });
 
         exitBtn.setOnMouseClicked(e -> {
             History.exportToFile();
-            System.exit(0);
+            Platform.exit();
         });
 
         gameSortBtn.setOnAction(new EventHandler<ActionEvent>() {
@@ -154,6 +156,7 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(backBtn);
             }
         });
+
         translateBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -164,7 +167,8 @@ public class MenuController implements Initializable {
                     gameBtn.setSelected(false);
                     highlightBtn.setSelected(false);
                     homeBtn.setSelected(false);
-                    btnMode.setVisible(false);
+
+                    fadeOutTransition(btnMode);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -182,7 +186,7 @@ public class MenuController implements Initializable {
                     translateBtn.setSelected(false);
                     homeBtn.setSelected(false);
 
-                    btnMode.setVisible(true);
+                    fadeOutTransition(btnMode);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -207,18 +211,15 @@ public class MenuController implements Initializable {
             spin(handFinger);
         });
 
-        choice = 1;
-        storage = 0;
-        handFinger.setVisible(false);
-        homeBtn.setSelected(true);
-
         homeBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                handFinger.setVisible(true);
                 boxScreen.getChildren().clear();
 
-                handFinger.setVisible(true);
+                boxScreen.getChildren().add(c1);
+                boxScreen.getChildren().add(c2);
+                boxScreen.getChildren().add(c3);
+                boxScreen.getChildren().add(quote);
 
                 searchBtn.setSelected(false);
                 gameBtn.setSelected(false);
@@ -226,8 +227,16 @@ public class MenuController implements Initializable {
                 highlightBtn.setSelected(false);
 
                 btnMode.setVisible(true);
+                fadeInTransition(btnMode);
             }
         });
+
+        choice = 1;
+        storage = 0;
+        handFinger.setVisible(false);
+        homeBtn.setSelected(true);
+        handleHomeButtonAction();
+
     }
 
     public void setView(Node view) {
@@ -238,6 +247,7 @@ public class MenuController implements Initializable {
     @FXML
     public void showView(String path) throws IOException {
         AnchorPane newScreen = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(path)));
+        fadeInTransition(newScreen);
         setView(newScreen);
     }
 
@@ -309,29 +319,21 @@ public class MenuController implements Initializable {
         backBtn.getStylesheets().add("file:src/main/resources/Utils/css/fullpackstyling.css");
     }
 
-    @FXML
-    private void min(MouseEvent event) {
-        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        s.setIconified(true);
-    }
-
-    @FXML
-    private void max(MouseEvent event) {
-        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        s.setFullScreen(true);
-    }
-
-    @FXML
-    private void close(MouseEvent event) {
-        Stage s = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        s.close();
-        History.exportToFile();
-        System.exit(0);
-    }
-
     public void randomGame() {
         Random random = new Random();
         choice = Math.abs(random.nextInt()) % 4 + 1;
+    }
+
+    @FXML
+    private void handleHomeButtonAction() {
+        setRotate(c1, true, 360, 10);
+        setRotate(c2, true, 180, 18);
+        setRotate(c3, true, 145, 24);
+
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(0.5), evt -> quote.setVisible(false)),
+                new KeyFrame(Duration.seconds( 1), evt -> quote.setVisible(true)));
+        timeline.setCycleCount(Animation.INDEFINITE);
+        timeline.play();
     }
 
     public void changeMode(ActionEvent event) {
@@ -381,9 +383,36 @@ public class MenuController implements Initializable {
         label.getStyleClass().add("label-dark");
     }
 
+    private void fadeInTransition(Node node) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.7), node);
+        fadeTransition.setFromValue(0.0);
+        fadeTransition.setToValue(1.0);
+        fadeTransition.setOnFinished(event -> node.setVisible(true));
+        fadeTransition.play();
+    }
+
+    private void fadeOutTransition(Node node) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.seconds(0.7), node);
+        fadeTransition.setFromValue(1.0);
+        fadeTransition.setToValue(0.0);
+        fadeTransition.setOnFinished(event -> node.setVisible(false));
+        fadeTransition.play();
+    }
+
+     private void setRotate(Circle c, boolean reverse, int angle, int duration) {
+        RotateTransition rotateTransition = new RotateTransition(Duration.seconds(duration), c);
+        rotateTransition.setAutoReverse(reverse);
+        rotateTransition.setByAngle(angle);
+        rotateTransition.setDelay(Duration.seconds(0));
+        rotateTransition.setRate(3);
+        rotateTransition.setCycleCount(18);
+        rotateTransition.play();
+    }
+
     public static boolean isLightMode = true;
 
     private int choice;
+
     private int storage;
 
     @FXML
@@ -413,13 +442,30 @@ public class MenuController implements Initializable {
     @FXML
     private ImageView handFinger;
 
+    @FXML
     private Button gameSortBtn = new Button("Game Sort");
+
 
     private Button backBtn = new Button("Back");
 
+    @FXML
     private Button gameFillBtn = new Button("Game Fill");
 
+    @FXML
     private Button gameFlipBtn = new Button("Game Flip");
 
+    @FXML
     private Button gameChoiceBtn = new Button("Game Multiple choice");
+
+    @FXML
+    private Circle c1;
+
+    @FXML
+    private Circle c2;
+
+    @FXML
+    private Circle c3;
+
+    @FXML
+    private Label quote;
 }
