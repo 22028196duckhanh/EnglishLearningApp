@@ -208,6 +208,10 @@ public class MenuController implements Initializable {
 
         handFinger.setOnMouseClicked(e-> {
             handFinger.setDisable(true);
+            gameFillBtn.setDisable(true);
+            gameSortBtn.setDisable(true);
+            gameFlipBtn.setDisable(true);
+            gameChoiceBtn.setDisable(true);
             spin(handFinger);
         });
 
@@ -280,6 +284,10 @@ public class MenuController implements Initializable {
                 createBackBtn();
                 boxScreen.getChildren().add(backBtn);
                 handFinger.setDisable(false);
+                gameFillBtn.setDisable(false);
+                gameSortBtn.setDisable(false);
+                gameFlipBtn.setDisable(false);
+                gameChoiceBtn.setDisable(false);
 
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
