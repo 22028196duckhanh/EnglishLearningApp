@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="593.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MultipleChoiceController">
+<AnchorPane fx:id="anchorPane" prefHeight="593.0" prefWidth="916.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.MultipleChoiceController">
    <children>
       <Label fx:id="ques" alignment="CENTER" layoutX="222.0" layoutY="161.0" prefHeight="70.0" prefWidth="471.0" stylesheets="@../Utils/css/fullpackstyling.css" text="Label" textAlignment="CENTER" wrapText="true">
          <font>
@@ -57,6 +57,6 @@
             <Font size="24.0" />
          </font>
       </Label>
-      <Button fx:id="restart" layoutX="430.0" layoutY="374.0" mnemonicParsing="false" text="restart" />
+      <Button fx:id="restart" layoutX="430.0" layoutY="374.0" mnemonicParsing="false" text="Restart" />
    </children>
 </AnchorPane>

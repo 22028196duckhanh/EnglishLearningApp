@@ -77,10 +77,17 @@ Menu View
 }
 
 .label-2 {
-    -fx-font-family: 'SF Pro';
+    -fx-font-family: 'Source Sans Pro';
     -fx-font-style: normal;
     -fx-font-size: 36px;
-    -fx-text-fill: red;
+    -fx-text-fill: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));
+}
+
+.label-2-dark {
+    -fx-font-family: 'Source Sans Pro';
+    -fx-font-style: normal;
+    -fx-font-size: 36px;
+    -fx-text-fill: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 /*
@@ -174,6 +181,7 @@ Search View
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
     -fx-text-fill: black;
+    -fx-prompt-text-fill: grey;
 }
 
 .text-field-dark{
@@ -184,6 +192,7 @@ Search View
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
     -fx-text-fill: white;
+    -fx-prompt-text-fill: white;
 }
 
 .list-view {
@@ -292,7 +301,8 @@ Translate View
 
 .text-area .scroll-pane .scroll-bar:vertical {
     -fx-background-color: #f0f0f0;
-    -fx-pref-width: 10px;
+    -fx-pref-width: 7px;
+    -fx-padding: 0 0 0 0;
 }
 
 .text-area .scroll-pane .scroll-bar:vertical .thumb {
@@ -302,21 +312,39 @@ Translate View
     -fx-pref-width: 10px;
 }
 
+.text-area .scroll-pane .scroll-bar:vertical .increment-arrow,
+.text-area .scroll-pane .scroll-bar:vertical .decrement-arrow {
+    -fx-background-color: transparent;
+    -fx-padding: 0 0 0 0;
+}
+
 .text-area .scroll-pane .scroll-bar:vertical .increment-button,
 .text-area .scroll-pane .scroll-bar:vertical .decrement-button {
     -fx-background-color: #ddd;
     -fx-pref-width: 10px;
+    -fx-padding: 0 0 0 0;
 }
 
 
 #finalScore{
-    --body-font-size: 25;
+    -fx-font-size: 25px;
 }
+
 #restartLabel{
-    --body-font-size: 25;
+    -fx-font-size: 25px;
 }
+
 #restart {
     -fx-font-size: 16px;
     -fx-text-fill: white;
+    -fx-background-color: rgba(24, 149, 255, 0.91);
+    -fx-background-radius: 15px;
+}
+
+#restart:hover {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
     -fx-background-color: #4CAF50;
+    -fx-background-radius: 15px;
+    -fx-cursor: hand;
 }

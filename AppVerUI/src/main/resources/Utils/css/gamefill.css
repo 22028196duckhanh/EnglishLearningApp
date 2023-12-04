@@ -14,7 +14,7 @@
 }
 
 .label {
-    -fx-font-size: 24;
+    -fx-font-size: 25;
 }
 
 #anchorPane {
@@ -36,19 +36,48 @@
 }
 
 #checkButton {
-    -fx-font-size: 16px;
-    -fx-text-fill: white;
-    -fx-background-color: #4CAF50;
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-image: url('../images/check_sort.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-text-fill: transparent;
+    -fx-cursor: hand;
 }
+
+#checkButton:hover {
+    -fx-background-color: transparent;
+    -fx-border-width: 0;
+    -fx-border-color: transparent;
+    -fx-background-image: url('../images/check_sort_light.png');
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-text-fill: transparent;
+    -fx-cursor: hand;
+}
+
 
 #restart {
     -fx-font-size: 16px;
     -fx-text-fill: white;
-    -fx-background-color: #4CAF50;
+    -fx-background-color: rgba(24, 149, 255, 0.91);
+    -fx-background-radius: 15px;
 }
 
+#restart:hover {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
+    -fx-background-color: #4CAF50;
+    -fx-background-radius: 15px;
+    -fx-cursor: hand;
+}
+
+
 #score {
-    -fx-font-size: 24px;
+    -fx-font-size: 25px;
     -fx-text-fill: black;
 }
 
@@ -58,7 +87,7 @@
 }
 
 #time {
-    -fx-font-size: 24px;
+    -fx-font-size: 25px;
     -fx-text-fill: black;
 }
 

@@ -37,7 +37,16 @@ public class SearchController implements Initializable {
             throw new RuntimeException(e);
         }
         defaultHistory();
-        searchArea.setPromptText("Search here");
+
+        setPromptText(searchArea, "Search here");
+        searchArea.focusedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                setPromptText(searchArea, "");
+            } else {
+                setPromptText(searchArea, "Search here");
+            }
+        });
+
         searchArea.setOnKeyTyped(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -51,6 +60,7 @@ public class SearchController implements Initializable {
                     speaker.setVisible(false);
                     highlight.setVisible(false);
                     searchArea.setPromptText("Search here");
+
                 } else {
                     try {
                         handleOnKeyTyped();
@@ -85,7 +95,8 @@ public class SearchController implements Initializable {
 
         confirm.setOnAction(actionEvent -> {
             try {
-                dictionary.editHtml(selectedWord, explanation.getHtmlText().replace("<body contenteditable=\"true\">", ""));
+                dictionary.editHtml(selectedWord, explanation.getHtmlText().replace
+                        ("<body contenteditable=\"true\">", ""));
                 String html = dictionary.getFullExplain(selectedWord);
                 String htmlContent = html;
                 if (!html.startsWith(style, 22)) {
@@ -122,7 +133,8 @@ public class SearchController implements Initializable {
 
             dialog.setTitle("Delete word");
             DialogPane dialogPane = dialog.getDialogPane();
-            dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/addWord.css")).toExternalForm());
+            dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/addWord.css")).toExternalForm());
             dialog.setHeaderText(null);
 
             Label pronunciationLabel = new Label("Do you want to delete this word?");
@@ -252,40 +264,28 @@ public class SearchController implements Initializable {
             speaker.getStylesheets().removeAll();
             delete.getStylesheets().removeAll();
 
-            searchArea.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darksearch.css")).toExternalForm());
-            listResults.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darksearch.css")).toExternalForm());
-            addWord.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
-            editWord.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
-            confirm.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
-            setDefault.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
-            speaker.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
-            delete.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            searchArea.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darksearch.css")).toExternalForm());
+            listResults.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darksearch.css")).toExternalForm());
+            addWord.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
+            editWord.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
+            confirm.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
+            setDefault.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
+            speaker.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
+            delete.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
+        }
+    }
 
-        } else {
-            style = "<style> body {line-height: 1; background-color: #defcf9; max-width: 580px; } " +
-                    "        h1 {\n" +
-                    "            color: red;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        h2, h3 {\n" +
-                    "            color: #0099CC;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        ul, ol {\n" +
-                    "            padding-left: 20px;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        li {\n" +
-                    "            margin-bottom: 10px;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        i {\n" +
-                    "            color: black;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        ul ul, ol ol {\n" +
-                    "            list-style-type: circle;\n" +
-                    "        }</style>";
+    private void setPromptText(TextField textField, String prompt) {
+        if (textField.getText().isEmpty()) {
+            textField.setPromptText(prompt);
         }
     }
 
@@ -309,12 +309,23 @@ public class SearchController implements Initializable {
         String htmlContent;
         if (selectedWord != null) {
             htmlContent = style + dictionary.getFullExplain(selectedWord);
-            if (htmlContent.equals(style)) {
-                explanation.setHtmlText("<h1>No Results</h1>");
-                explanationOnlyView.getEngine().loadContent("<h1>No Results</h1>");
+
+            if (MenuController.isLightMode) {
+                if (htmlContent.equals(style)) {
+                    explanation.setHtmlText("<h1 style='color: black;'>No Results</h1>");
+                    explanationOnlyView.getEngine().loadContent("<h1 style='color: black;'>No Results</h1>");
+                } else {
+                    explanation.setHtmlText(htmlContent);
+                    explanationOnlyView.getEngine().loadContent(htmlContent);
+                }
             } else {
-                explanation.setHtmlText(htmlContent);
-                explanationOnlyView.getEngine().loadContent(htmlContent);
+                if (htmlContent.equals(style)) {
+                    explanation.setHtmlText("<h1 style='color: white;'>No Results</h1>");
+                    explanationOnlyView.getEngine().loadContent("<h1 style='color: white;'>No Results</h1>");
+                } else {
+                    explanation.setHtmlText(htmlContent);
+                    explanationOnlyView.getEngine().loadContent(htmlContent);
+                }
             }
             speaker.setText(selectedWord);
             if (!dictionary.getFullExplain(selectedWord).isEmpty()) {
@@ -341,7 +352,8 @@ public class SearchController implements Initializable {
         Dialog<String> dialog = new Dialog<>();
         dialog.setTitle("Add a new word");
         DialogPane tmp = dialog.getDialogPane();
-        tmp.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/addWord.css")).toExternalForm());
+        tmp.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                ("/Utils/css/addWord.css")).toExternalForm());
         dialog.setHeaderText(null);
 
         Label newWordLabel = new Label("New word: ");

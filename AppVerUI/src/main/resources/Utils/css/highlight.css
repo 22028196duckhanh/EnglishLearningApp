@@ -71,10 +71,15 @@
     -fx-border-width: 0;
     -fx-border-color: transparent;
     -fx-background-color: transparent;
-    -fx-background-image: url('../images/images.delete-icon.png');
+    -fx-background-image: url('../images/icons8-remove-48.png');
     -fx-background-size: cover;
     -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
+}
+
+#delete:hover {
+    -fx-cursor: hand;
+    -fx-background-image: url('../images/icons8-remove-48-2.png');
 }
 
 #drop {
@@ -82,10 +87,15 @@
     -fx-border-width: 0;
     -fx-border-color: transparent;
     -fx-background-color: transparent;
-    -fx-background-image: url('../images/images.drop-icon.png');
+    -fx-background-image: url('../images/icons8-rubbish-48.png');
     -fx-background-size: cover;
     -fx-background-position: center center;
     -fx-background-repeat: no-repeat;
+}
+
+#drop:hover {
+    -fx-cursor: hand;
+    -fx-background-image: url('../images/icons8-rubbish-48-2.png');
 }
 
 .label {

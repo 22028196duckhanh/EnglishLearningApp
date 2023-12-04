@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="specificAnchorPane" prefHeight="593.0" prefWidth="916.0" stylesheets="@../Utils/css/gameflip.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameFlipController">
+<AnchorPane id="specificAnchorPane" prefHeight="593.0" prefWidth="916.0" stylesheets="@../Utils/css/gameflip.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameFlipController">
    <children>
       <ImageView fx:id="congratulations" blendMode="MULTIPLY" fitHeight="228.0" fitWidth="223.0" layoutX="354.0" layoutY="169.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -47,6 +47,6 @@
             <Font size="23.0" />
          </font>
       </Label>
-      <Button fx:id="restart" layoutX="432.0" layoutY="425.0" mnemonicParsing="false" text="restart" />
+      <Button fx:id="restart" layoutX="432.0" layoutY="425.0" mnemonicParsing="false" text="Restart" />
    </children>
 </AnchorPane>

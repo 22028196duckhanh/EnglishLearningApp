@@ -28,10 +28,10 @@
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="342.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="89.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="342.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" />
-            <Circle fx:id="c1" fill="#1f93ff00" layoutX="442.0" layoutY="297.0" radius="130.0" stroke="#00c5ff" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 50;" />
-            <Circle fx:id="c2" fill="#1f93ff00" layoutX="442.0" layoutY="297.0" radius="81.0" stroke="#ff00e8" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 60;" />
-            <Circle fx:id="c3" fill="#1f93ff00" layoutX="442.0" layoutY="297.0" radius="42.0" stroke="#00ff1b" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 70;" />
-            <Label fx:id="quote" layoutX="250.0" layoutY="95.0" prefHeight="54.0" prefWidth="383.0" styleClass="label-2" text="Học, học nữa, học mãi">
+            <Circle fx:id="c1" fill="#1f93ff00" layoutX="449.0" layoutY="370.0" radius="146.0" stroke="#00c5ff" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 50;" />
+            <Circle fx:id="c2" fill="#1f93ff00" layoutX="449.0" layoutY="370.0" radius="92.0" stroke="RED" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 70;" />
+            <Circle fx:id="c3" fill="#1f93ff00" layoutX="449.0" layoutY="370.0" radius="42.0" stroke="#00ff1b" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 70;" />
+            <Label fx:id="quote" layoutX="26.0" layoutY="128.0" prefHeight="54.0" prefWidth="878.0" styleClass="label-2" stylesheets="@../Utils/css/fullpackstyling.css" text="Knowledge of languages is the doorway to wisdom">
                <font>
                   <Font name="Berlin Sans FB Bold" size="54.0" />
                </font></Label>
@@ -39,37 +39,37 @@
       <HBox fx:id="hBox" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="1018.0" styleClass="hBar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
             <Label fx:id="label" prefHeight="20.0" prefWidth="517.0" stylesheets="@../Utils/css/fullpackstyling.css" text="English Learning Application" textFill="#000000e2" />
-            <Circle fill="#17d921" radius="6.0" stroke="#17d921" strokeType="INSIDE">
+            <Circle fill="#17d921" onMousePressed="#min" radius="6.0" stroke="#17d921" strokeType="INSIDE">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
                <cursor>
-                  <Cursor fx:constant="DEFAULT" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Circle>
-            <Circle fill="#feb025" radius="6.0" stroke="#feb025" strokeType="INSIDE">
+            <Circle fill="#feb025" onMousePressed="#max" radius="6.0" stroke="#feb025" strokeType="INSIDE">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
                <cursor>
-                  <Cursor fx:constant="DEFAULT" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Circle>
-            <Circle fill="#fb4746" radius="6.0" stroke="#fb4746" strokeType="INSIDE">
+            <Circle fill="#fb4746" onMousePressed="#close" radius="6.0" stroke="#fb4746" strokeType="INSIDE">
                <HBox.margin>
                   <Insets bottom="6.0" left="6.0" right="6.0" top="6.0" />
                </HBox.margin>
                <cursor>
-                  <Cursor fx:constant="DEFAULT" />
+                  <Cursor fx:constant="HAND" />
                </cursor>
             </Circle>
          </children>
       </HBox>
       <VBox fx:id="vBox" layoutY="26.0" prefHeight="593.0" prefWidth="102.0" styleClass="menu-bar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
-            <Pane prefHeight="84.0" prefWidth="86.0">
+            <Pane prefHeight="106.0" prefWidth="86.0">
                <children>
-                  <ImageView fitHeight="58.0" fitWidth="58.0" layoutX="15.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="logoImg" fitHeight="58.0" fitWidth="58.0" layoutX="15.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../Utils/images/infinity.png" />
                      </image>
@@ -148,7 +148,7 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="80.0" />
+                  <Insets top="59.0" />
                </VBox.margin>
             </ToggleButton>
          </children>

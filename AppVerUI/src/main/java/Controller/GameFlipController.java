@@ -14,7 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.transform.Rotate;
@@ -78,7 +77,8 @@ public class GameFlipController extends Game implements Initializable {
         } else {
             button.setGraphic(null);
             button.setTextAlignment(TextAlignment.CENTER);
-            button.setText(symbols.get(buttonIndex).getKey().substring(0, symbols.get(buttonIndex).getKey().length() - 4).replace('_', ' '));
+            button.setText(symbols.get(buttonIndex).getKey().substring
+                    (0, symbols.get(buttonIndex).getKey().length() - 4).replace('_', ' '));
         }
         fliped[buttonIndex] = true;
         if (lastButtonClicked == null) {
@@ -224,7 +224,8 @@ public class GameFlipController extends Game implements Initializable {
             buttons[i].setPrefSize(150, 150);
             buttons[i].setFont(Font.font("Arial", FontWeight.BOLD, 14));
             buttons[i].setWrapText(true);
-            buttons[i].setStyle("-fx-background-color: transparent;-fx-background-radius: 10px; -fx-padding: 10;-fx-opacity: 1;");
+            buttons[i].setStyle(
+                    "-fx-background-color: transparent;-fx-background-radius: 10px; -fx-padding: 10;-fx-opacity: 1;");
             int finalI = i;
             buttons[i].setOnAction(e -> buttonClicked(buttons[finalI]));
             grid.add(buttons[i], i % 4, i / 4);

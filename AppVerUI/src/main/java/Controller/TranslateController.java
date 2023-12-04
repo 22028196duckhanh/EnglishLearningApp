@@ -4,9 +4,6 @@ import Server.SpeechToText;
 import Server.TextToSpeech;
 import Server.TranslatorAPI;
 import javafx.animation.PauseTransition;
-import javafx.animation.Transition;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
@@ -15,20 +12,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextFormatter;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 
-import java.io.IOException;
-import java.util.Arrays;
+import javafx.util.Duration;
 import java.util.Objects;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.AbstractExecutorService;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.function.UnaryOperator;
 
 public class TranslateController {
 
@@ -157,12 +146,18 @@ public class TranslateController {
             fromLanguage.getStyleClass().add("label-dark");
             toLanguage.getStyleClass().add("label-dark");
             characterCount.getStyleClass().add("label-dark");
-            text.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darktranslate.css")).toExternalForm());
-            translated.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darktranslate.css")).toExternalForm());
-            changeLanguage.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
-            sound.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
-            speakFrom.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
-            speakTo.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/darkbutton.css")).toExternalForm());
+            text.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darktranslate.css")).toExternalForm());
+            translated.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darktranslate.css")).toExternalForm());
+            changeLanguage.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
+            sound.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
+            speakFrom.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
+            speakTo.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/darkbutton.css")).toExternalForm());
         }
 
         pause.setOnFinished(e -> {

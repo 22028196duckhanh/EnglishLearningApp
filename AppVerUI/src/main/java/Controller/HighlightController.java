@@ -5,15 +5,11 @@ import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
 import javafx.animation.TranslateTransition;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.GridPane;
 import javafx.scene.transform.Rotate;
 import javafx.util.Duration;
 import javafx.util.Pair;
@@ -21,7 +17,6 @@ import javafx.util.Pair;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.LinkedList;
-import java.util.ListIterator;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -51,7 +46,8 @@ public class HighlightController implements Initializable {
 
             dialog.setTitle("drop highlight");
             DialogPane dialogPane = dialog.getDialogPane();
-            dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/addWord.css")).toExternalForm());
+            dialogPane.getStylesheets().add(Objects.requireNonNull(getClass().getResource
+                    ("/Utils/css/addWord.css")).toExternalForm());
             dialog.setHeaderText(null);
 
             Label pronunciationLabel = new Label("Do you want to delete all the highlight?");

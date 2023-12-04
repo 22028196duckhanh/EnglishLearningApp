@@ -15,5 +15,14 @@
 #restart {
     -fx-font-size: 16px;
     -fx-text-fill: white;
+    -fx-background-color: rgba(24, 149, 255, 0.91);
+    -fx-background-radius: 15px;
+}
+
+#restart:hover {
+    -fx-font-size: 16px;
+    -fx-text-fill: white;
     -fx-background-color: #4CAF50;
+    -fx-background-radius: 15px;
+    -fx-cursor: hand;
 }

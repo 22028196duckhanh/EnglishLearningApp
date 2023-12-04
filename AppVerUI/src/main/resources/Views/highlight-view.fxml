@@ -5,23 +5,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="593.0" prefWidth="916.0" style="-fx-background-color: white;" stylesheets="@../Utils/css/highlight.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HighlightController">
+<AnchorPane fx:id="anchorPane" prefHeight="593.0" prefWidth="916.0" style="-fx-background-color: white;" stylesheets="@../Utils/css/highlight.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HighlightController">
    <children>
       <Button fx:id="word" alignment="CENTER" contentDisplay="CENTER" layoutX="242.0" layoutY="134.0" mnemonicParsing="false" prefHeight="328.0" prefWidth="431.0" stylesheets="@../Utils/css/highlight.css" textAlignment="CENTER" wrapText="true" />
-      <Button fx:id="next" layoutX="727.0" layoutY="480.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" stylesheets="@../Utils/css/highlight.css" text="next" />
-      <Button fx:id="prev" layoutX="143.0" layoutY="480.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="36.0" stylesheets="@../Utils/css/highlight.css" text="prev" />
+      <Button fx:id="next" layoutX="742.0" layoutY="482.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" stylesheets="@../Utils/css/highlight.css" text="next" />
+      <Button fx:id="prev" layoutX="114.0" layoutY="480.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" stylesheets="@../Utils/css/highlight.css" text="prev" />
       <Label fx:id="empty" alignment="CENTER" layoutX="242.0" layoutY="245.0" prefHeight="102.0" prefWidth="431.0" text="No word highlighted">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
       </Label>
-      <Button fx:id="delete" layoutX="257.0" layoutY="516.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" style="-fx-opacity: 1;" stylesheets="@../Utils/css/highlight.css" />
-      <Button fx:id="drop" layoutX="613.0" layoutY="512.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="50.0" stylesheets="@../Utils/css/highlight.css" />
-      <Label fx:id="wordNumber" layoutX="440.0" layoutY="488.0" text="Label">
+      <Button fx:id="drop" layoutX="782.0" layoutY="197.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" stylesheets="@../Utils/css/highlight.css" />
+      <Label fx:id="wordNumber" layoutX="436.0" layoutY="483.0" text="Label">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <AnchorPane layoutX="56.0" layoutY="-45.0" minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="320.0" />
+      <Button fx:id="delete" layoutX="782.0" layoutY="134.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" style="-fx-opacity: 1;" stylesheets="@../Utils/css/highlight.css" />
    </children>
 </AnchorPane>
