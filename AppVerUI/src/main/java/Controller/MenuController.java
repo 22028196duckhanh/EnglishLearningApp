@@ -61,7 +61,11 @@ public class MenuController implements Initializable {
         gameChoiceBtn.getStylesheets().add(Objects.requireNonNull(getClass().getResource("/Utils/css/gamebg.css")).toExternalForm());
         gameChoiceBtn.getStyleClass().add("gameChoiceBtn");
 
-
+        homeBtn.setStyle("-fx-opacity: 1");
+        searchBtn.setStyle("-fx-opacity: 1");
+        translateBtn.setStyle("-fx-opacity: 1");
+        gameBtn.setStyle("-fx-opacity: 1");
+        highlightBtn.setStyle("-fx-opacity: 1");
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
@@ -216,6 +220,11 @@ public class MenuController implements Initializable {
             gameSortBtn.setDisable(true);
             gameFlipBtn.setDisable(true);
             gameChoiceBtn.setDisable(true);
+            searchBtn.setDisable(true);
+            gameBtn.setDisable(true);
+            translateBtn.setDisable(true);
+            homeBtn.setDisable(true);
+            highlightBtn.setDisable(true);
             spin(handFinger);
         });
 
@@ -292,7 +301,11 @@ public class MenuController implements Initializable {
                 gameSortBtn.setDisable(false);
                 gameFlipBtn.setDisable(false);
                 gameChoiceBtn.setDisable(false);
-
+                searchBtn.setDisable(false);
+                gameBtn.setDisable(false);
+                translateBtn.setDisable(false);
+                homeBtn.setDisable(false);
+                highlightBtn.setDisable(false);
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }

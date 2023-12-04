@@ -1,5 +1,7 @@
-k
-l
-khanh
-manh
-quang
+hello
+good-bye
+nice
+administration
+ok
+block
+dame
