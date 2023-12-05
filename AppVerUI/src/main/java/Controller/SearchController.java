@@ -107,6 +107,7 @@ public class SearchController implements Initializable {
             } catch (SQLException e) {
                 throw new RuntimeException(e);
             }
+
             confirm.setVisible(false);
             editWord.setVisible(true);
             explanation.setVisible(false);
@@ -115,6 +116,7 @@ public class SearchController implements Initializable {
             successAlert.setTitle("Success");
             successAlert.setContentText("Edit successfully!");
             successAlert.showAndWait();
+
         });
 
         setDefault.setOnAction(actionEvent -> {
@@ -223,37 +225,11 @@ public class SearchController implements Initializable {
         highlight.setVisible(false);
         confirm.setVisible(false);
 
-        String css = "body { background-color: #defcf9; }";
         explanationOnlyView.getEngine().setUserStyleSheetLocation("data:text/css;charset=utf-8," + css);
 
         if (!MenuController.isLightMode) {
-            String css_dark = "body { background-color: #343541; }";
+            style = style_dark;
             explanationOnlyView.getEngine().setUserStyleSheetLocation("data:text/css;charset=utf-8," + css_dark);
-
-            style = "<style> body {line-height: 1; background-color: #343541; color: white; max-width: 580px; } " +
-                    "        h1 {\n" +
-                    "            color: white;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        h2, h3 {\n" +
-                    "            color: white;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        ul, ol {\n" +
-                    "            padding-left: 20px;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        li {\n" +
-                    "            margin-bottom: 10px;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        i {\n" +
-                    "            color: white;\n" +
-                    "        }\n" +
-                    "\n" +
-                    "        ul ul, ol ol {\n" +
-                    "            list-style-type: circle;\n" +
-                    "        }</style>";
 
             searchArea.getStylesheets().removeAll();
             listResults.getStylesheets().removeAll();
@@ -308,9 +284,8 @@ public class SearchController implements Initializable {
     private void setResults() throws SQLException {
         String htmlContent;
         if (selectedWord != null) {
-            htmlContent = style + dictionary.getFullExplain(selectedWord);
-
             if (MenuController.isLightMode) {
+                htmlContent = style + dictionary.getFullExplain(selectedWord);
                 if (htmlContent.equals(style)) {
                     explanation.setHtmlText("<h1 style='color: black;'>No Results</h1>");
                     explanationOnlyView.getEngine().loadContent("<h1 style='color: black;'>No Results</h1>");
@@ -319,6 +294,7 @@ public class SearchController implements Initializable {
                     explanationOnlyView.getEngine().loadContent(htmlContent);
                 }
             } else {
+                htmlContent = style_dark + dictionary.getFullExplain(selectedWord);
                 if (htmlContent.equals(style)) {
                     explanation.setHtmlText("<h1 style='color: white;'>No Results</h1>");
                     explanationOnlyView.getEngine().loadContent("<h1 style='color: white;'>No Results</h1>");
@@ -465,7 +441,8 @@ public class SearchController implements Initializable {
     @FXML
     private ListView<String> listResults;
 
-    private String style = "<style> body {line-height: 1; background-color: #defcf9; max-width: 580px; } " +
+    private String style
+            = "<style> body {line-height: 1; background-color: #defcf9; max-width: 580px; } " +
             "        h1 {\n" +
             "            color: red;\n" +
             "        }\n" +
@@ -489,4 +466,37 @@ public class SearchController implements Initializable {
             "        ul ul, ol ol {\n" +
             "            list-style-type: circle;\n" +
             "        }</style>";
+
+    private final String style_dark
+            = "<style> body {line-height: 1; background-color: #343541; color: white; max-width: 580px; } " +
+            "        h1 {\n" +
+            "            color: white;\n" +
+            "        }\n" +
+            "\n" +
+            "        h2, h3 {\n" +
+            "            color: white;\n" +
+            "        }\n" +
+            "\n" +
+            "        ul, ol {\n" +
+            "            padding-left: 20px;\n" +
+            "        }\n" +
+            "\n" +
+            "        li {\n" +
+            "            margin-bottom: 10px;\n" +
+            "        }\n" +
+            "\n" +
+            "        i {\n" +
+            "            color: white;\n" +
+            "        }\n" +
+            "\n" +
+            "        ul ul, ol ol {\n" +
+            "            list-style-type: circle;\n" +
+            "        }</style>";
+
+    private final String css = "body { background-color: #defcf9; } " +
+            "::-webkit-scrollbar { width: 10px; } " +
+            "::-webkit-scrollbar-thumb { background-color: #808080; border-radius: 5px; }";
+
+    private final String css_dark = css.replace("#defcf9", "#343541");
+
 }

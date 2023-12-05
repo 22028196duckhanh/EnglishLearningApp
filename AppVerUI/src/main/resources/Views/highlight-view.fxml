@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane" prefHeight="593.0" prefWidth="916.0" style="-fx-background-color: white;" stylesheets="@../Utils/css/highlight.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.HighlightController">
+<AnchorPane fx:id="anchorPane" prefHeight="593.0" prefWidth="916.0" style="-fx-background-color: white;" stylesheets="@../Utils/css/highlight.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.HighlightController">
    <children>
       <Button fx:id="word" alignment="CENTER" contentDisplay="CENTER" layoutX="242.0" layoutY="134.0" mnemonicParsing="false" prefHeight="328.0" prefWidth="431.0" stylesheets="@../Utils/css/highlight.css" textAlignment="CENTER" wrapText="true" />
       <Button fx:id="next" layoutX="742.0" layoutY="482.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="48.0" stylesheets="@../Utils/css/highlight.css" text="next" />

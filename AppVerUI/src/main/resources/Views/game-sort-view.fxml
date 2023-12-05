@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane fx:id="bkgrSort" prefHeight="593.0" prefWidth="916.0" stylesheets="@../Utils/css/gamesort.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.GameSortController">
+<AnchorPane fx:id="bkgrSort" prefHeight="593.0" prefWidth="916.0" stylesheets="@../Utils/css/gamesort.css" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.GameSortController">
    <children>
       <HBox fx:id="hBox" alignment="CENTER" layoutX="27.0" layoutY="333.0" prefHeight="100.0" prefWidth="802.0" stylesheets="@../Utils/css/gamesort.css" />
       <HBox fx:id="answerBox" alignment="CENTER" layoutX="27.0" layoutY="137.0" prefHeight="100.0" prefWidth="802.0" stylesheets="@../Utils/css/gamesort.css" />

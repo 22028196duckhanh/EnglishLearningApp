@@ -97,7 +97,9 @@ public class MenuController implements Initializable {
                 boxScreen.getChildren().add(gameFlipBtn);
                 boxScreen.getChildren().add(gameChoiceBtn);
                 boxScreen.getChildren().add(handFinger);
+
                 handFinger.setVisible(true);
+                gameBtn.setSelected(true);
 
                 searchBtn.setSelected(false);
                 translateBtn.setSelected(false);
@@ -175,6 +177,7 @@ public class MenuController implements Initializable {
                 try {
                     showView("/Views/translate-view.fxml");
 
+                    translateBtn.setSelected(true);
                     searchBtn.setSelected(false);
                     gameBtn.setSelected(false);
                     highlightBtn.setSelected(false);
@@ -193,6 +196,7 @@ public class MenuController implements Initializable {
                 try {
                     showView("/Views/highlight-view.fxml");
 
+                    highlightBtn.setSelected(true);
                     searchBtn.setSelected(false);
                     gameBtn.setSelected(false);
                     translateBtn.setSelected(false);
@@ -232,25 +236,26 @@ public class MenuController implements Initializable {
             spin(handFinger);
         });
 
-        homeBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                boxScreen.getChildren().clear();
+        homeBtn.setOnAction(event -> {
+            boxScreen.getChildren().clear();
 
-                boxScreen.getChildren().add(c1);
-                boxScreen.getChildren().add(c2);
-                boxScreen.getChildren().add(c3);
-                boxScreen.getChildren().add(quote);
+            boxScreen.getChildren().add(c1);
+            boxScreen.getChildren().add(c2);
+            boxScreen.getChildren().add(c3);
+            boxScreen.getChildren().add(quote);
+            boxScreen.getChildren().add(welcomeLabel);
+            boxScreen.getChildren().add(logoImg1);
 
-                searchBtn.setSelected(false);
-                gameBtn.setSelected(false);
-                translateBtn.setSelected(false);
-                highlightBtn.setSelected(false);
+            homeBtn.setSelected(true);
+            searchBtn.setSelected(false);
+            gameBtn.setSelected(false);
+            translateBtn.setSelected(false);
+            highlightBtn.setSelected(false);
 
-                btnMode.setVisible(true);
-                fadeInTransition(btnMode);
-            }
+            btnMode.setVisible(true);
+            fadeInTransition(btnMode);
         });
+
         choice = 1;
         handFinger.setVisible(false);
         homeBtn.setSelected(true);
@@ -377,6 +382,7 @@ public class MenuController implements Initializable {
 
         imgMode.setImage(imageMode);
         logoImg.setImage(logo);
+        logoImg1.setImage(logo);
 
         boxScreen.getStyleClass().clear();
         vBox.getStyleClass().clear();
@@ -397,6 +403,7 @@ public class MenuController implements Initializable {
 
         imgMode.setImage(imageMode);
         logoImg.setImage(logo);
+        logoImg1.setImage(logo);
 
         boxScreen.getStyleClass().clear();
         hBox.getStyleClass().clear();
@@ -431,7 +438,7 @@ public class MenuController implements Initializable {
         rotateTransition.setAutoReverse(reverse);
         rotateTransition.setByAngle(angle);
         rotateTransition.setDelay(Duration.seconds(0));
-        rotateTransition.setRate(3);
+        rotateTransition.setRate(5);
         rotateTransition.setCycleCount(Animation.INDEFINITE);
         rotateTransition.play();
     }
@@ -462,6 +469,9 @@ public class MenuController implements Initializable {
 
     @FXML
     private ImageView logoImg;
+
+    @FXML
+    private ImageView logoImg1;
 
     @FXML
     private ImageView imgMode;
@@ -516,4 +526,7 @@ public class MenuController implements Initializable {
 
     @FXML
     private Label quote;
+
+    @FXML
+    private Label welcomeLabel;
 }

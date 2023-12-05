@@ -9,7 +9,7 @@
 <?import javafx.scene.web.HTMLEditor?>
 <?import javafx.scene.web.WebView?>
 
-<AnchorPane prefHeight="593.0" prefWidth="916.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.SearchController">
+<AnchorPane prefHeight="593.0" prefWidth="916.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="Controller.SearchController">
    <children>
       <AnchorPane layoutY="127.0" prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: transparent;">
          <children>

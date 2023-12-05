@@ -23,18 +23,23 @@
                   <Image url="@../Utils/images/supercat1.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="349.0" layoutY="391.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="342.0" layoutY="419.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="89.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="342.0" layoutY="412.0" pickOnBounds="true" preserveRatio="true" />
-            <Circle fx:id="c1" fill="#1f93ff00" layoutX="449.0" layoutY="370.0" radius="146.0" stroke="#00c5ff" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 50;" />
-            <Circle fx:id="c2" fill="#1f93ff00" layoutX="449.0" layoutY="370.0" radius="92.0" stroke="RED" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 70;" />
-            <Circle fx:id="c3" fill="#1f93ff00" layoutX="449.0" layoutY="370.0" radius="42.0" stroke="#00ff1b" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 70;" />
-            <Label fx:id="quote" layoutX="26.0" layoutY="128.0" prefHeight="54.0" prefWidth="878.0" styleClass="label-2" stylesheets="@../Utils/css/fullpackstyling.css" text="Knowledge of languages is the doorway to wisdom">
+            <Circle fx:id="c1" fill="#1f93ff00" layoutX="449.0" layoutY="300.0" radius="146.0" stroke="#00c5ff" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 50;" />
+            <Circle fx:id="c2" fill="#1f93ff00" layoutX="449.0" layoutY="300.0" radius="92.0" stroke="RED" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 70;" />
+            <Circle fx:id="c3" fill="#1f93ff00" layoutX="449.0" layoutY="300.0" radius="42.0" stroke="#00ff1b" strokeType="INSIDE" strokeWidth="15.0" style="-fx-stroke-dash-array: 70;" />
+            <Label fx:id="quote" layoutX="27.0" layoutY="487.0" prefHeight="54.0" prefWidth="872.0" styleClass="label-2" stylesheets="@../Utils/css/fullpackstyling.css" text="Knowledge of languages is the doorway to wisdom">
                <font>
                   <Font name="Berlin Sans FB Bold" size="54.0" />
                </font></Label>
+            <Label fx:id="welcomeLabel" layoutX="239.0" layoutY="48.0" prefHeight="54.0" prefWidth="355.0" styleClass="welcome" stylesheets="@../Utils/css/fullpackstyling.css" text="Welcome to Infinity">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="54.0" />
+               </font>
+            </Label>
+            <ImageView fx:id="logoImg1" fitHeight="64.0" fitWidth="64.0" layoutX="595.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../Utils/images/infinity.png" />
+               </image>
+            </ImageView>
          </children></AnchorPane>
       <HBox fx:id="hBox" alignment="CENTER_RIGHT" prefHeight="26.0" prefWidth="1018.0" styleClass="hBar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
@@ -65,7 +70,7 @@
             </Circle>
          </children>
       </HBox>
-      <VBox fx:id="vBox" layoutY="26.0" prefHeight="593.0" prefWidth="102.0" styleClass="menu-bar" stylesheets="@../Utils/css/fullpackstyling.css">
+      <VBox fx:id="vBox" layoutX="1.0" layoutY="26.0" prefHeight="593.0" prefWidth="102.0" styleClass="menu-bar" stylesheets="@../Utils/css/fullpackstyling.css">
          <children>
             <Pane prefHeight="106.0" prefWidth="86.0">
                <children>
@@ -148,7 +153,7 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets top="59.0" />
+                  <Insets top="57.0" />
                </VBox.margin>
             </ToggleButton>
          </children>
