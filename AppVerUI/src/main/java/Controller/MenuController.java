@@ -70,6 +70,12 @@ public class MenuController implements Initializable {
                 ("/Utils/css/gamebg.css")).toExternalForm());
         gameChoiceBtn.getStyleClass().add("gameChoiceBtn");
 
+        searchBtn.setStyle("-fx-opacity: 1");
+        translateBtn.setStyle("-fx-opacity: 1");
+        gameBtn.setStyle("-fx-opacity: 1");
+        highlightBtn.setStyle("-fx-opacity: 1");
+        homeBtn.setStyle("-fx-opacity: 1");
+
         searchBtn.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
                 try {
